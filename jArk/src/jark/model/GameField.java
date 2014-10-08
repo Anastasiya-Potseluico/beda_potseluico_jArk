@@ -5,7 +5,6 @@
  */
 package jark.model;
 
-import jark.Buffer;
 import java.util.ArrayList;
 
 /**
@@ -13,8 +12,6 @@ import java.util.ArrayList;
  * @author Дарья
  */
 public class GameField {
-   /** Буффер обмена между логическими и физическими объектами игры */
-    private Buffer _buffer;
     /** Мяч */
     private ElementField _ball;
     /** Ракетка */
@@ -32,8 +29,7 @@ public class GameField {
      * Конструктор
      * @param buffer буфер обмена между логикой и физикой игры
      */
-    public GameField (Buffer buffer) {
-        _buffer = buffer;
+    public GameField () {
     }
     
     /**

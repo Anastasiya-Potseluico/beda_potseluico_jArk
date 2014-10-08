@@ -13,15 +13,11 @@ public class Game {
     /** Игрок */
     private Player _player;
     
-    /** Буфер обмена между логическими и физическими объектами игры */
-    private Buffer _buffer;
-    
     /** 
      * Конструктор
      */
     public Game() {
         _player = new Player();
-        _buffer = new Buffer();
     }
     
     /** 

@@ -18,11 +18,8 @@ public class PhysicalGameField {
     * Массив элементов, содержащихся на поле
     */
     private PhysicalElementField _field[];
-    /** Буфер обмена между логическими и физическими объектами игры */
-    private Buffer _buffer;
     
-    public PhysicalGameField (Buffer buffer) {
-        _buffer = buffer;
+    public PhysicalGameField () {
     }
     
 }
