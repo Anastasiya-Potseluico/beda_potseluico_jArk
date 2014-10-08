@@ -28,17 +28,77 @@ public class GameField {
     /** Границы поля */
     private ArrayList <ElementField> _bondarysField;
     
-    /** Конструктор */
+    /**
+     * Конструктор
+     * @param buffer буфер обмена между логикой и физикой игры
+     */
     public GameField (Buffer buffer) {
         _buffer = buffer;
     }
     
-    /** Добавить элемент поля */
+    /**
+     * Добавить элемент поля
+     * @param element добавляемый элемент
+     * @return успех добавления
+     */
     public boolean addElementField(ElementField element){
         return true;
     }
-    /** Удалить элемент поля */
+    
+    /**
+     * Удалить элемент поля
+     * @param element удаляемый элемент
+     * @return усрех удаления
+     */
     public boolean deleteElementField(ElementField element) {
         return true;
+    }
+    
+    /**
+     * Возвращает мяч
+     * @return элемент поля - мяч
+     */
+    public ElementField ball() {
+        return _ball;
+    }
+    
+    /**
+     * Возвращает ракетку
+     * @return элемент поля - ракетка
+     */
+    public ElementField racket() {
+        return _racket;
+    }
+    
+    /**
+     * Возвращает рой
+     * @return элемент поля - рой
+     */
+    public ElementField swarm () {
+        return _swarm;
+    }
+    
+    /**
+     * Возвращает массив разрушаемых кирпичей
+     * @return  массив элементов поля - разрушаемые кирпичи
+     */
+    public ArrayList <ElementField> destructibleBricks () {
+        return _dBricks;
+    }
+    
+    /**
+     * Возвращает массив неразрушаемых кирпичей
+     * @return  массив элементов поля - неразрушаемые кирпичи
+     */
+    public ArrayList <ElementField> indestructibleBricks () {
+        return _iBricks;
+    }
+    
+    /**
+     * Возвращает границы поля
+     * @return возвращает массив элементов поля - границы поля
+     */
+    public ArrayList <ElementField> bondarysField () {
+        return _bondarysField;
     }
 }

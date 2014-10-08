@@ -10,7 +10,10 @@ package jark.model;
  * @author Дарья
  */
 public class Racket extends ElementField {
-    /** Толкнуть мяч */
+    /**
+     * Толкнуть мяч
+     * @return успех толкания мяча
+     */
     public boolean pushBall() {
         return true;
     }

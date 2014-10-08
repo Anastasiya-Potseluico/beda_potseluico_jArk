@@ -10,7 +10,11 @@ package jark.model;
  * @author Дарья
  */
 public class Ball extends ElementField {
-    /** Отскочить от элемента поля */
+    /**
+     * Отскочить от элемента поля
+     * @param element элемент поля, от которого отскакивает мяч
+     * @return результат отскока
+     */
     public boolean rebound(ElementField element) {
         return true;
     }

@@ -5,10 +5,9 @@
  */
 package jark.model;
 
-import jark.Buffer;
-import specifications.Position;
-import specifications.Size;
-import specifications.Speed;
+import jArk.specifications.Position;
+import jArk.specifications.Size;
+import jArk.specifications.Speed;
 
 /**
  * Логическое представление элемента поля

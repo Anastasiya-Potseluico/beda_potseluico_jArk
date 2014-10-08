@@ -5,6 +5,7 @@
  */
 package jark;
 
+import jArk.physicalObjects.PhysicalGameField;
 import jark.model.GameField;
 
 /**
@@ -15,17 +16,26 @@ public class Buffer {
     /** Логическое представление игрового поля */
    private GameField _gameField;
    /** Физическое представление игрового поля*/
+   private PhysicalGameField _phGameField;
    
    public Buffer() {
        _gameField = new GameField(this);
+       _phGameField = new PhysicalGameField(this);
    }
    
+   /** 
+    * Получение логического представления поля
+    * @return логическое пердставление поля
+    */
    public GameField getGameField() {
        return _gameField;
    }
    
-   //TODO
-   public void getGameFieldView() {
-       
+   /**
+    * Получение физического представления поля
+    * @return физическое представление поля
+    */
+   public PhysicalGameField getGameFieldView() {
+       return _phGameField;
    }
 }
