@@ -6,12 +6,10 @@
 
 package jArk.physicalObjects;
 
-import com.golden.gamedev.object.Sprite;
-
 /**
  * Класс физического представления элемента поля
  * @author пользователь
  */
-public class PhysicalElementField extends Sprite{
+public abstract class PhysicalElementField{
     
 }

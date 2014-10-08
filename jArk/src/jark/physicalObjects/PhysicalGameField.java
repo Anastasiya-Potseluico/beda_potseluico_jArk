@@ -6,7 +6,7 @@
 
 package jArk.physicalObjects;
 
-import jark.Buffer;
+import jark.model.GameField;
 
 /**
  * Класс физического представления игрового поля
@@ -18,8 +18,11 @@ public class PhysicalGameField {
     * Массив элементов, содержащихся на поле
     */
     private PhysicalElementField _field[];
+    /** Логическое представление игрового поля */
+    private GameField _gameField;
     
-    public PhysicalGameField () {
+    public PhysicalGameField (GameField gameField) {
+        _gameField = gameField;
     }
     
 }

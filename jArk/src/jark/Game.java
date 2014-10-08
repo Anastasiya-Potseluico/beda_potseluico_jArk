@@ -5,6 +5,8 @@
  */
 package jark;
 
+import jark.model.GameField;
+
 /**
  * Класс игры
  * @author Дарья
@@ -12,12 +14,15 @@ package jark;
 public class Game {
     /** Игрок */
     private Player _player;
+    /**Игровое поле */
+    private GameField _gameField;
     
     /** 
      * Конструктор
      */
     public Game() {
         _player = new Player();
+        _gameField = new GameField();
     }
     
     /** 
