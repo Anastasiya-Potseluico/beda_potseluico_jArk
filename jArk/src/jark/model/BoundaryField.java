@@ -5,10 +5,17 @@
  */
 package jark.model;
 
+import jArk.physicalObjects.PhysicalBoundary;
+
 /**
  * Класс границы поля
  * @author Дарья
  */
 public class BoundaryField extends ElementField {
-    
+    /**
+     * Конструктор
+     */
+    public BoundaryField () {
+        _phElementField = new PhysicalBoundary(this);
+    }
 }

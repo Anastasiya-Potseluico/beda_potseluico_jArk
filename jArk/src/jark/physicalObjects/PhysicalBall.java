@@ -6,10 +6,21 @@
 
 package jArk.physicalObjects;
 
+import jark.model.Ball;
+
 /**
  * Класс физического представления мяча
  * @author пользователь
  */
 public class PhysicalBall extends PhysicalElementField{
+   /** Логическое представление мяча */
+    private Ball _ball;
     
+    /**
+    * Конструктор
+    * @param ball логическое представление мяча
+    */ 
+    public PhysicalBall(Ball ball) {
+        _ball = ball;
+    }
 }

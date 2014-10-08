@@ -5,10 +5,17 @@
  */
 package jark.model;
 
+import jArk.physicalObjects.PhysicalDestructibleBrick;
+
 /**
  * Класс разрушаемого кирпича
  * @author Дарья
  */
 public class DestructibleBrick extends Brick{
-    
+    /**
+     * Конструктор
+     */
+    public DestructibleBrick() {
+        _phElementField = new PhysicalDestructibleBrick(this);
+    }
 }

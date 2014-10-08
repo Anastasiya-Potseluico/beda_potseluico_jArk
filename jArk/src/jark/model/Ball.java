@@ -5,11 +5,21 @@
  */
 package jark.model;
 
+import jArk.physicalObjects.PhysicalBall;
+
 /**
  * Класс мяча
  * @author Дарья
  */
 public class Ball extends ElementField {
+    
+    /**
+     * Конструктор
+     */
+    public Ball() {
+        _phElementField = new PhysicalBall(this);             
+    }
+    
     /**
      * Отскочить от элемента поля
      * @param element элемент поля, от которого отскакивает мяч

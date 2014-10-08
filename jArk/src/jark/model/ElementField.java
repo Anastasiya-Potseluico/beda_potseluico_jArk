@@ -16,13 +16,13 @@ import jArk.specifications.Speed;
  */
 public abstract class ElementField {
     /** Позиция */
-    private Position _position;
+    protected Position _position;
     /** Размер */
-    private Size _size;
+    protected Size _size;
     /** Скорость */
-    private Speed _speed;
+    protected Speed _speed;
     /** Игровое поле */
-    private GameField _gamefield;
+    protected GameField _gamefield;
     /** Представление элемента поля */
-    private PhysicalElementField _phElementField;
+    protected PhysicalElementField _phElementField;
 }

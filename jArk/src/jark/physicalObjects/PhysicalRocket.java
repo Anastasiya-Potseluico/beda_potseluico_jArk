@@ -6,10 +6,13 @@
 
 package jArk.physicalObjects;
 
+import jark.model.Racket;
+
 /**
  * Класс физического представления ракетки
  * @author пользователь
  */
 public class PhysicalRocket extends PhysicalElementField{
-    
+    /** Логическое пердставление ракетки */
+    private Racket _rocket;
 }
