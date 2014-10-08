@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 
-package PhysicalObjects;
+package jArk.physicalObjects;
+
+import jark.Buffer;
 
 /**
  * Класс физического представления игрового поля
@@ -16,5 +18,11 @@ public class PhysicalGameField {
     * Массив элементов, содержащихся на поле
     */
     private PhysicalElementField _field[];
+    /** Буфер обмена между логическими и физическими объектами игры */
+    private Buffer _buffer;
+    
+    public PhysicalGameField (Buffer buffer) {
+        _buffer = buffer;
+    }
     
 }

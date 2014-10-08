@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package PhysicalObjects;
+package jArk.physicalObjects;
 
 /**
  * Класс физического представления неразбиваемого кирпича

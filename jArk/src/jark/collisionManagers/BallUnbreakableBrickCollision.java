@@ -4,19 +4,19 @@
  * and open the template in the editor.
  */
 
-package CollisionManagers;
+package jArk.collisionManagers;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.collision.*;
 /**
- * Класс для обработки коллизии типа "Мяч - Разрушаемый кирпич"
+ * Класс для разрешения коллизии типа "Мяч - Неразрушаемый кирпич"
  * @author пользователь
  */
-public class BallBreakableBrickCollision extends AdvanceCollisionGroup {
+public class BallUnbreakableBrickCollision extends AdvanceCollisionGroup{
 
     /**
-     * Метод для обработки столкновения мяча и разбиваемого кирпича. Обработка поведения мяча
+     * Метод для обработки столкновения мяча и неразрушаемого кирпича 
      * @param sprite - спрайт мяча
-     * @param sprite1 - спрайт разбиваемого кирпича
+     * @param sprite1 - спрайт неразрушаемого кирпича
      */
     @Override
     public void collided(Sprite sprite, Sprite sprite1) {

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package CollisionManagers;
+package jArk.collisionManagers;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.collision.*;
 /**

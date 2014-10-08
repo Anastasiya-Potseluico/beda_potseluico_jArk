@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package PhysicalObjects;
+package jark.model;
 
 /**
- * Класс физического представления ракетки
- * @author пользователь
+ * Класс разрушаемого кирпича
+ * @author Дарья
  */
-public class PhysicalRocket extends PhysicalElementField{
+public class DestructibleBrick extends Brick{
     
 }

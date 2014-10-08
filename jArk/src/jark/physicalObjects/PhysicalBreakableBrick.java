@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package PhysicalObjects;
+package jArk.physicalObjects;
 
 /**
- * Класс физического представления элемента роя
+ * Класс физического представления разбиваемого кирпича
  * @author пользователь
  */
-public class PhysicalRoyElement extends PhysicalElementField{
+public class PhysicalBreakableBrick extends PhysicalElementField{
     
 }

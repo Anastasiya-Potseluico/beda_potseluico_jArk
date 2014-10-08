@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/пользователь/Documents/GitHub/beda_potseluico_jArk/jArk/src/PhysicalObjects/PhysicalRocket.java</file>
             <file>file:/C:/Users/пользователь/Documents/GitHub/beda_potseluico_jArk/jArk/src/PhysicalObjects/PhysicalBall.java</file>
             <file>file:/C:/Users/пользователь/Documents/GitHub/beda_potseluico_jArk/jArk/src/PhysicalObjects/PhysicalBoarder.java</file>
@@ -11,6 +12,25 @@
             <file>file:/C:/Users/пользователь/Documents/GitHub/beda_potseluico_jArk/jArk/src/PhysicalObjects/PhysicalElementField.java</file>
             <file>file:/C:/Users/пользователь/Documents/GitHub/beda_potseluico_jArk/jArk/src/PhysicalObjects/PhysicalBreakableBrick.java</file>
             <file>file:/C:/Users/пользователь/Documents/GitHub/beda_potseluico_jArk/jArk/src/PhysicalObjects/PhysicalRoyElement.java</file>
+=======
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/JArk.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/Buffer.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/Ball.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/ElementField.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/DestructibleBrick.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/specifications/Size.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/Player.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/specifications/Position.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/GameField.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/specifications/Speed.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/Game.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/Swarm.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/Racket.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/ElementSwarm.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/Brick.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/IndestructibleBrick.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/BoundaryField.java</file>
+>>>>>>> origin/master
         </group>
     </open-files>
 </project-private>

@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package PhysicalObjects;
+package jark;
 
 /**
- * Класс физического представления мяча
- * @author пользователь
+ * Класс игрока
+ * @author Дарья
  */
-public class PhysicalBall extends PhysicalElementField{
-    
+public class Player {
+    /** Количество жизней */
+    private int _number_of_lives;
 }

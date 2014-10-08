@@ -3,20 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package jArk.collisionManagers;
 
-package CollisionManagers;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.collision.*;
+
 /**
- * Класс для разрешения коллизии типа "Разрушаемый кирпич - Мяч"
+ *Класс для разрешения коллизии типа "Мяч - Ракетка"
  * @author пользователь
  */
-public class BreakableBrickBallCollision extends AdvanceCollisionGroup {
+public class BallRocketCollision extends AdvanceCollisionGroup {
 
     /**
-     * Метод для обработки столкновения мяча и разрушемого кирпича
-     * @param sprite - спрайт разбиваемого кирпича
-     * @param sprite1 - спрайт мяча
+     * Метод для обработки столкновения мяча и ракетки. Обработка поведения мяча
+     * @param sprite - спрайт мяча
+     * @param sprite1 - спрайт ракетки
      */
     @Override
     public void collided(Sprite sprite, Sprite sprite1) {
