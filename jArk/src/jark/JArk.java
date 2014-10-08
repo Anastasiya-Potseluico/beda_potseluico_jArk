@@ -7,7 +7,7 @@
 package jark;
 
 /**
- *
+ * Главный класс игры
  * @author пользователь
  */
 public class JArk {
