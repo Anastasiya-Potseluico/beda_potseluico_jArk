@@ -14,4 +14,7 @@ import java.util.ArrayList;
 public class Swarm extends ElementField {
     /** Элементы роя */
     private  ArrayList <ElementSwarm> _elements;
+    
+    /** Вместимость роя */
+    private int _capability;
 }
