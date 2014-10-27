@@ -9,7 +9,7 @@ package jark.model;
  * Класс ракетки
  * @author Дарья
  */
-public class Racket extends ElementField {
+public class Racket extends ElementField implements Collide {
     /**
      * Толкнуть мяч
      * @return успех толкания мяча
