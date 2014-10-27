@@ -5,16 +5,39 @@
  */
 package jark.model;
 
-import jArk.physicalObjects.PhysicalDestructibleBrick;
-
 /**
  * Класс разрушаемого кирпича
  * @author Дарья
  */
 public class DestructibleBrick extends Brick{
+    
+    private int _destructionCount;
     /**
      * Конструктор
+     * @param count начальная прочность кирпича
      */
-    public DestructibleBrick() {
+    public DestructibleBrick(int count) {
+        this._destructionCount = count;
     }
+    
+    /**
+     * Функция разрушения кирпича
+     * @param count количество единиц, на которое уменьшается прочность кирпича
+     */
+    public void destruct(int count){
+        if(count > this._destructionCount){
+            this._destructionCount = 0;
+        } else {
+            this._destructionCount = this._destructionCount - count;
+        }     
+    }
+    
+    /**
+     * Геттер для прочности разрушаемого кирпича
+     * @return прочность кирпича
+     */
+    public int getDestructibleCount(){
+        return this._destructionCount;
+    }
+            
 }
