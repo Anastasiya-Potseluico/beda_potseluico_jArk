@@ -11,7 +11,7 @@ import jArk.physicalObjects.PhysicalBall;
  * Класс мяча
  * @author Дарья
  */
-public class Ball extends ElementField {
+public class Ball extends ElementField implements Collide {
     
     /**
      * Конструктор
