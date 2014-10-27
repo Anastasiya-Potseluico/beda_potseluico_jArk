@@ -22,4 +22,12 @@ public abstract class ElementField {
     protected Speed _speed;
     /** Игровое поле */
     protected GameField _gamefield;
+    
+    /**
+     * Функция реакции элемента на столкновение с другим элементом
+     * @param element элемент, с которым произошло столкновение
+     */
+    public void reactOnCollision(ElementField element){
+        
+    }
 }
