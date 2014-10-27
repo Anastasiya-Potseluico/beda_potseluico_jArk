@@ -16,6 +16,5 @@ public class BoundaryField extends ElementField {
      * Конструктор
      */
     public BoundaryField () {
-        _phElementField = new PhysicalBoundary(this);
     }
 }

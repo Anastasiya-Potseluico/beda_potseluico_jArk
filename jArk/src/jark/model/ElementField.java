@@ -5,7 +5,6 @@
  */
 package jark.model;
 
-import jArk.physicalObjects.PhysicalElementField;
 import jArk.specifications.Position;
 import jArk.specifications.Size;
 import jArk.specifications.Speed;
@@ -23,6 +22,4 @@ public abstract class ElementField {
     protected Speed _speed;
     /** Игровое поле */
     protected GameField _gamefield;
-    /** Представление элемента поля */
-    protected PhysicalElementField _phElementField;
 }

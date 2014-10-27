@@ -16,6 +16,5 @@ public class DestructibleBrick extends Brick{
      * Конструктор
      */
     public DestructibleBrick() {
-        _phElementField = new PhysicalDestructibleBrick(this);
     }
 }

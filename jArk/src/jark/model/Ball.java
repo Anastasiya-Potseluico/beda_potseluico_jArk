@@ -17,7 +17,7 @@ public class Ball extends ElementField {
      * Конструктор
      */
     public Ball() {
-        _phElementField = new PhysicalBall(this);             
+                     
     }
     
     /**

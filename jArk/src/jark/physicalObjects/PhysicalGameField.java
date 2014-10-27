@@ -24,5 +24,9 @@ public class PhysicalGameField {
     public PhysicalGameField (GameField gameField) {
         _gameField = gameField;
     }
+
+    public PhysicalGameField() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
