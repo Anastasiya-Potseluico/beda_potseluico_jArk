@@ -17,4 +17,14 @@ public class Swarm extends ElementField {
     
     /** Вместимость роя */
     private int _capability;
+    
+    /**
+     * Функция для присоединенния мяча к рою
+     * @param ball мяч
+     * @return успешность присоединения
+     */
+    public boolean insertBall(Ball ball)
+    {
+        return true;
+    }
 }
