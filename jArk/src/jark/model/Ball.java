@@ -5,7 +5,6 @@
  */
 package jark.model;
 
-import jArk.physicalObjects.PhysicalBall;
 
 /**
  * Класс мяча
@@ -26,6 +25,7 @@ public class Ball extends ElementField implements Collide {
      * @return результат отскока
      */
     public boolean rebound(ElementField element) {
+        
         return true;
     }
 }
