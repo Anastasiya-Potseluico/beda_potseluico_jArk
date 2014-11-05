@@ -6,14 +6,10 @@
 
 package jArk.physicalObjects;
 
-import jark.model.ElementField;
-
 /**
- * Класс физического представления элемента поля
+ * Класс физического представления элемента роя
  * @author пользователь
  */
-public abstract class PhysicalElementField{
+public class SwarmElementView extends ElementFieldView{
     
-    /** Логика элемента поля */
-    protected ElementField _ElementField;
 }

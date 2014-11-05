@@ -12,7 +12,7 @@ import jark.model.DestructibleBrick;
  * Класс физического представления разбиваемого кирпича
  * @author пользователь
  */
-public class PhysicalDestructibleBrick extends PhysicalElementField{
+public class DestructibleBrickView extends ElementFieldView{
     /** Логическое представление разрушаемого кирпича */
     private DestructibleBrick _dBrick;
     
@@ -20,7 +20,7 @@ public class PhysicalDestructibleBrick extends PhysicalElementField{
      * Конструктор
      * @param dBrick логическое представление разрушаемого кирпича
      */
-    public PhysicalDestructibleBrick (DestructibleBrick dBrick) {
+    public DestructibleBrickView (DestructibleBrick dBrick) {
         _dBrick = dBrick;
     }
 }

@@ -6,10 +6,14 @@
 
 package jArk.physicalObjects;
 
+import jark.model.ElementField;
+
 /**
- * Класс физического представления неразбиваемого кирпича
+ * Класс физического представления элемента поля
  * @author пользователь
  */
-public class PhysicalIndestructibleBrick extends PhysicalElementField{
+public abstract class ElementFieldView{
     
+    /** Логика элемента поля */
+    protected ElementField _ElementField;
 }

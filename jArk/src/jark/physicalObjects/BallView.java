@@ -12,7 +12,7 @@ import jark.model.Ball;
  * Класс физического представления мяча
  * @author пользователь
  */
-public class PhysicalBall extends PhysicalElementField{
+public class BallView extends ElementFieldView{
    /** Логическое представление мяча */
     private Ball _ball;
     
@@ -20,7 +20,7 @@ public class PhysicalBall extends PhysicalElementField{
     * Конструктор
     * @param ball логическое представление мяча
     */ 
-    public PhysicalBall(Ball ball) {
+    public BallView(Ball ball) {
         _ball = ball;
     }
 }

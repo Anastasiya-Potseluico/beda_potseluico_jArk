@@ -12,7 +12,7 @@ import jark.model.Racket;
  * Класс физического представления ракетки
  * @author пользователь
  */
-public class PhysicalRocket extends PhysicalElementField{
+public class RocketView extends ElementFieldView{
     /** Логическое пердставление ракетки */
     private Racket _rocket;
 }

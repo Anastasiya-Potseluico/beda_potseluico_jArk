@@ -12,20 +12,20 @@ import jark.model.GameField;
  * Класс физического представления игрового поля
  * @author пользователь
  */
-public class PhysicalGameField {
+public class GameFieldView {
     
     /**
     * Массив элементов, содержащихся на поле
     */
-    private PhysicalElementField _field[];
+    private ElementFieldView _field[];
     /** Логическое представление игрового поля */
     private GameField _gameField;
     
-    public PhysicalGameField (GameField gameField) {
+    public GameFieldView (GameField gameField) {
         _gameField = gameField;
     }
 
-    public PhysicalGameField() {
+    public GameFieldView() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

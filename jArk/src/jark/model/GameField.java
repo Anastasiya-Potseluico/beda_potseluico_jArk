@@ -5,7 +5,7 @@
  */
 package jark.model;
 
-import jArk.physicalObjects.PhysicalGameField;
+import jArk.physicalObjects.GameFieldView;
 import java.util.ArrayList;
 
 /**
@@ -26,13 +26,13 @@ public class GameField {
     /** Границы поля */
     private ArrayList <ElementField> _bondarysField;
     /** Представление игрового поля */
-    private PhysicalGameField _phGameField;
+    private GameFieldView _phGameField;
     
     /**
      * Конструктор
      */
     public GameField () {
-        _phGameField = new PhysicalGameField(this);
+        _phGameField = new GameFieldView(this);
     }
     
     /**

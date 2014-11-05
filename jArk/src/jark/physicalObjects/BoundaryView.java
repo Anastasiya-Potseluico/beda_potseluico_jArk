@@ -12,7 +12,7 @@ import jark.model.BoundaryField;
  * Класс физического представления границ поля
  * @author пользователь
  */
-public class PhysicalBoundary extends PhysicalElementField {
+public class BoundaryView extends ElementFieldView {
     /** Логическое представление границы поля */
     private BoundaryField _boundaryField;
     
@@ -20,7 +20,7 @@ public class PhysicalBoundary extends PhysicalElementField {
      * Конструктор
      * @param boundaryField логическое представление границы поля
      */
-    public PhysicalBoundary (BoundaryField boundaryField) {
+    public BoundaryView (BoundaryField boundaryField) {
         _boundaryField = boundaryField;
     }
 }

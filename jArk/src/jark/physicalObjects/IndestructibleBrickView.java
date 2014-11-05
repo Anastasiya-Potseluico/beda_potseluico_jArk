@@ -7,9 +7,9 @@
 package jArk.physicalObjects;
 
 /**
- * Класс физического представления элемента роя
+ * Класс физического представления неразбиваемого кирпича
  * @author пользователь
  */
-public class PhysicalRoyElement extends PhysicalElementField{
+public class IndestructibleBrickView extends ElementFieldView{
     
 }
