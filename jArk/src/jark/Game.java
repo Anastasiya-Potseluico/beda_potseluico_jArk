@@ -5,7 +5,7 @@
  */
 package jark;
 
-import jArk.physicalObjects.PhysicalGameField;
+import jArk.physicalObjects.GameFieldView;
 
 /**
  * Класс игры
@@ -15,14 +15,14 @@ public class Game {
     /** Игрок */
     private Player _player;
     /**Игровое поле */
-    private PhysicalGameField _physicalGameField;
+    private GameFieldView _physicalGameField;
     
     /** 
      * Конструктор
      */
     public Game() {
         _player = new Player();
-        _physicalGameField = new PhysicalGameField();
+        _physicalGameField = new GameFieldView();
     }
     
     /** 
