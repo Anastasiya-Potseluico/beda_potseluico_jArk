@@ -18,9 +18,24 @@ public class DestructibleBrickView extends ElementFieldView{
     
     /**
      * Конструктор
-     * @param dBrick логическое представление разрушаемого кирпича
      */
     public DestructibleBrickView (DestructibleBrick dBrick) {
         _dBrick = dBrick;
+    }
+    
+    /**
+     * Устанавливает логическое представление разрушаемого кирпича
+     * @param dBrick логическое представление разрушаемого кирпича
+     */
+    public void setDestructibleBrickView (DestructibleBrick dBrick) {
+        _dBrick = dBrick;
+    }
+    
+    /**
+     * Возвращает логическое представление разрушаемого кирпича
+     * @return разрушаемый кирпич
+     */
+    public DestructibleBrick dBrick () {
+        return _dBrick;
     }
 }

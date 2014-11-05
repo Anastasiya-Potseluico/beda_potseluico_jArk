@@ -27,4 +27,28 @@ public class Swarm extends ElementField {
     {
         return true;
     }
+    
+    /**
+     * Возвращает элементы роя
+     * @return элементы роя
+     */
+    public ArrayList <ElementSwarm> elements () {
+        return _elements;
+    }
+    
+    /**
+     * Установить вместимость роя
+     * @param capability вместимость
+     */
+    public void setCapability (int capability) {
+        _capability = capability;
+    }
+    
+    /**
+     * Возвращает вместимость роя
+     * @return вместимость
+     */
+    public int capability() {
+        return _capability;
+    }
 }

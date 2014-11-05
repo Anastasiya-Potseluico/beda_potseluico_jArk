@@ -6,6 +6,7 @@
 package jark;
 
 import jArk.physicalObjects.GameFieldView;
+import jark.model.GameField;
 
 /**
  * Класс игры
@@ -14,15 +15,16 @@ import jArk.physicalObjects.GameFieldView;
 public class Game {
     /** Игрок */
     private Player _player;
-    /**Игровое поле */
-    private GameFieldView _physicalGameField;
-    
+    /**Игровое поле представление*/
+    private GameFieldView _gameFieldView;
+    /**Игровое поля логика */
+    private GameField _gameField;
     /** 
      * Конструктор
      */
     public Game() {
         _player = new Player();
-        _physicalGameField = new GameFieldView();
+        _gameFieldView = new GameFieldView(this);
     }
     
     /** 
@@ -39,6 +41,12 @@ public class Game {
         
     }
     
-    
+    /**
+     * Возвращает представление игрового поля
+     * @return представление игрового поля
+     */
+    public GameFieldView gameFieldView() {
+        return _gameFieldView;
+    }
 }
 

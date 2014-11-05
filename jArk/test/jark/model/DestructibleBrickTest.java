@@ -51,14 +51,14 @@ public class DestructibleBrickTest {
     }
 
     /**
-     * Test of getDestructibleCount method, of class DestructibleBrick.
+     * Test of destructibleCount method, of class DestructibleBrick.
      */
     @Test
     public void testGetDestructibleCount() {
         System.out.println("getDestructibleCount");
         DestructibleBrick instance = null;
         int expResult = 0;
-        int result = instance.getDestructibleCount();
+        int result = instance.destructibleCount();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

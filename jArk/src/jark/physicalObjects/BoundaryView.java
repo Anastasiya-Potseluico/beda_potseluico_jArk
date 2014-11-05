@@ -18,9 +18,23 @@ public class BoundaryView extends ElementFieldView {
     
     /**
      * Конструктор
+     */
+    public BoundaryView () {
+    }
+    
+    /**
+     * Устанавливает логическое представление границы поля
      * @param boundaryField логическое представление границы поля
      */
-    public BoundaryView (BoundaryField boundaryField) {
+    public void setBoundaryView (BoundaryField boundaryField) {
         _boundaryField = boundaryField;
+    }
+    
+    /**
+     * Возвращает логическое рпедставление границы поля
+     * @return граница поля
+     */
+    public BoundaryField boundaryField () {
+        return _boundaryField;
     }
 }

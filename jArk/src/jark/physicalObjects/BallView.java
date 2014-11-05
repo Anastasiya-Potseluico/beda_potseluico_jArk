@@ -18,9 +18,23 @@ public class BallView extends ElementFieldView{
     
     /**
     * Конструктор
-    * @param ball логическое представление мяча
     */ 
-    public BallView(Ball ball) {
+    public BallView() {
+    }
+    
+    /**
+     * Возвращает логич.представление мяча
+     * @return мяч
+     */
+    public Ball ball(){
+        return _ball;
+    }
+    
+    /**
+     * Установить логич. представление мяча
+     * @param ball мяч
+     */
+    public void setBall(Ball ball) {
         _ball = ball;
     }
 }

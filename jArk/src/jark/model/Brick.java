@@ -12,4 +12,12 @@ package jark.model;
 public abstract class Brick extends ElementField {
     /** Разрушаемость */
     private boolean _destructible;
+    
+    /**
+     * Возвращает признак разрушаемости кирпича
+     * @return признак разрушаемости кирпича
+     */
+    public boolean isDestructible() {
+        return _destructible;
+    }
 }

@@ -10,8 +10,9 @@ package jark.model;
  * @author Дарья
  */
 public class DestructibleBrick extends Brick{
-    
+    /** Количество разрушений */
     private int _destructionCount;
+    
     /**
      * Конструктор
      * @param count начальная прочность кирпича
@@ -36,7 +37,7 @@ public class DestructibleBrick extends Brick{
      * Геттер для прочности разрушаемого кирпича
      * @return прочность кирпича
      */
-    public int getDestructibleCount(){
+    public int destructibleCount(){
         return this._destructionCount;
     }
             

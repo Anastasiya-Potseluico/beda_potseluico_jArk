@@ -15,5 +15,21 @@ import jark.model.ElementField;
 public abstract class ElementFieldView{
     
     /** Логика элемента поля */
-    protected ElementField _ElementField;
+    protected ElementField _elementField;
+    
+    /**
+     * Установить логич.представление элемента поля
+     * @param element логическое представление элемента поля
+     */
+    public void setElemenetField (ElementField element) {
+        _elementField = element;
+    }
+    
+    /**
+     * Возвращает логическое представление элемента поля
+     * @return элемент поля
+     */
+    public  ElementField elementField() {
+        return _elementField;
+    }
 }

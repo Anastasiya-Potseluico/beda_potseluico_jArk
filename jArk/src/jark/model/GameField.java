@@ -25,16 +25,14 @@ public class GameField {
     private ArrayList <ElementField> _iBricks;
     /** Границы поля */
     private ArrayList <ElementField> _bondarysField;
-    /** Представление игрового поля */
-    private GameFieldView _phGameField;
     
     /**
      * Конструктор
      */
     public GameField () {
-        _phGameField = new GameFieldView(this);
+        
     }
-    
+
     /**
      * Добавить элемент поля
      * @param element добавляемый элемент

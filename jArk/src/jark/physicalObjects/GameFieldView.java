@@ -6,7 +6,9 @@
 
 package jArk.physicalObjects;
 
+import jark.Game;
 import jark.model.GameField;
+import java.util.ArrayList;
 
 /**
  * Класс физического представления игрового поля
@@ -14,19 +16,63 @@ import jark.model.GameField;
  */
 public class GameFieldView {
     
-    /**
-    * Массив элементов, содержащихся на поле
-    */
-    private ElementFieldView _field[];
+    /** Массив элементов, содержащихся на поле*/
+    private ArrayList <ElementFieldView> _elements;
     /** Логическое представление игрового поля */
     private GameField _gameField;
+    /** Игра */
+    private Game _game;
     
-    public GameFieldView (GameField gameField) {
-        _gameField = gameField;
+    /**
+     * Конструктор
+     * @param gameField 
+     */
+    public GameFieldView (Game game) {
+        _game= game;
     }
 
-    public GameFieldView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * Добавить элемент поля на поле
+     * @param element элемент поля
+     * @return успех добавления
+     */
+    public boolean addElementFieldView (ElementFieldView element) {
+        //TODO
+        return true;
     }
     
+    /**
+     * Удалить элемент поля с поля
+     * @param element элемент поля
+     * @return успех удаления
+     */
+    public boolean deleteElementFieldView (ElementFieldView element) {
+        //TODO
+        return true;
+    }
+    
+    /**
+     * Возвращает массив элементов поля
+     * @return элементы поля
+     */
+    public ArrayList <ElementFieldView> elements()
+    {
+        return _elements;
+    }
+    
+    /**
+     * Установить логическое представление игрового поля
+     * @param gameField игровое поле 
+     */
+    public void setGameField (GameField gameField) {
+        _gameField = gameField;
+    }
+    
+    /**
+     * Возвращает логическое представление игрового поля
+     * @return логическое представление игрового поля
+     */
+    public GameField gameField () {
+        return _gameField;
+    }
 }

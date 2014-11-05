@@ -30,4 +30,66 @@ public abstract class ElementField {
     public void reactOnCollision(ElementField element){
         
     }
+    
+    /**
+     * Изменить позицию элемента
+     * @param pos позиция
+     * @return успех изменения позиции
+     */
+    public boolean setPosition(Position pos) {
+        //TODO
+        return true;
+    }
+    
+    /**
+     * Возвращает позицию элемента поля
+     * @return позиция элемента поля
+     */
+    public Position position() {
+        return _position;
+    }
+    
+    /**
+     * Изменить размер элемента
+     * @param size размер
+     * @return успех изменения размера
+     */
+    public boolean setSize(Size size) {
+        //TODO
+        return true;
+    }
+    
+    /**
+     * Возвращает размер элемента поля
+     * @return размер элемента поля
+     */
+    public Size size() {
+        return _size;
+    }
+    
+    /**
+     * Изменить скорость элемента
+     * @param speed скорость
+     * @return успех изменения скорости
+     */
+    public boolean setSpeed(Speed speed) {
+        //TODO
+        return true;
+    }
+    
+    /**
+     * Возвращает скорость элемента поля
+     * @return скорость элемента поля
+     */
+    public Speed speed() {
+        return _speed;
+    }
+    
+    /**
+     * Возвращает игровое поле, на котором находится элемент
+     * @return игровое поле
+     */
+    public GameField gameField () {
+        return _gamefield;
+    }
 }

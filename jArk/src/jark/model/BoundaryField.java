@@ -5,8 +5,6 @@
  */
 package jark.model;
 
-import jArk.physicalObjects.BoundaryView;
-
 /**
  * Класс границы поля
  * @author Дарья
