@@ -28,14 +28,14 @@ public class Game {
     /** 
      * Начать игру
      */
-    public void startGame() {
+    public void start() {
         
     }
     
     /** 
      * Закончить игру
      */
-    public void endGame() {
+    public void finish() {
         
     }
     
