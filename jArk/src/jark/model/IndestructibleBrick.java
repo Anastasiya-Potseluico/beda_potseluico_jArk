@@ -10,5 +10,13 @@ package jark.model;
  * @author Дарья
  */
 public class IndestructibleBrick extends Brick {
+
+    /**
+     * Конструктор неразрушаемого кирпича
+     * @param weight вес кирпича
+     */
+    public IndestructibleBrick(int weight) {
+        super(weight);
+    }
     
 }

@@ -10,5 +10,9 @@ package jark.model;
  * @author Дарья
  */
 public class ElementSwarm extends ElementField {
+
+    public ElementSwarm(int weight) {
+        super(weight);
+    }
     
 }

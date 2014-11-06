@@ -17,6 +17,14 @@ public class Swarm extends ElementField {
     
     /** Вместимость роя */
     private int _capability;
+
+    /**
+     * Конструктор роя
+     * @param weight вес роя
+     */
+    public Swarm(int weight) {
+        super(weight);
+    }
     
     /**
      * Функция для присоединенния мяча к рою

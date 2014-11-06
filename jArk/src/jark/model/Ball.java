@@ -14,9 +14,10 @@ public class Ball extends ElementField implements Collide {
     
     /**
      * Конструктор
+     * @param weight Вес мяча
      */
-    public Ball() {
-                     
+    public Ball(int weight) {
+        super(weight);
     }
     
     /**
@@ -27,5 +28,23 @@ public class Ball extends ElementField implements Collide {
     public boolean rebound(ElementField element) {
         
         return true;
+    }
+
+    /**
+     * Функция обработки столкновения с движимым объектом
+     * @param _element Элемент,с которым произошло столкновение
+     */
+    @Override
+    public void collideWithMovableElement(ElementField _element) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * Функция обработки столкновения с неподвижным объектом
+     * @param _element Элемент,с которым произошло столкновение
+     */
+    @Override
+    public void collideWithUnmovableElement(ElementField _element) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

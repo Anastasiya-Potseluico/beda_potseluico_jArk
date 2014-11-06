@@ -22,6 +22,16 @@ public abstract class ElementField {
     protected Speed _speed;
     /** Игровое поле */
     protected GameField _gamefield;
+    /** Вес элемента */
+    protected int _weight;
+    
+    /**
+     * Конструктор элемента поля
+     * @param weight вес элемента (постоянен)
+     */
+    public ElementField(int weight){
+        this._weight = weight;
+    }
     
     /**
      * Функция реакции элемента на столкновение с другим элементом
@@ -39,6 +49,14 @@ public abstract class ElementField {
     public boolean setPosition(Position pos) {
         //TODO
         return true;
+    }
+    
+    /**
+     * Функция для получения веса элемента
+     * @return вес элемента
+     */
+    public int getWeight(){
+        return this._weight;
     }
     
     /**

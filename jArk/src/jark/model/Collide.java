@@ -10,4 +10,6 @@ package jark.model;
  * @author пользователь
  */
 public interface Collide {
+    public void collideWithMovableElement(ElementField _element);
+    public void collideWithUnmovableElement(ElementField _element);
 }

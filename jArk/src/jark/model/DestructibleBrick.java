@@ -16,8 +16,10 @@ public class DestructibleBrick extends Brick{
     /**
      * Конструктор
      * @param count начальная прочность кирпича
+     * @param weight вес кирпича
      */
-    public DestructibleBrick(int count) {
+    public DestructibleBrick(int count, int weight) {
+        super(weight);
         this._destructionCount = count;
     }
     

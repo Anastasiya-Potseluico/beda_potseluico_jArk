@@ -37,4 +37,13 @@ public class BoundaryView extends ElementFieldView {
     public BoundaryField boundaryField () {
         return _boundaryField;
     }
+    
+    /**
+     * Функция для проверки, принадлежит ли элемент границам поля
+     * @param _element элемент, который надо проверить
+     * @return признак принадлежности
+     */
+    public boolean isInBoundary(ElementFieldView _element){
+        return true;
+    }
 }
