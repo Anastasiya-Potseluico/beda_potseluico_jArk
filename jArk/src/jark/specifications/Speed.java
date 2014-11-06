@@ -15,6 +15,11 @@ public class Speed {
     /** Вектор скорости по У */
     private double _vy;
     
+    public Speed(double vx, double vy){
+        this._vx = vx;
+        this._vy = vy;
+    }
+    
     /**
      * Изменить скорость
      * @param vx вектор скорости по Х
@@ -25,5 +30,25 @@ public class Speed {
         _vx = vx;
         _vy = vy;
         return true;
+    }
+    
+    /**
+     * Геттер для горизонтальной скорости
+     * @return горизонтальная скорость
+     */
+    public double getVX(){
+        return this._vx;
+    }
+    
+    /**
+     * Геттер для вертикальной скорости
+     * @return вертикальная скорость
+     */
+    public double getVY(){
+        return this._vy;
+    }
+    
+    public Speed revert(){
+        return new Speed(-_vx, -_vy);
     }
 }
