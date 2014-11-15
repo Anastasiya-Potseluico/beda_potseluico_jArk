@@ -48,7 +48,15 @@ public class Speed {
         return this._vy;
     }
     
+    /**
+     * Функция для получения обратной скорости
+     * @return обратная скорость
+     */
     public Speed revert(){
         return new Speed(-_vx, -_vy);
+    }
+    
+    public Speed getAfterCollide(Speed speed, Position clashingPos, Position collidingPos ){
+        return new Speed(0.0,0.0);
     }
 }
