@@ -29,9 +29,12 @@ public class CollisionManager {
      * @param group1 первая группа представлений элементов
      * @param group2 вторая группа представлений элементов
      */
-    public void setCollisionGroup(ElementFieldView group1[], ElementFieldView group2[]){
+    public void setCollisionGroups(ElementFieldView group1[], ElementFieldView group2[]){
         
     }
     
+    //public ElementFieldView getElement(int spriteID){
+   //     return new ElementFieldView();
+   //}
     
 }
