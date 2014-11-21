@@ -17,26 +17,7 @@ import static org.junit.Assert.*;
  * @author пользователь
  */
 public class SwarmTest {
-    
-    public SwarmTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
+   
     /**
      * Test of insertBall method, of class Swarm.
      */
@@ -44,7 +25,7 @@ public class SwarmTest {
     public void testInsertBall() {
         System.out.println("insertBall");
         Ball ball = null;
-        Swarm instance = new Swarm();
+        Swarm instance = new Swarm(5);
         boolean expResult = false;
         boolean result = instance.insertBall(ball);
         assertEquals(expResult, result);

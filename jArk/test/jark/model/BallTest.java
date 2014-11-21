@@ -44,7 +44,7 @@ public class BallTest {
     public void testRebound() {
         System.out.println("rebound");
         ElementField element = null;
-        Ball instance = new Ball();
+        Ball instance = new Ball(5);
         boolean expResult = false;
         boolean result = instance.rebound(element);
         assertEquals(expResult, result);

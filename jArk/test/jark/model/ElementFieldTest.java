@@ -44,13 +44,12 @@ public class ElementFieldTest {
     public void testReactOnCollision() {
         System.out.println("reactOnCollision");
         ElementField element = null;
-        ElementField instance = new ElementFieldImpl();
-        instance.reactOnCollision(element);
+        //ElementField instance = new ElementField();
+        //instance.reactOnCollision(element);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
-    public class ElementFieldImpl extends ElementField {
-    }
+   
     
 }
