@@ -21,9 +21,11 @@ public class Swarm extends ElementField {
     /**
      * Конструктор роя
      * @param weight вес роя
+     * @param elements элементы роя
      */
-    public Swarm(int weight) {
+    public Swarm(int weight, ArrayList<ElementSwarm> elements) {
         super(weight);
+        this._elements = elements;
     }
     
     /**
@@ -33,7 +35,8 @@ public class Swarm extends ElementField {
      */
     public boolean insertBall(Ball ball)
     {
-        return true;
+        _elements.add(new ElementSwarm(5));
+        return _capability <= _elements.size();
     }
     
     /**
@@ -58,5 +61,17 @@ public class Swarm extends ElementField {
      */
     public int capability() {
         return _capability;
+    }
+
+    @Override
+    public void reactOnCollision(ElementField element) {
+        boolean ok = true;
+        if(element instanceof Ball){
+            ok = this.insertBall((Ball)element);
+        }
+        if(!ok) {
+            //TODO если рой переполнен - отправить сигнал к завершению игры.
+        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

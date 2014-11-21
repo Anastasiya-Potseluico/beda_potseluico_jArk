@@ -42,5 +42,10 @@ public class DestructibleBrick extends Brick{
     public int destructibleCount(){
         return this._destructionCount;
     }
+
+    @Override
+    public void reactOnCollision(ElementField element) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
             
 }

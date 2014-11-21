@@ -18,5 +18,10 @@ public class IndestructibleBrick extends Brick {
     public IndestructibleBrick(int weight) {
         super(weight);
     }
+
+    @Override
+    public void reactOnCollision(ElementField element) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
