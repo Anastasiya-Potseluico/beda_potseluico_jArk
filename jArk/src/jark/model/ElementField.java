@@ -14,12 +14,8 @@ import jArk.specifications.Speed;
  * @author Дарья
  */
 public abstract class ElementField {
-    /** Позиция */
-    protected Position _position;
     /** Размер */
     protected Size _size;
-    /** Скорость */
-    protected Speed _speed;
     /** Игровое поле */
     protected GameField _gamefield;
     /** Вес элемента */
@@ -37,34 +33,15 @@ public abstract class ElementField {
      * Функция реакции элемента на столкновение с другим элементом
      * @param element элемент, с которым произошло столкновение
      */
-    public void reactOnCollision(ElementField element){
-        
-    }
-    
-    /**
-     * Изменить позицию элемента
-     * @param pos позиция
-     * @return успех изменения позиции
-     */
-    public boolean setPosition(Position pos) {
-        //TODO
-        return true;
-    }
+    public abstract void reactOnCollision(ElementField element);
+
     
     /**
      * Функция для получения веса элемента
      * @return вес элемента
      */
-    public int getWeight(){
+    public int weight(){
         return this._weight;
-    }
-    
-    /**
-     * Возвращает позицию элемента поля
-     * @return позиция элемента поля
-     */
-    public Position position() {
-        return _position;
     }
     
     /**
@@ -83,24 +60,6 @@ public abstract class ElementField {
      */
     public Size size() {
         return _size;
-    }
-    
-    /**
-     * Изменить скорость элемента
-     * @param speed скорость
-     * @return успех изменения скорости
-     */
-    public boolean setSpeed(Speed speed) {
-        //TODO
-        return true;
-    }
-    
-    /**
-     * Возвращает скорость элемента поля
-     * @return скорость элемента поля
-     */
-    public Speed speed() {
-        return _speed;
     }
     
     /**
