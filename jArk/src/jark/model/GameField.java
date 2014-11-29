@@ -5,7 +5,6 @@
  */
 package jark.model;
 
-import jArk.physicalObjects.GameFieldView;
 import java.util.ArrayList;
 
 /**
