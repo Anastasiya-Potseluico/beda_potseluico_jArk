@@ -6,7 +6,7 @@
 
 package jArk.physicalObjects;
 
-import jark.Game;
+import jark.JarkGame;
 import jark.model.GameField;
 import java.util.ArrayList;
 
@@ -21,13 +21,13 @@ public class GameFieldView {
     /** Логическое представление игрового поля */
     private GameField _gameField;
     /** Игра */
-    private Game _game;
+    private JarkGame _game;
     
     /**
      * Конструктор
      * @param gameField 
      */
-    public GameFieldView (Game game) {
+    public GameFieldView (JarkGame game) {
         _game= game;
     }
 
