@@ -6,6 +6,9 @@
 
 package jark;
 
+import com.golden.gamedev.GameLoader;
+import java.awt.Dimension;
+
 /**
  * Главный класс игры
  * @author пользователь
@@ -17,6 +20,9 @@ public class JArk {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        GameLoader game = new GameLoader();
+        game.setup(new JarkGame(), new Dimension(640,480), false);
+        game.start();
     }
     
 }
