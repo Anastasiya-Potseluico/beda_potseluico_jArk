@@ -5,14 +5,16 @@
  */
 package jark;
 
+import com.golden.gamedev.Game;
 import jArk.physicalObjects.GameFieldView;
 import jark.model.GameField;
+import java.awt.Graphics2D;
 
 /**
  * Класс игры
  * @author Дарья
  */
-public class Game {
+public class JarkGame extends Game{
     /** Игрок */
     private Player _player;
     /**Игровое поле представление*/
@@ -22,16 +24,9 @@ public class Game {
     /** 
      * Конструктор
      */
-    public Game() {
-        _player = new Player();
+    public JarkGame() {
+        _player = new Player(3);
         _gameFieldView = new GameFieldView(this);
-    }
-    
-    /** 
-     * Начать игру
-     */
-    public void start() {
-        
     }
     
     /** 
@@ -47,6 +42,21 @@ public class Game {
      */
     public GameFieldView gameFieldView() {
         return _gameFieldView;
+    }
+
+    @Override
+    public void initResources() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(long l) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void render(Graphics2D gd) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 
