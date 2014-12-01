@@ -6,8 +6,11 @@
 package jark;
 
 import com.golden.gamedev.Game;
+import com.golden.gamedev.object.Background;
+import com.golden.gamedev.object.background.ColorBackground;
 import jArk.physicalObjects.GameFieldView;
 import jark.model.GameField;
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 /**
@@ -21,11 +24,14 @@ public class JarkGame extends Game{
     private GameFieldView _gameFieldView;
     /**Игровое поля логика */
     private GameField _gameField;
+    
+    /** Бэкграунд */
+    Background  background;
     /** 
      * Конструктор
      */
     public JarkGame() {
-        _player = new Player(3);
+        _player = new Player();
         _gameFieldView = new GameFieldView(this);
     }
     
@@ -46,17 +52,18 @@ public class JarkGame extends Game{
 
     @Override
     public void initResources() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        background = new ColorBackground(Color.BLUE, 640, 480);
+        _gameFieldView = new GameFieldView(this);
     }
 
     @Override
     public void update(long l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        background.update(l);
     }
 
     @Override
     public void render(Graphics2D gd) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        background.render(gd);    
     }
 }
 
