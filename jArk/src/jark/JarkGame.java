@@ -7,6 +7,7 @@ package jark;
 
 import com.golden.gamedev.Game;
 import com.golden.gamedev.object.Background;
+import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.background.ColorBackground;
 import jArk.physicalObjects.GameFieldView;
 import jark.model.GameField;
@@ -27,6 +28,8 @@ public class JarkGame extends Game{
     
     /** Бэкграунд */
     Background  background;
+    
+    Sprite backgr;
     /** 
      * Конструктор
      */
@@ -52,18 +55,22 @@ public class JarkGame extends Game{
 
     @Override
     public void initResources() {
-        background = new ColorBackground(Color.BLUE, 640, 480);
+        background = new ColorBackground(Color.BLUE, 700, 700);
+        backgr = new Sprite(getImage("background.jpg"));
+        backgr.setBackground(background);
         _gameFieldView = new GameFieldView(this);
     }
 
     @Override
     public void update(long l) {
         background.update(l);
+        backgr.update(l);
     }
 
     @Override
     public void render(Graphics2D gd) {
-        background.render(gd);    
+        background.render(gd);   
+        backgr.render(gd); 
     }
 }
 
