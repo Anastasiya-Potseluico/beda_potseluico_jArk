@@ -21,9 +21,10 @@ public class Swarm extends ElementField {
     /**
      * Конструктор роя
      * @param elements элементы роя
+     * @param capability
      */
     public Swarm(ArrayList<ElementSwarm> elements, int capability) {
-        super(_weight.OTHER);
+        super(MASS.OTHER);
         this._elements = elements;
         _capability = capability;
     }

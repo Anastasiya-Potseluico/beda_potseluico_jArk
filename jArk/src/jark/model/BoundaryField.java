@@ -14,7 +14,7 @@ public class BoundaryField extends ElementField {
      * Конструктор границ
      */
     public BoundaryField () {
-        super(_weight.INF_MASS);
+        super(MASS.INF_MASS);
     }
 
     @Override

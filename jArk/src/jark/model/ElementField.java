@@ -11,17 +11,20 @@ import jArk.specifications.Size;
  * Логическое представление элемента поля
  * @author Дарья
  */
+enum MASS {FIN_MASS, INF_MASS, OTHER};
+
 public abstract class ElementField {
     /** Игровое поле */
     protected GameField _gamefield;
     /** Вес элемента */
-    protected enum _weight {FIN_MASS, INF_MASS, OTHER};
+          
+    protected MASS _weight;
     
     /**
      * Конструктор элемента поля
      * @param weight вес элемента (постоянен)
      */
-    public ElementField(enum weight){
+    public ElementField(MASS weight){
         this._weight = weight;
     }
     
@@ -36,7 +39,7 @@ public abstract class ElementField {
      * Функция для получения веса элемента
      * @return вес элемента
      */
-    public enum weight(){
+    public MASS weight(){
         return this._weight;
     }
     

@@ -12,7 +12,7 @@ package jark.model;
 public class ElementSwarm extends ElementField {
 
     public ElementSwarm() {
-        super(_weight.OTHER);
+        super(MASS.OTHER);
     }
 
     @Override
