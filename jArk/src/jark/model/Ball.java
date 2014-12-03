@@ -25,7 +25,7 @@ public class Ball extends ElementField implements Collide {
      * @param element элемент поля, от которого отскакивает мяч
      * @return результат отскока
      */
-    public boolean rebound(ElementField element) {
+    private boolean rebound(ElementField element) {
         
         return true;
     }
@@ -36,7 +36,13 @@ public class Ball extends ElementField implements Collide {
      */
     @Override
     public void collideWithMovableElement(ElementField _element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(_element instanceof Racket) {
+            collideWithRacket((Racket) _element);
+        } else if (_element instanceof Ball) {
+            collideWithBall((Ball) _element);
+        } else if (_element instanceof Swarm) {
+            collideWithSwarm((Swarm) _element);
+        }
     }
 
     /**
@@ -45,8 +51,24 @@ public class Ball extends ElementField implements Collide {
      */
     @Override
     public void collideWithUnmovableElement(ElementField _element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        rebound(_element);
+    }
+
+    @Override
+    public void reactOnCollision(ElementField element) {
+        //TODO from elementfield
     }
 
 
+    private void collideWithRacket(Racket racket) {
+        //TODO
+    }
+    
+    private void collideWithBall(Ball ball) {
+        //TODO
+    }
+    
+    private void collideWithSwarm(Swarm swarm) {
+        //TODO
+    }
 }
