@@ -14,7 +14,7 @@ public abstract class Brick extends ElementField {
      * Конструктор кирпича
      * @param weight вес кирпича
      */
-    public Brick(int weight) {
+    public Brick(enum weight) {
         super(weight);
     }
 }

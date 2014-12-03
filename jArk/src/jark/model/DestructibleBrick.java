@@ -15,30 +15,26 @@ public class DestructibleBrick extends Brick{
     
     /**
      * Конструктор
-     * @param commonHardness общая прочность
-     * @param weight вес кирпича
+     * @param commonHardness прочность
      */
-    public DestructibleBrick(int commonHardness, int weight) {
-        super(weight);
-        this._hardness = commonHardness;
+    public DestructibleBrick(int hardness) {
+        super(_weight.INF_MASS);
+        _hardness = hardness;
     }
     
     /**
      * Функция разрушения кирпича
      * @param count количество единиц, на которое уменьшается прочность кирпича
      */
-    private void destruct(int count){
-        if(count > this._hardness){
-            this._hardness = 0;
-        } else {
-            this._hardness = this._hardness - count;
-        }     
+    private void destruct(){
+        _hardness--; 
+        //сделать сигнал полю
     }
 
 
     @Override
     public void reactOnCollision(ElementField element) {
-        destruct(element.weight());
+        destruct();
     }
             
 }

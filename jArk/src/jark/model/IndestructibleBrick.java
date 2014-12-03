@@ -13,15 +13,14 @@ public class IndestructibleBrick extends Brick {
 
     /**
      * Конструктор неразрушаемого кирпича
-     * @param weight вес кирпича
      */
-    public IndestructibleBrick(int weight) {
-        super(weight);
+    public IndestructibleBrick() {
+        super(_weight.INF_MASS);
     }
 
     @Override
     public void reactOnCollision(ElementField element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
     
 }

@@ -37,9 +37,10 @@ public class DestructibleBrickTest {
     public void tearDown() {
     }
 
-    /**
+   /**
      * Test of destruct method, of class DestructibleBrick.
      */
+    /*
     @Test
     public void testDestruct() {
         System.out.println("destruct");
@@ -49,10 +50,11 @@ public class DestructibleBrickTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+*/
     /**
      * Test of destructibleCount method, of class DestructibleBrick.
      */
+    /*
     @Test
     public void testGetDestructibleCount() {
         System.out.println("getDestructibleCount");
@@ -63,5 +65,5 @@ public class DestructibleBrickTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+    */
 }

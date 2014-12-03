@@ -40,6 +40,7 @@ public class ElementFieldTest {
     /**
      * Test of reactOnCollision method, of class ElementField.
      */
+    /*
     @Test
     public void testReactOnCollision() {
         System.out.println("reactOnCollision");
@@ -50,6 +51,6 @@ public class ElementFieldTest {
         fail("The test case is a prototype.");
     }
 
-   
+   */
     
 }

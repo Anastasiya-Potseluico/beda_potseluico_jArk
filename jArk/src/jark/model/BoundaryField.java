@@ -12,10 +12,9 @@ package jark.model;
 public class BoundaryField extends ElementField {
     /**
      * Конструктор границ
-     * @param weight вес границ
      */
-    public BoundaryField (int weight) {
-        super(weight);
+    public BoundaryField () {
+        super(_weight.INF_MASS);
     }
 
     @Override

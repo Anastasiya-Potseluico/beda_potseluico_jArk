@@ -21,6 +21,7 @@ public class SwarmTest {
     /**
      * Test of insertBall method, of class Swarm.
      */
+    /*
     @Test
     public void testInsertBall() {
         System.out.println("insertBall");
@@ -32,5 +33,5 @@ public class SwarmTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+    */
 }

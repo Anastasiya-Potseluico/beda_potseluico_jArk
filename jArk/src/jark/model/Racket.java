@@ -13,10 +13,9 @@ public class Racket extends ElementField implements Collide {
 
     /**
      * Конструктор ракетки
-     * @param weight вес ракетки
      */
-    public Racket(int weight) {
-        super(weight);
+    public Racket() {
+        super(_weight.INF_MASS);
     }
     
     /**
@@ -33,7 +32,7 @@ public class Racket extends ElementField implements Collide {
      */
     @Override
     public void collideWithMovableElement(ElementField _element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     /**
@@ -42,11 +41,11 @@ public class Racket extends ElementField implements Collide {
      */
     @Override
     public void collideWithUnmovableElement(ElementField _element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Ограничить движение пользователя
     }
 
     @Override
     public void reactOnCollision(ElementField element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 }

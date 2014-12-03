@@ -11,13 +11,13 @@ package jark.model;
  */
 public class ElementSwarm extends ElementField {
 
-    public ElementSwarm(int weight) {
-        super(weight);
+    public ElementSwarm() {
+        super(_weight.OTHER);
     }
 
     @Override
     public void reactOnCollision(ElementField element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }

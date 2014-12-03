@@ -14,10 +14,9 @@ public class Ball extends ElementField implements Collide {
     
     /**
      * Конструктор
-     * @param weight Вес мяча
      */
-    public Ball(int weight) {
-        super(weight);
+    public Ball() {
+        super(_weight.FIN_MASS);
     }
     
     /**
@@ -56,7 +55,11 @@ public class Ball extends ElementField implements Collide {
 
     @Override
     public void reactOnCollision(ElementField element) {
-        //TODO from elementfield
+        if(element.weight() == _weight.INF_MASS) {
+            collideWithUnmovableElement(element);
+        } else {
+            collideWithMovableElement(element);
+        }
     }
 
 

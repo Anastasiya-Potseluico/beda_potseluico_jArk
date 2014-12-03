@@ -12,26 +12,16 @@ import jArk.specifications.Size;
  * @author Дарья
  */
 public abstract class ElementField {
-    /** Размер */
-    protected Size _size;
     /** Игровое поле */
     protected GameField _gamefield;
     /** Вес элемента */
-    protected int _weight;
-    /** Х координата */
-    private double _x;
-    /** У координата */
-    private double _y;
-    /** Вектор скорости по Х */
-    private double _vx;
-    /** Вектор скорости по У */
-    private double _vy;
+    protected enum _weight {FIN_MASS, INF_MASS, OTHER};
     
     /**
      * Конструктор элемента поля
      * @param weight вес элемента (постоянен)
      */
-    public ElementField(int weight){
+    public ElementField(enum weight){
         this._weight = weight;
     }
     
@@ -46,7 +36,7 @@ public abstract class ElementField {
      * Функция для получения веса элемента
      * @return вес элемента
      */
-    public int weight(){
+    public enum weight(){
         return this._weight;
     }
     
@@ -56,7 +46,7 @@ public abstract class ElementField {
      * @return успех изменения размера
      */
     public boolean setSize(Size size) {
-        _size = size; //TODO
+        //TODO
         return true;
     }
     
@@ -65,6 +55,6 @@ public abstract class ElementField {
      * @return размер элемента поля
      */
     public Size size() {
-        return _size;
+        return new Size();
     }
 }
