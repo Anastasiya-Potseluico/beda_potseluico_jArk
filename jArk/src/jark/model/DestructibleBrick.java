@@ -10,42 +10,35 @@ package jark.model;
  * @author Дарья
  */
 public class DestructibleBrick extends Brick{
-    /** Количество разрушений */
-    private int _destructionCount;
+    /** Прочность */
+    private int _hardness;
     
     /**
      * Конструктор
-     * @param count начальная прочность кирпича
+     * @param commonHardness общая прочность
      * @param weight вес кирпича
      */
-    public DestructibleBrick(int count, int weight) {
+    public DestructibleBrick(int commonHardness, int weight) {
         super(weight);
-        this._destructionCount = count;
+        this._hardness = commonHardness;
     }
     
     /**
      * Функция разрушения кирпича
      * @param count количество единиц, на которое уменьшается прочность кирпича
      */
-    public void destruct(int count){
-        if(count > this._destructionCount){
-            this._destructionCount = 0;
+    private void destruct(int count){
+        if(count > this._hardness){
+            this._hardness = 0;
         } else {
-            this._destructionCount = this._destructionCount - count;
+            this._hardness = this._hardness - count;
         }     
     }
-    
-    /**
-     * Геттер для прочности разрушаемого кирпича
-     * @return прочность кирпича
-     */
-    public int destructibleCount(){
-        return this._destructionCount;
-    }
+
 
     @Override
     public void reactOnCollision(ElementField element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        destruct(element.weight());
     }
             
 }

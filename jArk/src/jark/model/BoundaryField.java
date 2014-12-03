@@ -20,6 +20,6 @@ public class BoundaryField extends ElementField {
 
     @Override
     public void reactOnCollision(ElementField element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 }
