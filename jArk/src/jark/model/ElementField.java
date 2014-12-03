@@ -5,9 +5,7 @@
  */
 package jark.model;
 
-import jArk.specifications.Position;
 import jArk.specifications.Size;
-import jArk.specifications.Speed;
 
 /**
  * Логическое представление элемента поля
@@ -20,6 +18,14 @@ public abstract class ElementField {
     protected GameField _gamefield;
     /** Вес элемента */
     protected int _weight;
+    /** Х координата */
+    private double _x;
+    /** У координата */
+    private double _y;
+    /** Вектор скорости по Х */
+    private double _vx;
+    /** Вектор скорости по У */
+    private double _vy;
     
     /**
      * Конструктор элемента поля
@@ -50,7 +56,7 @@ public abstract class ElementField {
      * @return успех изменения размера
      */
     public boolean setSize(Size size) {
-        //TODO
+        _size = size; //TODO
         return true;
     }
     
@@ -60,13 +66,5 @@ public abstract class ElementField {
      */
     public Size size() {
         return _size;
-    }
-    
-    /**
-     * Возвращает игровое поле, на котором находится элемент
-     * @return игровое поле
-     */
-    public GameField gameField () {
-        return _gamefield;
     }
 }

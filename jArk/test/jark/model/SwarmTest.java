@@ -25,7 +25,7 @@ public class SwarmTest {
     public void testInsertBall() {
         System.out.println("insertBall");
         Ball ball = null;
-        Swarm instance = new Swarm(5);
+        Swarm instance = new Swarm(5, null);
         boolean expResult = false;
         boolean result = instance.insertBall(ball);
         assertEquals(expResult, result);

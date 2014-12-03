@@ -7,6 +7,7 @@ package jark.collisionManagers;
 
 import com.golden.gamedev.object.collision.AdvanceCollisionGroup;
 import jArk.physicalObjects.ElementFieldView;
+import jark.model.ElementField;
 
 /**
  * Класс обработчика коллизий
@@ -20,7 +21,7 @@ public class CollisionManager {
     /**
      * Метод для обработки коллизии
      */
-    public void manageCollision(){
+    private void manageCollision(){
         
     }
     
@@ -29,7 +30,7 @@ public class CollisionManager {
      * @param group1 первая группа представлений элементов
      * @param group2 вторая группа представлений элементов
      */
-    public void setCollisionGroups(ElementFieldView group1[], ElementFieldView group2[]){
+    public void setCollisionGroups(ElementField group1[], ElementField group2[]){
         
     }
     

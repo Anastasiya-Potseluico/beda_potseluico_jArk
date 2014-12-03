@@ -7,7 +7,6 @@
 package jArk.physicalObjects;
 
 import com.golden.gamedev.object.Sprite;
-import jArk.specifications.Speed;
 import jark.model.ElementField;
 import java.awt.Graphics2D;
 
@@ -47,8 +46,8 @@ public abstract class ElementFieldView{
     }
     
     
-    public void setSpeed(Speed speed){
-        _elementSprite.setSpeed(speed.getVX(), speed.getVY());
+    public void setSpeed(double vX, double vY){
+        _elementSprite.setSpeed(vX, vY);
     }
     
     
