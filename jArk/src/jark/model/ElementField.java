@@ -19,7 +19,7 @@ public abstract class ElementField {
     /** Вес элемента */
           
     protected MASS _weight;
-    
+     
     /**
      * Конструктор элемента поля
      * @param weight вес элемента (постоянен)

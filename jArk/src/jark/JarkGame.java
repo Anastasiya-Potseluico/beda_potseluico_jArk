@@ -25,7 +25,8 @@ public class JarkGame extends Game{
     private GameFieldView _gameFieldView;
     /**Игровое поля логика */
     private GameField _gameField;
-    
+    /** Уровень (1-5) */
+    private int _level;
     /** Бэкграунд */
     Background  background;
     
@@ -35,7 +36,7 @@ public class JarkGame extends Game{
      */
     public JarkGame() {
         _player = new Player();
-        _gameFieldView = new GameFieldView(this);
+        //_gameFieldView = new GameFieldView(this,1);
     }
     
     /** 
@@ -58,7 +59,7 @@ public class JarkGame extends Game{
         background = new ColorBackground(Color.BLUE, 700, 700);
         backgr = new Sprite(getImage("background.jpg"));
         backgr.setBackground(background);
-        _gameFieldView = new GameFieldView(this);
+        _gameFieldView = new GameFieldView(this,1);
     }
 
     @Override
