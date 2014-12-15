@@ -17,7 +17,7 @@ public class GameField {
     /** Ракетка */
     private ElementField _racket;
     /** Рой */
-    private ElementField _swarm;
+    private ArrayList <ElementField> _swarms;
     /** Разрушаемые кирпичи */
     private ArrayList <ElementField> _dBricks;
     /** Неразрушаемые кирпичи */
@@ -38,16 +38,46 @@ public class GameField {
      * @return успех добавления
      */
     public boolean addElementField(ElementField element){
+        if (element instanceof Ball) {
+            if (_ball == null) {
+                _ball = (Ball)element;
+                return true;
+            } else return false;
+        } else if (element instanceof DestructibleBrick) {
+            _dBricks.add((DestructibleBrick)element);
+        } else if (element instanceof BoundaryField) {
+            _bondarysField.add((BoundaryField)element);
+        } else if (element instanceof Swarm) {
+            _swarms.add((Swarm)element);
+        } else if (element instanceof IndestructibleBrick) {
+            _iBricks.add((IndestructibleBrick)element);
+        } else if (element instanceof Racket) {
+            if (_racket == null) {
+                _racket = (Racket)element;
+                return true;
+            } else return false;
+        }
         return true;
     }
     
     /**
      * Удалить элемент поля
      * @param element удаляемый элемент
-     * @return усрех удаления
      */
-    public boolean deleteElementField(ElementField element) {
-        return true;
+    public void deleteElementField(ElementField element) {
+        if (element instanceof Ball) {
+            _ball = null;
+        } else if (element instanceof DestructibleBrick) {
+            _dBricks.remove((DestructibleBrick)element);
+        } else if (element instanceof BoundaryField) {
+            _bondarysField.remove((BoundaryField)element);
+        } else if (element instanceof Swarm) {
+            _swarms.remove((Swarm)element);
+        } else if (element instanceof IndestructibleBrick) {
+            _iBricks.remove((IndestructibleBrick)element);
+        } else if (element instanceof Racket) {
+            _racket = null;
+        }
     }
     
     /**
@@ -70,8 +100,8 @@ public class GameField {
      * Возвращает рой
      * @return элемент поля - рой
      */
-    public ElementField swarm () {
-        return _swarm;
+    public ArrayList <ElementField> swarms () {
+        return _swarms;
     }
     
     /**
