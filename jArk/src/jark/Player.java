@@ -13,6 +13,7 @@ public class Player {
     /** Количество жизней */
     private int _number_of_lives;
     
+    private int _scores;
     /**
      * Устанавливает количество жизней
      * @param number количество жизней
