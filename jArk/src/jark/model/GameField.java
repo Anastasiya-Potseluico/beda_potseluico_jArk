@@ -28,7 +28,7 @@ public class GameField {
     /**
      * Конструктор
      */
-    public GameField () {
+    public GameField (int level) {
         
     }
 
@@ -126,5 +126,37 @@ public class GameField {
      */
     public ArrayList <ElementField> bondarysField () {
         return _bondarysField;
+    }
+    
+    public void setField (int level) {
+        this._dBricks.clear();
+        this._iBricks.clear();
+        this._swarms.clear();
+        this._bondarysField.clear();
+        
+        this._bondarysField.add(new BoundaryField(TYPE.HORISONTAL));
+        this._bondarysField.add(new BoundaryField(TYPE.HORISONTAL));
+        this._bondarysField.add(new BoundaryField(TYPE.VERTICAL));
+        this._bondarysField.add(new BoundaryField(TYPE.VERTICAL));
+        switch(level){
+            case 1: {
+                
+                break;
+            } case 2: {
+                
+                break;
+            } case 3: {
+                
+                break;
+            } case 4: {
+                
+                break;
+            } case 5: {
+                
+                break;
+            }
+           
+            
+        }
     }
 }
