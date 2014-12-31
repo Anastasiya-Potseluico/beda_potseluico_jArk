@@ -9,16 +9,26 @@ package jark.model;
  * Класс границы поля
  * @author Дарья
  */
+
+enum TYPE {HORISONTAL, VERTICAL};
+
 public class BoundaryField extends ElementField {
     /**
      * Конструктор границ
      */
-    public BoundaryField () {
+    private TYPE _type;
+    
+    public BoundaryField (TYPE type) {
         super(MASS.INF_MASS);
+        _type = type;
     }
 
     @Override
     public void reactOnCollision(ElementField element) {
        
+    }
+    
+    public TYPE type() {
+        return _type;
     }
 }
