@@ -21,7 +21,7 @@ public class JArk {
     public static void main(String[] args) {
         // TODO code application logic here
         GameLoader game = new GameLoader();
-        game.setup(new JarkGame(), new Dimension(700,700), false);
+        game.setup(new JarkGame(), new Dimension(710,710), false);
         game.start();
     }
     
