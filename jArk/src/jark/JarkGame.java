@@ -9,6 +9,7 @@ import com.golden.gamedev.Game;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.background.ColorBackground;
+import com.golden.gamedev.object.background.ImageBackground;
 import jArk.physicalObjects.GameFieldView;
 import jark.model.GameField;
 import java.awt.Color;
@@ -28,22 +29,13 @@ public class JarkGame extends Game{
     /** Уровень (1-5) */
     private int _level;
     /** Бэкграунд */
-    Background  background;
-    
-    Sprite backgr;
+    Background backgr;
     /** 
      * Конструктор
      */
     public JarkGame() {
         _player = new Player();
-        //_gameFieldView = new GameFieldView(this,1);
-    }
-    
-    /** 
-     * Закончить игру
-     */
-    public void finish() {
-        
+        _gameFieldView = new GameFieldView(this,1);
     }
     
     /**
@@ -56,22 +48,22 @@ public class JarkGame extends Game{
 
     @Override
     public void initResources() {
-        background = new ColorBackground(Color.BLUE, 700, 700);
-        backgr = new Sprite(getImage("background.jpg"));
-        backgr.setBackground(background);
         _gameFieldView = new GameFieldView(this,1);
+        backgr = new ImageBackground(getImage("background.jpg"), 710, 710);
+        _gameFieldView.setBackground(backgr);
     }
 
     @Override
     public void update(long l) {
-        background.update(l);
-        backgr.update(l);
+       // background.update(l);
+       // backgr.update(l);
+        _gameFieldView.update(l);
     }
 
     @Override
     public void render(Graphics2D gd) {
-        background.render(gd);   
-        backgr.render(gd); 
+        _gameFieldView.render(gd);   
+       // backgr.render(gd); 
     }
 }
 
