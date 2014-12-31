@@ -6,7 +6,9 @@
 
 package jArk.physicalObjects;
 
+import com.golden.gamedev.object.PlayField;
 import jark.JarkGame;
+import jark.model.ElementField;
 import jark.model.GameField;
 import java.util.ArrayList;
 
@@ -14,7 +16,7 @@ import java.util.ArrayList;
  * Класс физического представления игрового поля
  * @author пользователь
  */
-public class GameFieldView {
+public class GameFieldView extends PlayField{
     
     /** Массив элементов, содержащихся на поле*/
     private ArrayList <ElementFieldView> _elements;
@@ -26,9 +28,11 @@ public class GameFieldView {
     /**
      * Конструктор
      * @param gameField 
+     * @param i номер уровня
      */
-    public GameFieldView (JarkGame game) {
+    public GameFieldView(JarkGame game, int i) {
         _game= game;
+        _gameField = new GameField(i);
     }
 
     /**
@@ -38,6 +42,18 @@ public class GameFieldView {
      */
     public boolean addElementFieldView (ElementFieldView element) {
         //TODO
+        
+        return true;
+    }
+    
+    /**
+     * Добавить элемент поля на поле
+     * @param element элемент поля
+     * @return успех добавления
+     */
+    public boolean addElementFieldView (ElementField element) {
+        //TODO
+        
         return true;
     }
     
