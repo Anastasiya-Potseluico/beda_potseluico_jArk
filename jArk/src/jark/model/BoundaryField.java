@@ -10,9 +10,10 @@ package jark.model;
  * @author Дарья
  */
 
-enum TYPE {HORISONTAL, VERTICAL};
+
 
 public class BoundaryField extends ElementField {
+    public enum TYPE {HORISONTAL, VERTICAL};
     /**
      * Конструктор границ
      */
