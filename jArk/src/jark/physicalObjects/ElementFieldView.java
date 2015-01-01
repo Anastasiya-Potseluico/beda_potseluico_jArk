@@ -58,4 +58,8 @@ public abstract class ElementFieldView{
     public  ElementField elementField() {
         return _elementField;
     }
+    
+    public Sprite sprite() {
+        return this._elementSprite;
+    }
 }
