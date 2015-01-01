@@ -5,6 +5,7 @@
  */
 package jark.model;
 
+import jark.model.BoundaryField.TYPE;
 import java.util.ArrayList;
 
 /**
@@ -12,24 +13,23 @@ import java.util.ArrayList;
  * @author Дарья
  */
 public class GameField {
-    /** Мяч */
-    private ElementField _ball;
+    /** Мячи */
+    private ArrayList <Ball> _balls = new ArrayList();
     /** Ракетка */
-    private ElementField _racket;
+    private Racket _racket = new Racket();
     /** Рой */
-    private ArrayList <ElementField> _swarms;
+    private ArrayList <Swarm> _swarms = new ArrayList();;
     /** Разрушаемые кирпичи */
-    private ArrayList <ElementField> _dBricks;
+    private ArrayList <DestructibleBrick> _dBricks = new ArrayList();;
     /** Неразрушаемые кирпичи */
-    private ArrayList <ElementField> _iBricks;
+    private ArrayList <IndestructibleBrick> _iBricks = new ArrayList();;
     /** Границы поля */
-    private ArrayList <ElementField> _bondarysField;
+    private ArrayList <BoundaryField> _bondarysField = new ArrayList();;
     
     /**
      * Конструктор
      */
-    public GameField (int level) {
-        
+    public GameField () {
     }
 
     /**
@@ -39,10 +39,7 @@ public class GameField {
      */
     public boolean addElementField(ElementField element){
         if (element instanceof Ball) {
-            if (_ball == null) {
-                _ball = (Ball)element;
-                return true;
-            } else return false;
+            _balls.add((Ball)element);
         } else if (element instanceof DestructibleBrick) {
             _dBricks.add((DestructibleBrick)element);
         } else if (element instanceof BoundaryField) {
@@ -66,7 +63,7 @@ public class GameField {
      */
     public void deleteElementField(ElementField element) {
         if (element instanceof Ball) {
-            _ball = null;
+            _balls.remove((Ball)element);
         } else if (element instanceof DestructibleBrick) {
             _dBricks.remove((DestructibleBrick)element);
         } else if (element instanceof BoundaryField) {
@@ -84,8 +81,8 @@ public class GameField {
      * Возвращает мяч
      * @return элемент поля - мяч
      */
-    public ElementField ball() {
-        return _ball;
+    public ArrayList <Ball> balls() {
+        return _balls;
     }
     
     /**
@@ -100,7 +97,7 @@ public class GameField {
      * Возвращает рой
      * @return элемент поля - рой
      */
-    public ArrayList <ElementField> swarms () {
+    public ArrayList <Swarm> swarms () {
         return _swarms;
     }
     
@@ -108,7 +105,7 @@ public class GameField {
      * Возвращает массив разрушаемых кирпичей
      * @return  массив элементов поля - разрушаемые кирпичи
      */
-    public ArrayList <ElementField> destructibleBricks () {
+    public ArrayList <DestructibleBrick> destructibleBricks () {
         return _dBricks;
     }
     
@@ -116,7 +113,7 @@ public class GameField {
      * Возвращает массив неразрушаемых кирпичей
      * @return  массив элементов поля - неразрушаемые кирпичи
      */
-    public ArrayList <ElementField> indestructibleBricks () {
+    public ArrayList <IndestructibleBrick> indestructibleBricks () {
         return _iBricks;
     }
     
@@ -124,23 +121,27 @@ public class GameField {
      * Возвращает границы поля
      * @return возвращает массив элементов поля - границы поля
      */
-    public ArrayList <ElementField> bondarysField () {
+    public ArrayList <BoundaryField> bondarysField () {
         return _bondarysField;
     }
     
+    /**
+     *
+     * @param level
+     */
     public void setField (int level) {
         this._dBricks.clear();
         this._iBricks.clear();
         this._swarms.clear();
         this._bondarysField.clear();
-        
-        this._bondarysField.add(new BoundaryField(TYPE.HORISONTAL));
-        this._bondarysField.add(new BoundaryField(TYPE.HORISONTAL));
-        this._bondarysField.add(new BoundaryField(TYPE.VERTICAL));
-        this._bondarysField.add(new BoundaryField(TYPE.VERTICAL));
         switch(level){
             case 1: {
-                
+                this.addElementField(new Ball());
+                this.addElementField(new Ball());
+                this.addElementField(new Racket());
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new IndestructibleBrick());
                 break;
             } case 2: {
                 
@@ -154,9 +155,10 @@ public class GameField {
             } case 5: {
                 
                 break;
-            }
-           
-            
+            }    
         }
+        this.addElementField(new BoundaryField(TYPE.HORISONTAL));
+        this.addElementField(new BoundaryField(TYPE.VERTICAL));
+        this.addElementField(new BoundaryField(TYPE.VERTICAL));
     }
 }
