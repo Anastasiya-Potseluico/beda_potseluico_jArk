@@ -6,7 +6,14 @@
 
 package jArk.physicalObjects;
 
+import jark.model.*;
+import com.golden.gamedev.object.Sprite;
 import jark.model.BoundaryField;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 
 /**
  * Класс физического представления границ поля
@@ -19,7 +26,20 @@ public class BoundaryView extends ElementFieldView {
     /**
      * Конструктор
      */
-    public BoundaryView () {
+    public BoundaryView (BoundaryField boundaryField, int x, int y) {
+        this._boundaryField = boundaryField;
+        BufferedImage img = null;
+        try 
+        {
+            if(this._boundaryField.type() == BoundaryField.TYPE.HORISONTAL)
+            img = ImageIO.read(new File("C:\\Users\\пользователь\\Documents\\GitHub\\beda_potseluico_jArk\\jArk\\src\\jark\\h_board.png"));
+            else img = ImageIO.read(new File("C:\\Users\\пользователь\\Documents\\GitHub\\beda_potseluico_jArk\\jArk\\src\\jark\\v_board.png"));
+            this._elementSprite = new Sprite(img, x, y);
+        } 
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
     }
     
     /**
