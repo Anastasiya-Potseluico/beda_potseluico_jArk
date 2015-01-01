@@ -8,12 +8,15 @@ package jark;
 import com.golden.gamedev.Game;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.Sprite;
+import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.background.ColorBackground;
 import com.golden.gamedev.object.background.ImageBackground;
+import jArk.physicalObjects.BallView;
 import jArk.physicalObjects.GameFieldView;
 import jark.model.GameField;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 /**
  * Класс игры
@@ -30,6 +33,10 @@ public class JarkGame extends Game{
     private int _level;
     /** Бэкграунд */
     Background backgr;
+    
+    SpriteGroup      BALL_GROUP;
+    
+    SpriteGroup      BRICK_GROUP;
     /** 
      * Конструктор
      */
@@ -48,22 +55,40 @@ public class JarkGame extends Game{
 
     @Override
     public void initResources() {
+        int i;
+        BufferedImage img = getImage("ball.png");
+        BALL_GROUP = new SpriteGroup("balls");
+        BRICK_GROUP = new SpriteGroup("bricks");
         _gameFieldView = new GameFieldView(this,1);
+        _gameFieldView.setStartPosition();
+        for(i = 0; i < this._gameFieldView.elements().size(); i++) {
+            if(this._gameFieldView.elements().get(i) instanceof BallView) {
+                BALL_GROUP.add(this._gameFieldView.elements().get(i).sprite());
+            }
+            BRICK_GROUP.add(this._gameFieldView.elements().get(i).sprite());
+        }
+        _gameFieldView.addGroup(BALL_GROUP);
+        _gameFieldView.addGroup(BRICK_GROUP);
         backgr = new ImageBackground(getImage("background.jpg"), 710, 710);
         _gameFieldView.setBackground(backgr);
+        
     }
 
     @Override
     public void update(long l) {
        // background.update(l);
        // backgr.update(l);
-        _gameFieldView.update(l);
+        _gameFieldView.updateElements(l);
     }
 
     @Override
     public void render(Graphics2D gd) {
         _gameFieldView.render(gd);   
        // backgr.render(gd); 
+    }
+    
+    public int level() {
+        return this._level;
     }
 }
 
