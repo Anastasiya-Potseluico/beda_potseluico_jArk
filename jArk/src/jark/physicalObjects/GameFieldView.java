@@ -8,6 +8,8 @@ package jArk.physicalObjects;
 
 import com.golden.gamedev.object.PlayField;
 import jark.JarkGame;
+import jark.model.Ball;
+import jark.model.BoundaryField;
 import jark.model.ElementField;
 import jark.model.GameField;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 public class GameFieldView extends PlayField{
     
     /** Массив элементов, содержащихся на поле*/
-    private ArrayList <ElementFieldView> _elements;
+    private ArrayList <ElementFieldView> _elements = new ArrayList();
     /** Логическое представление игрового поля */
     private GameField _gameField;
     /** Игра */
@@ -32,20 +34,15 @@ public class GameFieldView extends PlayField{
      */
     public GameFieldView(JarkGame game, int i) {
         _game= game;
-        _gameField = new GameField(i);
-    }
-
-    /**
-     * Добавить элемент поля на поле
-     * @param element элемент поля
-     * @return успех добавления
-     */
-    public boolean addElementFieldView (ElementFieldView element) {
-        //TODO
-        
-        return true;
+        _gameField = new GameField();
+        _gameField.setField(i);
     }
     
+    public void updateElements(long l) {
+        this.update(l);
+        
+    }
+
     /**
      * Добавить элемент поля на поле
      * @param element элемент поля
@@ -77,18 +74,20 @@ public class GameFieldView extends PlayField{
     }
     
     /**
-     * Установить логическое представление игрового поля
-     * @param gameField игровое поле 
-     */
-    public void setGameField (GameField gameField) {
-        _gameField = gameField;
-    }
-    
-    /**
      * Возвращает логическое представление игрового поля
      * @return логическое представление игрового поля
      */
     public GameField gameField () {
         return _gameField;
+    }
+    
+    public void setStartPosition() {
+        int i;
+        for (i = 0; i < this._gameField.balls().size(); i++) {
+            _elements.add(new BallView((Ball) this._gameField.balls().get(i),10, 20*i+40));
+        }
+        _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(0),0, 0));
+        _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(1),0,0));
+        _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(2),705, 0));
     }
 }
