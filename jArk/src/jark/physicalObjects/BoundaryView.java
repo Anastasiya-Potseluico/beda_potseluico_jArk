@@ -32,8 +32,8 @@ public class BoundaryView extends ElementFieldView {
         try 
         {
             if(this._boundaryField.type() == BoundaryField.TYPE.HORISONTAL)
-            img = ImageIO.read(new File("C:\\Users\\пользователь\\Documents\\GitHub\\beda_potseluico_jArk\\jArk\\src\\jark\\h_board.png"));
-            else img = ImageIO.read(new File("C:\\Users\\пользователь\\Documents\\GitHub\\beda_potseluico_jArk\\jArk\\src\\jark\\v_board.png"));
+            img = ImageIO.read(new File("src\\jark\\h_board.png"));
+            else img = ImageIO.read(new File("src\\jark\\v_board.png"));
             this._elementSprite = new Sprite(img, x, y);
         } 
         catch (IOException e) 

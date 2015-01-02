@@ -31,7 +31,7 @@ public class BallView extends ElementFieldView{
         BufferedImage img = null;
         try 
         {
-            img = ImageIO.read(new File("C:\\Users\\пользователь\\Documents\\GitHub\\beda_potseluico_jArk\\jArk\\src\\jark\\ball.png")); // eventually C:\\ImageTest\\pic2.jpg
+            img = ImageIO.read(new File("src\\jark\\ball.png"));
             this._elementSprite = new Sprite(img, x, y);
         } 
         catch (IOException e) 

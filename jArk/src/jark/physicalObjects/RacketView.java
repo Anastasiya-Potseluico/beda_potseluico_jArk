@@ -6,7 +6,12 @@
 
 package jArk.physicalObjects;
 
+import com.golden.gamedev.object.Sprite;
 import jark.model.Racket;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 /**
  * Класс физического представления ракетки
@@ -16,12 +21,18 @@ public class RacketView extends ElementFieldView{
     /** Логическое пердставление ракетки */
     private Racket _racket;
     
-    /**
-     * Устанавливает логическое предствление ракетки
-     * @param racket логическое представление ракетки
-     */
-    public void setRacket (Racket racket) {
-        _racket = racket;
+    public RacketView(Racket racket, int x, int y) {
+        this._elementField = racket;
+        BufferedImage img = null;
+        try 
+        {
+            img = ImageIO.read(new File("src\\jark\\racket.png"));
+            this._elementSprite = new Sprite(img, x, y);
+        } 
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
     }
     
     /**
