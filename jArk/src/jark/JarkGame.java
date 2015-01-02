@@ -42,7 +42,8 @@ public class JarkGame extends Game{
      */
     public JarkGame() {
         _player = new Player();
-        _gameFieldView = new GameFieldView(this,1);
+        _level = 2;
+        _gameFieldView = new GameFieldView(this,_level);
     }
     
     /**
@@ -56,11 +57,10 @@ public class JarkGame extends Game{
     @Override
     public void initResources() {
         int i;
-        BufferedImage img = getImage("ball.png");
         BALL_GROUP = new SpriteGroup("balls");
-        BRICK_GROUP = new SpriteGroup("bricks");
-        _gameFieldView = new GameFieldView(this,1);
-        _gameFieldView.setStartPosition();
+        BRICK_GROUP = new SpriteGroup("obstacles"); //Группа преград
+        _gameFieldView = new GameFieldView(this,_level);
+        _gameFieldView.setStartPosition(_level);
         for(i = 0; i < this._gameFieldView.elements().size(); i++) {
             if(this._gameFieldView.elements().get(i) instanceof BallView) {
                 BALL_GROUP.add(this._gameFieldView.elements().get(i).sprite());
@@ -69,15 +69,12 @@ public class JarkGame extends Game{
         }
         _gameFieldView.addGroup(BALL_GROUP);
         _gameFieldView.addGroup(BRICK_GROUP);
-        backgr = new ImageBackground(getImage("background.jpg"), 650, 650);
+        backgr = new ImageBackground(getImage("background.jpg"), 650, 550);
         _gameFieldView.setBackground(backgr);
-        
     }
 
     @Override
     public void update(long l) {
-       // background.update(l);
-       // backgr.update(l);
         _gameFieldView.updateElements(l);
     }
 
