@@ -138,12 +138,100 @@ public class GameField {
             case 1: {
                 
                 this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
                 this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(3));
-                this.addElementField(new IndestructibleBrick());
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
                 break;
             } case 2: {
+                this.addElementField(new DestructibleBrick(3));
+                this.addElementField(new DestructibleBrick(3));
                 
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(3));
+                this.addElementField(new DestructibleBrick(3));
+                
+                this.addElementField(new IndestructibleBrick());
                 break;
             } case 3: {
                 
@@ -159,8 +247,8 @@ public class GameField {
         this.addElementField(new BoundaryField(TYPE.HORISONTAL));
         this.addElementField(new BoundaryField(TYPE.VERTICAL));
         this.addElementField(new BoundaryField(TYPE.VERTICAL));
-        this.addElementField(new Ball());
-        this.addElementField(new Ball());
+       // this.addElementField(new Ball());
+        //this.addElementField(new Ball());
         this.addElementField(new Racket());
     }
 }
