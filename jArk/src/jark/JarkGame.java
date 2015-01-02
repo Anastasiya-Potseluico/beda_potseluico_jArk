@@ -69,7 +69,7 @@ public class JarkGame extends Game{
         }
         _gameFieldView.addGroup(BALL_GROUP);
         _gameFieldView.addGroup(BRICK_GROUP);
-        backgr = new ImageBackground(getImage("background.jpg"), 710, 710);
+        backgr = new ImageBackground(getImage("background.jpg"), 650, 650);
         _gameFieldView.setBackground(backgr);
         
     }

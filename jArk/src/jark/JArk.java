@@ -8,6 +8,7 @@ package jark;
 
 import com.golden.gamedev.GameLoader;
 import java.awt.Dimension;
+import java.io.File;
 
 /**
  * Главный класс игры
@@ -19,10 +20,13 @@ public class JArk {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        File file = new File("test.txt");
+        String path = file.getAbsolutePath();
         // TODO code application logic here
         GameLoader game = new GameLoader();
-        game.setup(new JarkGame(), new Dimension(710,710), false);
+        game.setup(new JarkGame(), new Dimension(640,640), false);
         game.start();
+        
     }
     
 }
