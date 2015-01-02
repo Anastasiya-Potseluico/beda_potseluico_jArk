@@ -20,12 +20,12 @@ public class GameField {
     /** Рой */
     private ArrayList <Swarm> _swarms = new ArrayList();;
     /** Разрушаемые кирпичи */
-    private ArrayList <DestructibleBrick> _dBricks = new ArrayList();;
+    private ArrayList <DestructibleBrick> _dBricks = new ArrayList();
     /** Неразрушаемые кирпичи */
-    private ArrayList <IndestructibleBrick> _iBricks = new ArrayList();;
+    private ArrayList <IndestructibleBrick> _iBricks = new ArrayList();
     /** Границы поля */
-    private ArrayList <BoundaryField> _bondarysField = new ArrayList();;
-    
+    private ArrayList <BoundaryField> _bondarysField = new ArrayList();
+   
     /**
      * Конструктор
      */
@@ -136,11 +136,10 @@ public class GameField {
         this._bondarysField.clear();
         switch(level){
             case 1: {
-                this.addElementField(new Ball());
-                this.addElementField(new Ball());
-                this.addElementField(new Racket());
+                
                 this.addElementField(new DestructibleBrick(1));
                 this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(3));
                 this.addElementField(new IndestructibleBrick());
                 break;
             } case 2: {
@@ -160,5 +159,8 @@ public class GameField {
         this.addElementField(new BoundaryField(TYPE.HORISONTAL));
         this.addElementField(new BoundaryField(TYPE.VERTICAL));
         this.addElementField(new BoundaryField(TYPE.VERTICAL));
+        this.addElementField(new Ball());
+        this.addElementField(new Ball());
+        this.addElementField(new Racket());
     }
 }
