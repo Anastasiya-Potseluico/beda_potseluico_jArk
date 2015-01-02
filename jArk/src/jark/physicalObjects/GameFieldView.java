@@ -14,6 +14,7 @@ import jark.model.DestructibleBrick;
 import jark.model.ElementField;
 import jark.model.GameField;
 import jark.model.IndestructibleBrick;
+import jark.model.Racket;
 import java.util.ArrayList;
 
 /**
@@ -83,19 +84,109 @@ public class GameFieldView extends PlayField{
         return _gameField;
     }
     
-    public void setStartPosition() {
+    public void setStartPosition(int level) {
         int i;
-        for (i = 0; i < this._gameField.balls().size(); i++) {
-            _elements.add(new BallView((Ball) this._gameField.balls().get(i),10, 20*i+40));
+        switch (level) {
+            case 1: {
+               // for (i = 0; i < this._gameField.balls().size(); i++) {
+               //     _elements.add(new BallView((Ball) this._gameField.balls().get(i),10, 20*i+40));
+               // }
+                
+                for(i = 0; i < 7; i++) {
+                    _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),5+i*90, 5));
+                }
+                
+                int k = 0;
+                for(i = 7; i < 14; i++, k++) {
+                    _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),5+k*90, 42));
+                }
+                k=0;
+                for(i = 14; i < 21; i++, k++) {
+                    _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),5+k*90, 79));
+                }
+                
+                k=0;
+                for(i = 21; i < 28; i++, k++) {
+                    _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),5+k*90, 116));
+                }
+                
+                k=0;
+                for(i = 28; i < 35; i++, k++) {
+                    _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),5+k*90, 154));
+                }
+                
+                k=0;
+                for(i = 35; i < 42; i++, k++) {
+                    _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),5+k*90, 190));
+                }
+                
+                k=0;
+                for(i = 42; i < 49; i++, k++) {
+                    _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),5+k*90, 227));
+                }
+                
+                for(i = 0; i < this._gameField.indestructibleBricks().size(); i++) {
+                    _elements.add(new IndestructibleBrickView((IndestructibleBrick) this._gameField.indestructibleBricks().get(i),140+i, 140+i));
+                    k++;
+                }
+                break;
+            } case 2: {
+                
+                _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(0),5, 5));
+                _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(1),545, 5));
+               
+                int k = 0;
+                for(i = 2; i < 6; i++, k++) {
+                    if(i<4)
+                        _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),5+k*90, 42));
+                    else _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),275+k*90, 42));
+                    
+                }
+                k=0;
+                for(i = 6; i < 12; i++, k++) {
+                    if(i<9)
+                        _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),5+k*90, 79));
+                    else _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),95+k*90, 79));
+                    
+                }
+                k=0;
+                for(i = 12; i < 18; i++, k++) {
+                    if(i<15)
+                        _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),5+k*90, 116));
+                    else _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),95+k*90, 116));
+                    
+                }
+                k=0;
+                for(i = 18; i < 24; i++, k++) {
+                    if(i<21)
+                        _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),5+k*90, 154));
+                    else _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),95+k*90, 154));
+                    
+                }
+                
+                k=0;
+                for(i = 24; i < 28; i++, k++) {
+                    if(i<26)
+                        _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),5+k*90, 190));
+                    else _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),275+k*90, 190));
+                    
+                }
+                _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(28),5, 227));
+                _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(29),545, 227));
+              
+                _elements.add(new IndestructibleBrickView((IndestructibleBrick) this._gameField.indestructibleBricks().get(0),275, 116));
+                break;
+            } case 3: {
+                break;
+            } case 4: {
+                break;
+            } case 5: {
+                break;
+            } 
         }
+        _elements.add(new RacketView((Racket) this._gameField.racket(),320, 640));
         _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(0),0, 0));
         _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(1),0,0));
         _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(2),635, 0));
-        for(i = 0; i < this._gameField.destructibleBricks().size(); i++) {
-            _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),20*i, 10*i));
-        }
-        for(i = 0; i < this._gameField.indestructibleBricks().size(); i++) {
-            _elements.add(new IndestructibleBrickView((IndestructibleBrick) this._gameField.indestructibleBricks().get(i),140+i, 140+i));
-        }
     }
 }
