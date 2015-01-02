@@ -10,8 +10,10 @@ import com.golden.gamedev.object.PlayField;
 import jark.JarkGame;
 import jark.model.Ball;
 import jark.model.BoundaryField;
+import jark.model.DestructibleBrick;
 import jark.model.ElementField;
 import jark.model.GameField;
+import jark.model.IndestructibleBrick;
 import java.util.ArrayList;
 
 /**
@@ -88,6 +90,12 @@ public class GameFieldView extends PlayField{
         }
         _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(0),0, 0));
         _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(1),0,0));
-        _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(2),705, 0));
+        _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(2),635, 0));
+        for(i = 0; i < this._gameField.destructibleBricks().size(); i++) {
+            _elements.add(new DestructibleBrickView((DestructibleBrick) this._gameField.destructibleBricks().get(i),20*i, 10*i));
+        }
+        for(i = 0; i < this._gameField.indestructibleBricks().size(); i++) {
+            _elements.add(new IndestructibleBrickView((IndestructibleBrick) this._gameField.indestructibleBricks().get(i),140+i, 140+i));
+        }
     }
 }
