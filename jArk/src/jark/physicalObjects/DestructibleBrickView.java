@@ -36,7 +36,10 @@ public class DestructibleBrickView extends ElementFieldView{
         {
             switch (_dBrick.hadrness()) {
                 case 1: {
+                    double rand = (Math.random() * 1);
+                    if(Math.round(rand) == 0)
                     img = ImageIO.read(new File("src\\jark\\brick.png"));
+                    else img = ImageIO.read(new File("src\\jark\\brick3.png"));
                     break;
                 } case 2: {
                     img = ImageIO.read(new File("src\\jark\\brick1.png"));
