@@ -36,5 +36,9 @@ public class DestructibleBrick extends Brick{
     public void reactOnCollision(ElementField element) {
         destruct();
     }
+    
+    public int hadrness() {
+        return this._hardness;
+    }
             
 }
