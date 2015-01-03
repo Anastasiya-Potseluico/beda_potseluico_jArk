@@ -342,8 +342,8 @@ public class GameField {
         this.addElementField(new BoundaryField(TYPE.HORISONTAL));
         this.addElementField(new BoundaryField(TYPE.VERTICAL));
         this.addElementField(new BoundaryField(TYPE.VERTICAL));
-       // this.addElementField(new Ball());
-        //this.addElementField(new Ball());
+        this.addElementField(new Ball());
+        this.addElementField(new Ball());
         this.addElementField(new Racket());
     }
 }
