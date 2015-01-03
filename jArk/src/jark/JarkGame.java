@@ -7,16 +7,12 @@ package jark;
 
 import com.golden.gamedev.Game;
 import com.golden.gamedev.object.Background;
-import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
-import com.golden.gamedev.object.background.ColorBackground;
 import com.golden.gamedev.object.background.ImageBackground;
 import jArk.physicalObjects.BallView;
 import jArk.physicalObjects.GameFieldView;
 import jark.model.GameField;
-import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 
 /**
  * Класс игры
@@ -37,10 +33,12 @@ public class JarkGame extends Game{
     SpriteGroup      BALL_GROUP;
     
     SpriteGroup      BRICK_GROUP;
+    
     /** 
      * Конструктор
      */
     public JarkGame() {
+        this.distribute = true;
         _player = new Player();
         _level = 5;
         _gameFieldView = new GameFieldView(this,_level);
@@ -57,7 +55,7 @@ public class JarkGame extends Game{
     @Override
     public void initResources() {
         int i;
-        BALL_GROUP = new SpriteGroup("balls");
+        BALL_GROUP = new SpriteGroup("balls"); //Группа мячей
         BRICK_GROUP = new SpriteGroup("obstacles"); //Группа преград
         _gameFieldView = new GameFieldView(this,_level);
         _gameFieldView.setStartPosition(_level);
