@@ -290,9 +290,11 @@ public class GameFieldView extends PlayField{
                 break;
             } 
         }
-        _elements.add(new RacketView((Racket) this._gameField.racket(),320, 640));
+        _elements.add(new RacketView((Racket) this._gameField.racket(),251, 500));
         _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(0),0, 0));
         _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(1),0,0));
         _elements.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(2),635, 0));
+        _elements.add(new BallView((Ball) this._gameField.balls().get(0),295, 465));
+        _elements.add(new BallView((Ball) this._gameField.balls().get(1),295, 265));
     }
 }
