@@ -13,6 +13,7 @@ import jArk.physicalObjects.BallView;
 import jArk.physicalObjects.GameFieldView;
 import jark.model.GameField;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 
 /**
  * Класс игры
@@ -59,12 +60,21 @@ public class JarkGame extends Game{
         BRICK_GROUP = new SpriteGroup("obstacles"); //Группа преград
         _gameFieldView = new GameFieldView(this,_level);
         _gameFieldView.setStartPosition(_level);
-        for(i = 0; i < this._gameFieldView.elements().size(); i++) {
-            if(this._gameFieldView.elements().get(i) instanceof BallView) {
-                BALL_GROUP.add(this._gameFieldView.elements().get(i).sprite());
-            }
-            BRICK_GROUP.add(this._gameFieldView.elements().get(i).sprite());
+        for(i = 0; i < this._gameFieldView.ballsView().size(); i++) {
+            BALL_GROUP.add(this._gameFieldView.ballsView().get(i).sprite()); 
+            BRICK_GROUP.add(this._gameFieldView.ballsView().get(i).sprite());
         }
+        for(i = 0; i < this._gameFieldView.boundariesView().size(); i++) {
+            BRICK_GROUP.add(this._gameFieldView.boundariesView().get(i).sprite());
+        }
+        for(i = 0; i < this._gameFieldView.dBricksView().size(); i++) {
+            BRICK_GROUP.add(this._gameFieldView.dBricksView().get(i).sprite());
+        }
+        for(i = 0; i < this._gameFieldView.iBricksView().size(); i++) {
+            BRICK_GROUP.add(this._gameFieldView.iBricksView().get(i).sprite());
+        }
+        BRICK_GROUP.add(this._gameFieldView.racketView().sprite());
+        
         _gameFieldView.addGroup(BALL_GROUP);
         _gameFieldView.addGroup(BRICK_GROUP);
         backgr = new ImageBackground(getImage("background.jpg"), 650, 550);
@@ -74,6 +84,11 @@ public class JarkGame extends Game{
     @Override
     public void update(long l) {
         _gameFieldView.updateElements(l);
+        double speedX = 0;
+        if (keyDown(KeyEvent.VK_LEFT))   speedX = -0.5;
+        if (keyDown(KeyEvent.VK_RIGHT))  speedX = 0.5;
+            this._gameFieldView.racketView().sprite().setHorizontalSpeed(speedX);
+        
     }
 
     @Override
