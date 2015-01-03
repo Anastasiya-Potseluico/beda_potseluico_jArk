@@ -134,6 +134,7 @@ public class GameField {
         this._iBricks.clear();
         this._swarms.clear();
         this._bondarysField.clear();
+        int i;
         switch(level){
             case 1: {
                 
@@ -234,13 +235,107 @@ public class GameField {
                 this.addElementField(new IndestructibleBrick());
                 break;
             } case 3: {
+                this.addElementField(new DestructibleBrick(3));
                 
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(3));
+                this.addElementField(new DestructibleBrick(2));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                
+                for(i = 0; i < 3; i++) {
+                    this.addElementField(new IndestructibleBrick());
+                }
                 break;
             } case 4: {
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
                 
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(2));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                this.addElementField(new DestructibleBrick(3));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(3));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                for(i = 0; i < 5; i++) {
+                    this.addElementField(new IndestructibleBrick());
+                }
                 break;
             } case 5: {
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
                 
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                
+                this.addElementField(new DestructibleBrick(3));
+                
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(3));
+                this.addElementField(new DestructibleBrick(3));
+                
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                this.addElementField(new DestructibleBrick(2));
+                
+                this.addElementField(new DestructibleBrick(3));
+                this.addElementField(new DestructibleBrick(3));
+                this.addElementField(new DestructibleBrick(1));
+                this.addElementField(new DestructibleBrick(1));
+                
+                for(i = 0; i < 8; i++) {
+                    this.addElementField(new IndestructibleBrick());
+                }
                 break;
             }    
         }
