@@ -42,7 +42,7 @@ public class JarkGame extends Game{
      */
     public JarkGame() {
         _player = new Player();
-        _level = 2;
+        _level = 5;
         _gameFieldView = new GameFieldView(this,_level);
     }
     
