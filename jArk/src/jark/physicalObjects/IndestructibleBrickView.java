@@ -47,7 +47,7 @@ public class IndestructibleBrickView extends ElementFieldView{
      * Возвращает логическое представление разрушаемого кирпича
      * @return разрушаемый кирпич
      */
-    public IndestructibleBrick dBrick () {
+    public IndestructibleBrick iBrick () {
         return _iBrick;
     }
 }
