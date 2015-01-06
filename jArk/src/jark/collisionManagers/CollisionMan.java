@@ -51,6 +51,49 @@ public class CollisionMan{
     }
     
     private ElementField findElement (Sprite sprite) {
+        ElementField founded;
+        int i;
+        switch (sprite.getID()) {
+            case 1: { //Id для мячей
+                for(i = 0; i < this._fieldView.ballsView().size(); i++) {
+                    if(this._fieldView.ballsView().get(i).sprite() == sprite) {
+                        founded = this._fieldView.ballsView().get(i).ball();
+                        return founded;
+                    }
+                }
+                break;
+            } case 2: { //Id для границ
+                for(i = 0; i < this._fieldView.boundariesView().size(); i++) {
+                    if(this._fieldView.boundariesView().get(i).sprite() == sprite) {
+                        founded = this._fieldView.boundariesView().get(i).boundaryField();
+                        return founded;
+                    }
+                }
+                break;
+            } case 3: { //Id для разрушаемых кирпичей
+                for(i = 0; i < this._fieldView.dBricksView().size(); i++) {
+                    if(this._fieldView.dBricksView().get(i).sprite() == sprite) {
+                        founded = this._fieldView.dBricksView().get(i).dBrick();
+                        return founded;
+                    }
+                }
+                break;
+            } case 4: { //Id для неразрушаемых кирпичей
+                for(i = 0; i < this._fieldView.iBricksView().size(); i++) {
+                    if(this._fieldView.iBricksView().get(i).sprite() == sprite) {
+                        founded = this._fieldView.iBricksView().get(i).iBrick();
+                        return founded;
+                    }
+                }
+                break;
+            } case 5: { //Id для ракетки
+                founded = this._fieldView.racketView().racket();
+                return founded;
+            } case 6: { //Id для элементов роя
+                break;
+            }
+            
+        }
         return new Ball();
     }
 }
