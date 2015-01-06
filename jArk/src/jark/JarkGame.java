@@ -7,6 +7,7 @@ package jark;
 
 import com.golden.gamedev.Game;
 import com.golden.gamedev.object.Background;
+import com.golden.gamedev.object.CollisionManager;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.background.ImageBackground;
 import jArk.physicalObjects.BallView;
@@ -33,7 +34,7 @@ public class JarkGame extends Game{
     /** Бэкграунд */
     Background backgr;
     
-    Collision _collision;
+    CollisionMan _collisionManager;
     
     SpriteGroup      BALL_GROUP;
     
@@ -83,9 +84,9 @@ public class JarkGame extends Game{
         _gameFieldView.addGroup(BRICK_GROUP);
         backgr = new ImageBackground(getImage("background.jpg"), 650, 550);
         _gameFieldView.setBackground(backgr);
-        _collision = new Collision(new CollisionMan());
-        _collision.pixelPerfectCollision = true;
-        _gameFieldView.addCollisionGroup(BALL_GROUP, BRICK_GROUP, _collision);
+        _collisionManager = new CollisionMan(_gameFieldView);
+        _collisionManager.setPerfectCollision(true);
+        _gameFieldView.addCollisionGroup(BALL_GROUP, BRICK_GROUP, _collisionManager.collision());
     }
 
     @Override
