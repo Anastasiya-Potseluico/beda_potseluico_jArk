@@ -33,6 +33,7 @@ public class BallView extends ElementFieldView{
         {
             img = ImageIO.read(new File("src\\jark\\ball.png"));
             this._elementSprite = new Sprite(img, x, y);
+            this._elementSprite.setID(1);
         } 
         catch (IOException e) 
         {

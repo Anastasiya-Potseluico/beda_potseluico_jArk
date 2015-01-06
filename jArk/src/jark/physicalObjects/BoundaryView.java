@@ -35,6 +35,7 @@ public class BoundaryView extends ElementFieldView {
             img = ImageIO.read(new File("src\\jark\\h_board.png"));
             else img = ImageIO.read(new File("src\\jark\\v_board.png"));
             this._elementSprite = new Sprite(img, x, y);
+            this._elementSprite.setID(2);
         } 
         catch (IOException e) 
         {

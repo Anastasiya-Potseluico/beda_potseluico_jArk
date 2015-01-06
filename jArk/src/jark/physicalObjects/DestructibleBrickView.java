@@ -50,6 +50,7 @@ public class DestructibleBrickView extends ElementFieldView{
                 }
             }
             this._elementSprite = new Sprite(img,x,y);
+            this._elementSprite.setID(3);
         } 
         catch (IOException e) 
         {

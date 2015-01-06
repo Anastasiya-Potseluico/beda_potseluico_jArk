@@ -35,6 +35,7 @@ public class IndestructibleBrickView extends ElementFieldView{
         {
             img = ImageIO.read(new File("src\\jark\\ibrick.png"));
             this._elementSprite = new Sprite(img,x,y);
+            this._elementSprite.setID(4);
         } 
         catch (IOException e) 
         {

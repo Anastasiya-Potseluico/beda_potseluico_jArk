@@ -28,6 +28,7 @@ public class RacketView extends ElementFieldView{
         {
             img = ImageIO.read(new File("src\\jark\\racket.png"));
             this._elementSprite = new Sprite(img, x, y);
+            this._elementSprite.setID(5);
         } 
         catch (IOException e) 
         {
