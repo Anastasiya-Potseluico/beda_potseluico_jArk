@@ -45,9 +45,10 @@ public class CollisionMan{
      * Метод для обработки коллизии
      */
     public void manageCollision(Sprite sprite, Sprite sprite1){
-        if(sprite!=sprite1) {
-            sprite.setHorizontalSpeed(0.1);
-        }
+        ElementField first, second;
+        first = findElement(sprite);
+        second = findElement(sprite1);
+        
     }
     
     private ElementField findElement (Sprite sprite) {
