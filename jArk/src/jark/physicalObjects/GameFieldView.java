@@ -325,7 +325,7 @@ public class GameFieldView extends PlayField{
         _boundariesView.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(0),0, 0));
         _boundariesView.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(1),0,0));
         _boundariesView.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(2),635, 0));
-        _ballsView.add(new BallView((Ball) this._gameField.balls().get(0),295, 464));
+        _ballsView.add(new BallView((Ball) this._gameField.balls().get(0),295, 466));
         _ballsView.add(new BallView((Ball) this._gameField.balls().get(1),295, 265));
     }
 }

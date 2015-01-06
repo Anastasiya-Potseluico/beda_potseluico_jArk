@@ -19,22 +19,13 @@ import javax.imageio.ImageIO;
  * @author пользователь
  */
 public class DestructibleBrickView extends ElementFieldView{
-    /** Логическое представление разрушаемого кирпича */
-    private DestructibleBrick _dBrick;
-    
-    /**
-     * Конструктор
-     */
-    public DestructibleBrickView (DestructibleBrick dBrick) {
-        _dBrick = dBrick;
-    }
-    
+
     public DestructibleBrickView (DestructibleBrick brick, int x, int y) {
-        this._dBrick = brick;
+        this._elementField = brick;
         BufferedImage img = null;
         try 
         {
-            switch (_dBrick.hadrness()) {
+            switch (((DestructibleBrick)this._elementField).hadrness()) {
                 case 1: {
                     double rand = (Math.random() * 1);
                     if(Math.round(rand) == 0)
@@ -63,6 +54,6 @@ public class DestructibleBrickView extends ElementFieldView{
      * @return разрушаемый кирпич
      */
     public DestructibleBrick dBrick () {
-        return _dBrick;
+        return (DestructibleBrick)this._elementField;
     }
 }

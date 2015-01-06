@@ -20,18 +20,15 @@ import javax.imageio.ImageIO;
  * @author пользователь
  */
 public class BoundaryView extends ElementFieldView {
-    /** Логическое представление границы поля */
-    private BoundaryField _boundaryField;
-    
     /**
      * Конструктор
      */
     public BoundaryView (BoundaryField boundaryField, int x, int y) {
-        this._boundaryField = boundaryField;
+        this._elementField = boundaryField;
         BufferedImage img = null;
         try 
         {
-            if(this._boundaryField.type() == BoundaryField.TYPE.HORISONTAL)
+            if(((BoundaryField)this._elementField).type() == BoundaryField.TYPE.HORISONTAL)
             img = ImageIO.read(new File("src\\jark\\h_board.png"));
             else img = ImageIO.read(new File("src\\jark\\v_board.png"));
             this._elementSprite = new Sprite(img, x, y);
@@ -44,27 +41,10 @@ public class BoundaryView extends ElementFieldView {
     }
     
     /**
-     * Устанавливает логическое представление границы поля
-     * @param boundaryField логическое представление границы поля
-     */
-    public void setBoundaryView (BoundaryField boundaryField) {
-        _boundaryField = boundaryField;
-    }
-    
-    /**
      * Возвращает логическое рпедставление границы поля
      * @return граница поля
      */
     public BoundaryField boundaryField () {
-        return _boundaryField;
-    }
-    
-    /**
-     * Функция для проверки, принадлежит ли элемент границам поля
-     * @param _element элемент, который надо проверить
-     * @return признак принадлежности
-     */
-    public boolean isInBoundary(ElementFieldView _element){
-        return true;
+        return (BoundaryField)this._elementField;
     }
 }

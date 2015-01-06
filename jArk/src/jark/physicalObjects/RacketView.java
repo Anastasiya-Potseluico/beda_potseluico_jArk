@@ -18,8 +18,6 @@ import javax.imageio.ImageIO;
  * @author пользователь
  */
 public class RacketView extends ElementFieldView{
-    /** Логическое представление ракетки */
-    private Racket _racket;
     
     public RacketView(Racket racket, int x, int y) {
         this._elementField = racket;
@@ -41,6 +39,6 @@ public class RacketView extends ElementFieldView{
      * @return логическое представление ракетки
      */
     public Racket racket() {
-        return _racket;
+        return (Racket)this._elementField;
     }
 }
