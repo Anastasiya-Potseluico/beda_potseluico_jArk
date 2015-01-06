@@ -10,6 +10,7 @@ import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.collision.AdvanceCollisionGroup;
 import jArk.physicalObjects.ElementFieldView;
+import jArk.physicalObjects.GameFieldView;
 import jark.model.Ball;
 import jark.model.ElementField;
 import java.util.ArrayList;
@@ -20,37 +21,36 @@ import java.util.ArrayList;
  */
 public class CollisionMan{
     
-    private CollisionManager _collisionManager = new Collision(this);
+    private Collision _collision = new Collision(this);
     
+    private CollisionManager _collisionManager = _collision;
+   
+    private GameFieldView _fieldView; //Под вопросом правильность данной связи
+    
+    public CollisionMan (GameFieldView fieldView) {
+        _fieldView = fieldView;
+    }
     public void checkCollision () {
         _collisionManager.checkCollision();
     }
     
+    public Collision collision() {
+        return this._collision;
+    }
+    
+    public void setPerfectCollision(boolean isPerfCollision) {
+        _collision.pixelPerfectCollision = isPerfCollision;
+    }
     /**
      * Метод для обработки коллизии
      */
     public void manageCollision(Sprite sprite, Sprite sprite1){
-        //преобразовать спрайты в модели
-        
+        if(sprite!=sprite1) {
+            sprite.setHorizontalSpeed(0.1);
+        }
     }
     
-    /**
-     * Метод для добавления групп коллизий (чтобы менеджер не обращался к полю)
-     * @param elements
-     */
-    public void setCollisionGroups(ArrayList <ElementField> elements){
-        SpriteGroup group1 = null;
-        SpriteGroup group2 = null;
-        //преобразовать модель в sprite
-        //мяч+ракетка против всех
-       _collisionManager.setCollisionGroup(group1, group2);
-    }
-
-    private Sprite elementToSprite(ElementField element){
-        return new Sprite();
-    }
-    
-    private ElementField spriteToElement (Sprite sprite) {
+    private ElementField findElement (Sprite sprite) {
         return new Ball();
     }
 }
