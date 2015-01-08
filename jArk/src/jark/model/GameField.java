@@ -5,6 +5,8 @@
  */
 package jark.model;
 
+import jark.events.DestructionEvent;
+import jark.events.DestructionListener;
 import jark.model.BoundaryField.TYPE;
 import java.util.ArrayList;
 
@@ -37,7 +39,7 @@ public class GameField {
      * @param element добавляемый элемент
      * @return успех добавления
      */
-    public boolean addElementField(ElementField element){
+    public ElementField addElementField(ElementField element){
         if (element instanceof Ball) {
             _balls.add((Ball)element);
         } else if (element instanceof DestructibleBrick) {
@@ -51,10 +53,10 @@ public class GameField {
         } else if (element instanceof Racket) {
             if (_racket == null) {
                 _racket = (Racket)element;
-                return true;
-            } else return false;
+                return element;
+            } else return null;
         }
-        return true;
+        return element;
     }
     
     /**
@@ -135,203 +137,350 @@ public class GameField {
         this._swarms.clear();
         this._bondarysField.clear();
         int i;
+        ElementField el;
         switch(level){
             case 1: {
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 break;
             } case 2: {
-                this.addElementField(new DestructibleBrick(3));
-                this.addElementField(new DestructibleBrick(3));
+                el = this.addElementField(new DestructibleBrick(3));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(3));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(3));
-                this.addElementField(new DestructibleBrick(3));
+                el = this.addElementField(new DestructibleBrick(3));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(3));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new IndestructibleBrick());
+                el = this.addElementField(new IndestructibleBrick());
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 break;
             } case 3: {
-                this.addElementField(new DestructibleBrick(3));
+                el = this.addElementField(new DestructibleBrick(3));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(3));
-                this.addElementField(new DestructibleBrick(2));
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(3));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
                 for(i = 0; i < 3; i++) {
                     this.addElementField(new IndestructibleBrick());
                 }
                 break;
             } case 4: {
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(2));
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(3));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(3));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(3));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(3));
-                
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 for(i = 0; i < 5; i++) {
                     this.addElementField(new IndestructibleBrick());
                 }
                 break;
             } case 5: {
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
-                
-                this.addElementField(new DestructibleBrick(3));
-                
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(3));
-                this.addElementField(new DestructibleBrick(3));
-                
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
-                this.addElementField(new DestructibleBrick(2));
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
                 this.addElementField(new DestructibleBrick(3));
-                this.addElementField(new DestructibleBrick(3));
-                this.addElementField(new DestructibleBrick(1));
-                this.addElementField(new DestructibleBrick(1));
+                
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(3));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(3));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(2));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                
+                el = this.addElementField(new DestructibleBrick(3));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(3));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
+                el = this.addElementField(new DestructibleBrick(1));
+                ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
                 
                 for(i = 0; i < 8; i++) {
                     this.addElementField(new IndestructibleBrick());
@@ -345,5 +494,12 @@ public class GameField {
         this.addElementField(new Ball());
         this.addElementField(new Ball());
         this.addElementField(new Racket());
+    }
+    
+    public class removeBrick implements DestructionListener {
+        @Override
+        public void brickDestroyed(DestructionEvent e, DestructibleBrick dBrick) {
+            _dBricks.remove(dBrick);
+        } 
     }
 }
