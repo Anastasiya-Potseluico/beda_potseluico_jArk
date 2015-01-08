@@ -8,12 +8,15 @@ package jark;
 import com.golden.gamedev.Game;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.CollisionManager;
+import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.background.ImageBackground;
 import jArk.physicalObjects.BallView;
 import jArk.physicalObjects.GameFieldView;
 import jark.collisionManagers.Collision;
 import jark.collisionManagers.CollisionMan;
+import jark.events.DestructionEvent;
+import jark.events.DestructionListener;
 import jark.model.GameField;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -96,7 +99,6 @@ public class JarkGame extends Game{
         if (keyDown(KeyEvent.VK_LEFT))   speedX = -0.5;
         if (keyDown(KeyEvent.VK_RIGHT))  speedX = 0.5;
             this._gameFieldView.racketView().sprite().setHorizontalSpeed(speedX);
-        
     }
 
     @Override
@@ -107,6 +109,23 @@ public class JarkGame extends Game{
     
     public int level() {
         return this._level;
+    }
+    
+   // public class IdentifyGameOver implements DestructionListener{
+       // @Override
+       // public void brickDestroyed(DestructionEvent e) {
+       //     if(_player.numberOfLives()!=0 && _gameField.destructibleBricks().isEmpty()) {
+       //         if(_level<5) {_level +=1;}
+        //        else {//вывести сообщение об успешном прохождении игры
+                    
+       //         }
+       //     }
+       // }
+        
+    //}
+    
+    public void removeBrickSprite (Sprite sprite) {
+        BRICK_GROUP.remove(sprite);
     }
 }
 
