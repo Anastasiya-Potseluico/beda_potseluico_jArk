@@ -12,7 +12,10 @@ import com.golden.gamedev.object.collision.AdvanceCollisionGroup;
 import jArk.physicalObjects.ElementFieldView;
 import jArk.physicalObjects.GameFieldView;
 import jark.model.Ball;
+import jark.model.DestructibleBrick;
 import jark.model.ElementField;
+import jark.model.IndestructibleBrick;
+import jark.model.Racket;
 import java.util.ArrayList;
 
 /**
@@ -48,6 +51,13 @@ public class CollisionMan{
         ElementField first, second;
         first = findElement(sprite);
         second = findElement(sprite1);
+        if(second instanceof Ball) {
+            
+        } else if (second instanceof DestructibleBrick) {
+            ((DestructibleBrick)second).reactOnCollision((Ball)first);
+        } else if (second instanceof Racket) {
+            ((Racket)second).collideWithMovableElement((Ball)first);//  ????
+        } 
         
     }
     
