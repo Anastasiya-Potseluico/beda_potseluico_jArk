@@ -11,7 +11,7 @@ package jark.model;
  * @author Дарья
  */
 public class Ball extends ElementField implements Collide {
-    
+    public enum AXIS {X, Y}; //Оси, относительно которых мяч будет отскакивать
     /**
      * Конструктор
      */
@@ -19,12 +19,15 @@ public class Ball extends ElementField implements Collide {
         super(MASS.FIN_MASS);
     }
     
+    //!!!!!!!!!!!!!!!!
+    //TODO Даш, тут проблема возникает. У модели нет ни координат, ни скорости. 
+    // возможно, методы отскоков нужно перенести в представление, я не знаю, как лучше
     /**
      * Отскочить от элемента поля
      * @param element элемент поля, от которого отскакивает мяч
      * @return результат отскока
      */
-    private boolean rebound(ElementField element) {
+    private boolean rebound(ElementField element, AXIS axis) {
         
         return true;
     }
@@ -50,7 +53,7 @@ public class Ball extends ElementField implements Collide {
      */
     @Override
     public void collideWithUnmovableElement(ElementField _element) {
-        rebound(_element);
+        //rebound(_element);
     }
 
     @Override
