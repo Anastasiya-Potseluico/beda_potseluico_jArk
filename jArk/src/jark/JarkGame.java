@@ -104,8 +104,17 @@ public class JarkGame extends Game{
     public void update(long l) {
         _gameFieldView.updateElements(l);
         double speedX = 0;
-        if (keyDown(KeyEvent.VK_LEFT))   speedX = -0.5;
-        if (keyDown(KeyEvent.VK_RIGHT))  speedX = 0.5;
+        if (keyDown(KeyEvent.VK_LEFT)) {
+            speedX = -0.5;
+        }
+        if (keyDown(KeyEvent.VK_RIGHT)) {
+            speedX = 0.5;
+        }
+        if(this._gameFieldView.racketView().racket().hasBall()&&speedX!=0) {
+            this._gameFieldView.ballsView().get(0).sprite().setSpeed(0.1, -0.1);
+            this._gameFieldView.ballsView().get(1).sprite().setVerticalSpeed(0.1);
+            this._gameFieldView.racketView().racket().resetBall();
+        }
             this._gameFieldView.racketView().sprite().setHorizontalSpeed(speedX);
     }
 
