@@ -11,19 +11,21 @@ package jark.model;
  */
 public class Racket extends ElementField implements Collide {
 
+    boolean _hasBall;
     /**
      * Конструктор ракетки
      */
     public Racket() {
         super(MASS.INF_MASS);
+        _hasBall = true;
     }
     
-    /**
-     * Толкнуть мяч
-     * @return успех толкания мяча
-     */
-    public boolean pushBall() {
-        return true;
+    public boolean hasBall() {
+        return _hasBall;
+    }
+    
+    public void resetBall() {
+        _hasBall = false;
     }
 
     /**
