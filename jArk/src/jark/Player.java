@@ -29,4 +29,12 @@ public class Player {
     {
         return _number_of_lives;
     }
+    
+    public int scores() {
+        return _scores;
+    }
+    
+    public void sumScore(int toScores) {
+        _scores += toScores;
+    }
 }
