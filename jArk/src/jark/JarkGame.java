@@ -8,6 +8,7 @@ package jark;
 import com.golden.gamedev.Game;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.CollisionManager;
+import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.background.ImageBackground;
@@ -20,6 +21,7 @@ import jark.events.DestructionListener;
 import jark.model.GameField;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
+import static javafx.scene.text.Font.font;
 
 /**
  * Класс игры
@@ -42,6 +44,8 @@ public class JarkGame extends Game{
     SpriteGroup      BALL_GROUP;
     
     SpriteGroup      BRICK_GROUP;
+    
+    GameFont           font;
     
     /** 
      * Конструктор
@@ -90,6 +94,10 @@ public class JarkGame extends Game{
         _collisionManager = new CollisionMan(_gameFieldView);
         _collisionManager.setPerfectCollision(true);
         _gameFieldView.addCollisionGroup(BALL_GROUP, BRICK_GROUP, _collisionManager.collision());
+        font = fontManager.getFont(getImages("font.png", 20, 3),
+                                   " !            .,0123" +
+                                   "456789:   -? ABCDEFG" +
+                                   "HIJKLMNOPQRSTUVWXYZ ");
     }
 
     @Override
@@ -104,7 +112,12 @@ public class JarkGame extends Game{
     @Override
     public void render(Graphics2D gd) {
         _gameFieldView.render(gd);   
-       // backgr.render(gd); 
+        String lifes = "LIFES:" + String.valueOf(_player.numberOfLives());
+        font.drawString(gd, lifes, 10, 530);
+        String level = "LEVEL:" + String.valueOf(_level);
+        font.drawString(gd, level, 180, 530);
+        String scores = "SCORE:" + String.valueOf(_player.scores());
+        font.drawString(gd, scores, 350, 530); 
     }
     
     public int level() {
