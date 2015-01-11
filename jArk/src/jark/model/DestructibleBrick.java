@@ -5,6 +5,7 @@
  */
 package jark.model;
 
+import jark.JarkGame;
 import jark.events.DestructionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,15 +35,12 @@ public class DestructibleBrick extends Brick{
      */
     private void destruct(){
         _hardness-=1; 
-        if (_hardness == 0) {
-            Iterator i = _listeners.iterator();
-            DestructionListener listener;
-            while(i.hasNext()){
-                 listener = (DestructionListener)i.next();
-                 listener.brickDestroyed(null,this);
-            }
-        }
-        //Сигнал полю
+        Iterator i = _listeners.iterator();
+        DestructionListener listener;
+        while(i.hasNext()){
+            listener = (DestructionListener)i.next();
+            listener.brickHitted(null,this);
+        } 
     }
 
 
