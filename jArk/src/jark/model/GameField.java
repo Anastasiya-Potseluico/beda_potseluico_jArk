@@ -498,8 +498,10 @@ public class GameField {
     
     public class removeBrick implements DestructionListener {
         @Override
-        public void brickDestroyed(DestructionEvent e, DestructibleBrick dBrick) {
-            _dBricks.remove(dBrick);
+        public void brickHitted(DestructionEvent e, DestructibleBrick dBrick) {
+            if(dBrick.hadrness() == 0) {
+                _dBricks.remove(dBrick);
+            }
         } 
     }
 }
