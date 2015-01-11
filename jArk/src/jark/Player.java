@@ -18,8 +18,9 @@ public class Player {
      * Устанавливает количество жизней
      * @param number количество жизней
      */
-    public void setNumberOfLives(int number) {
-        _number_of_lives = number;
+    public Player() {
+        _number_of_lives = 3;
+        _scores = 0;
     }
     /**
      * Возвращает количество жизней
