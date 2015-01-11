@@ -364,22 +364,25 @@ public class GameFieldView extends PlayField{
         _boundariesView.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(1),0,0));
         _boundariesView.add(new BoundaryView((BoundaryField) this._gameField.bondarysField().get(2),635, 0));
         _ballsView.add(new BallView((Ball) this._gameField.balls().get(0),295, 464));
-        _ballsView.add(new BallView((Ball) this._gameField.balls().get(1),295, 65));
+        _ballsView.add(new BallView((Ball) this._gameField.balls().get(1),295, 265));
     }
     
     public class removeSprite implements DestructionListener {
         @Override
-        public void brickDestroyed(DestructionEvent e, DestructibleBrick dBrick) {
+        public void brickHitted(DestructionEvent e, DestructibleBrick dBrick) {
             boolean found = false;
             int i=0;
-            while(!found) {
-                if(_dBricksView.get(i)._elementField == dBrick) {
-                    found = true;
-                    _game.removeBrickSprite(_dBricksView.get(i).sprite());
-                    _dBricksView.remove(i);
+            if(dBrick.hadrness()==0) {
+                while(!found) {
+                    if(_dBricksView.get(i)._elementField == dBrick) {
+                        found = true;
+                        _game.removeBrickSprite(_dBricksView.get(i).sprite());
+                        _dBricksView.remove(i);
+                    }
+                    i++;
                 }
-                i++;
             }
+            _game.addScores();
         } 
     }
 }
