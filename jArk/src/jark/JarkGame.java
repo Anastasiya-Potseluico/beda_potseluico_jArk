@@ -149,5 +149,9 @@ public class JarkGame extends Game{
     public void removeBrickSprite (Sprite sprite) {
         BRICK_GROUP.remove(sprite);
     }
+    
+    public void addScores () {
+        _player.sumScore(20);
+    }
 }
 
