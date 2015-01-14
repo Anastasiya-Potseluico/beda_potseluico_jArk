@@ -47,6 +47,8 @@ public class JarkGame extends Game{
     
     GameFont           font;
     
+    private enum gameState {GAME_OVER, NEXT_LEVEL, GAME_FINISHED, GAME_CONTINUED};
+    
     /** 
      * Конструктор
      */
@@ -127,24 +129,38 @@ public class JarkGame extends Game{
         font.drawString(gd, level, 180, 530);
         String scores = "SCORE:" + String.valueOf(_player.scores());
         font.drawString(gd, scores, 350, 530); 
+        gameState state = identifyGameOver();
+        switch (state) {
+            case GAME_OVER: {
+                String over = "YOU LOOSE!";
+                font.drawString(gd, over, 350, 330);
+                break;
+            } case NEXT_LEVEL: {
+                //создать стартовую обстановку следующего уровня.
+                break;
+            } case GAME_FINISHED: {
+                String finished = "YOU WIN!\nCONGRADULATIONS!!";
+                font.drawString(gd, finished, 350, 330);
+                break;
+            }
+            
+        }
     }
     
     public int level() {
         return this._level;
     }
     
-   // public class IdentifyGameOver implements DestructionListener{
-       // @Override
-       // public void brickDestroyed(DestructionEvent e) {
-       //     if(_player.numberOfLives()!=0 && _gameField.destructibleBricks().isEmpty()) {
-       //         if(_level<5) {_level +=1;}
-        //        else {//вывести сообщение об успешном прохождении игры
-                    
-       //         }
-       //     }
-       // }
-        
-    //}
+    public gameState identifyGameOver() {
+        if(_gameField.balls().isEmpty()) {
+            return gameState.GAME_OVER;
+        } else if (_gameField.destructibleBricks().isEmpty() && _level < 5) {
+            return gameState.NEXT_LEVEL;
+        } else if (_gameField.destructibleBricks().isEmpty() && _level == 5){
+            return gameState.GAME_FINISHED;
+        }
+        return gameState.GAME_CONTINUED;
+    }
     
     public void removeBrickSprite (Sprite sprite) {
         BRICK_GROUP.remove(sprite);
