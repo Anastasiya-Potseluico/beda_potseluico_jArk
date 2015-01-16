@@ -19,8 +19,8 @@ public class BoundaryField extends ElementField {
      */
     private TYPE _type;
     
-    public BoundaryField (TYPE type) {
-        super(MASS.INF_MASS);
+    public BoundaryField (TYPE type, int x, int y) {
+        super(MASS.INF_MASS, x, y);
         _type = type;
     }
 

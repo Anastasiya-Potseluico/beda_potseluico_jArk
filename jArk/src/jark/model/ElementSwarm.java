@@ -11,8 +11,8 @@ package jark.model;
  */
 public class ElementSwarm extends ElementField {
 
-    public ElementSwarm() {
-        super(MASS.OTHER);
+    public ElementSwarm(int x, int y) {
+        super(MASS.OTHER, x, y);
     }
 
     @Override

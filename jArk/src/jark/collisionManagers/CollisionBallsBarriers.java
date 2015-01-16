@@ -7,25 +7,25 @@ package jark.collisionManagers;
 
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.collision.AdvanceCollisionGroup;
-import jArk.physicalObjects.GameFieldView;
 
 /**
  *
  * @author Дарья
  */
-public class Collision extends AdvanceCollisionGroup{
+public class CollisionBallsBarriers extends AdvanceCollisionGroup{
     
     private CollisionMan _collisionMan;
     
     
-    public Collision(CollisionMan collisionMan) {
+    public CollisionBallsBarriers(CollisionMan collisionMan) {
         _collisionMan = collisionMan;
+        pixelPerfectCollision = true;
     }
 
     @Override
-    public void collided(Sprite sprite, Sprite sprite1) {
+    public void collided(Sprite sprite1, Sprite sprite2) {
         //передать в менеджер спрайты
-        _collisionMan.manageCollision(sprite, sprite1);
+        _collisionMan.manageCollision(sprite1, sprite2);
     }
     
 }

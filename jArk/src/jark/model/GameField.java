@@ -8,6 +8,7 @@ package jark.model;
 import jark.events.DestructionEvent;
 import jark.events.DestructionListener;
 import jark.model.BoundaryField.TYPE;
+import jark.view.GameFieldView;
 import java.util.ArrayList;
 
 /**
@@ -15,10 +16,12 @@ import java.util.ArrayList;
  * @author Дарья
  */
 public class GameField {
+    
+    private GameFieldView _gameFieldView;
     /** Мячи */
     private ArrayList <Ball> _balls = new ArrayList();
     /** Ракетка */
-    private Racket _racket = new Racket();
+    private Racket _racket;
     /** Рой */
     private ArrayList <Swarm> _swarms = new ArrayList();;
     /** Разрушаемые кирпичи */
@@ -32,51 +35,62 @@ public class GameField {
      * Конструктор
      */
     public GameField () {
+        _gameFieldView = new GameFieldView();
+        addElementField(new BoundaryField(TYPE.HORISONTAL, 0, 0));
+        addElementField(new BoundaryField(TYPE.VERTICAL, 0, 0));
+        addElementField(new BoundaryField(TYPE.VERTICAL, 635, 0));
+        addElementField(new Racket(250, 500));
     }
 
+     public GameFieldView gameFieldView() {
+         return _gameFieldView;
+     }		     
     /**
      * Добавить элемент поля
      * @param element добавляемый элемент
      * @return успех добавления
      */
-    public ElementField addElementField(ElementField element){
+    public boolean addElementField(ElementField element){
+        gameFieldView().addElementFieldView(element);
         if (element instanceof Ball) {
-            _balls.add((Ball)element);
+            return _balls.add((Ball)element);
         } else if (element instanceof DestructibleBrick) {
-            _dBricks.add((DestructibleBrick)element);
+            return _dBricks.add((DestructibleBrick)element);
         } else if (element instanceof BoundaryField) {
-            _bondarysField.add((BoundaryField)element);
+            return _bondarysField.add((BoundaryField)element);
         } else if (element instanceof Swarm) {
-            _swarms.add((Swarm)element);
+            return _swarms.add((Swarm)element);
         } else if (element instanceof IndestructibleBrick) {
-            _iBricks.add((IndestructibleBrick)element);
+            return _iBricks.add((IndestructibleBrick)element);
         } else if (element instanceof Racket) {
             if (_racket == null) {
                 _racket = (Racket)element;
-                return element;
-            } else return null;
+                return true;
+            } else return false;
         }
-        return element;
+        return false;
     }
     
     /**
      * Удалить элемент поля
      * @param element удаляемый элемент
      */
-    public void deleteElementField(ElementField element) {
+    public boolean  deleteElementField(ElementField element) {
         if (element instanceof Ball) {
-            _balls.remove((Ball)element);
+           return _balls.remove((Ball)element);
         } else if (element instanceof DestructibleBrick) {
-            _dBricks.remove((DestructibleBrick)element);
+           return _dBricks.remove((DestructibleBrick)element);
         } else if (element instanceof BoundaryField) {
-            _bondarysField.remove((BoundaryField)element);
+            return _bondarysField.remove((BoundaryField)element);
         } else if (element instanceof Swarm) {
-            _swarms.remove((Swarm)element);
+            return _swarms.remove((Swarm)element);
         } else if (element instanceof IndestructibleBrick) {
-            _iBricks.remove((IndestructibleBrick)element);
+            return _iBricks.remove((IndestructibleBrick)element);
         } else if (element instanceof Racket) {
             _racket = null;
+            return true;
         }
+        return false;
     }
     
     /**
@@ -138,7 +152,7 @@ public class GameField {
         this._bondarysField.clear();
         int i;
         ElementField el;
-        switch(level){
+        /*switch(level){
             case 1: {
                 el = this.addElementField(new DestructibleBrick(1));
                 ((DestructibleBrick)el).addBrickListener(new GameField.removeBrick());
@@ -488,12 +502,8 @@ public class GameField {
                 break;
             }    
         }
-        this.addElementField(new BoundaryField(TYPE.HORISONTAL));
-        this.addElementField(new BoundaryField(TYPE.VERTICAL));
-        this.addElementField(new BoundaryField(TYPE.VERTICAL));
-        this.addElementField(new Ball());
-        this.addElementField(new Ball());
-        this.addElementField(new Racket());
+                */
+        this.addElementField(new Ball(295, 464));
     }
     
     public class removeBrick implements DestructionListener {
