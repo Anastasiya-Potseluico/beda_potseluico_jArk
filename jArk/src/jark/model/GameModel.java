@@ -18,7 +18,7 @@ public class GameModel {
     /**Игровое поля логика */
     private GameField _gameField;
     /** Уровень (1-3) */
-    private int _level = 1;
+    private int _level = 5;
     
     private boolean _isBallStart = false;
     /** */

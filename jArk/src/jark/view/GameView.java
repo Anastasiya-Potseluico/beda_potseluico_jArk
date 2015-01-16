@@ -59,6 +59,12 @@ public class GameView {
             BARRIERS_BALLS_GROUP.add(gameFieldView().boundariesView().get(i).sprite());
             BOUNDARYS_GROUP.add(gameFieldView().boundariesView().get(i).sprite());
         }
+        for(int i = 0; i < gameFieldView().dBricksView().size(); i++) {
+            BARRIERS_BALLS_GROUP.add(gameFieldView().dBricksView().get(i).sprite());
+        }
+        for(int i = 0; i < gameFieldView().iBricksView().size(); i++) {
+            BARRIERS_BALLS_GROUP.add(gameFieldView().iBricksView().get(i).sprite());
+        }
         BARRIERS_BALLS_GROUP.add(gameFieldView().racketView().sprite());
         RACKET_GROUP.add(gameFieldView().racketView().sprite());
     }
