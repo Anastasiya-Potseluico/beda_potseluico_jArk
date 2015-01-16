@@ -5,6 +5,10 @@
  */
 package jark.model;
 
+import com.golden.gamedev.object.Sprite;
+import jark.model.BoundaryField.TYPE;
+import jark.specifications.Buffer;
+
 
 /**
  * Класс мяча
@@ -46,7 +50,15 @@ public class Ball extends ElementField implements Collide {
      * @param _element Элемент,с которым произошло столкновение
      */
     @Override
-    public void collideWithUnmovableElement(ElementField _element) {
+    public void collideWithUnmovableElement(ElementField element) {
+        Sprite sp = Buffer.findSprite(this);
+        if(element instanceof BoundaryField) {
+            if(((BoundaryField)element).type() == TYPE.HORISONTAL) 
+              setSpeed(sp.getHorizontalSpeed(), sp.getVerticalSpeed()*-1); 
+            else
+                setSpeed(sp.getHorizontalSpeed()*-1, sp.getVerticalSpeed());
+        }
+        
         //rebound(_element);
     }
 

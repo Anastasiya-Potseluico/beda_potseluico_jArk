@@ -24,6 +24,10 @@ public class GameView {
     /** */
     private SpriteGroup      BARRIERS_BALLS_GROUP;
     
+    private SpriteGroup RACKET_GROUP;
+    
+    private SpriteGroup BOUNDARYS_GROUP;
+    
     /**
      * 
      * @param gameFieldView 
@@ -46,14 +50,17 @@ public class GameView {
     public void createSpriteGroup() {
         BALLS_GROUP = new SpriteGroup("balls"); //Группа мячей
         BARRIERS_BALLS_GROUP = new SpriteGroup("barriers_balls"); //Группа преград
+        RACKET_GROUP = new SpriteGroup("racket");
+        BOUNDARYS_GROUP = new SpriteGroup("boundarys");
         for(int i = 0; i < gameFieldView().ballsView().size(); i++) {
             BALLS_GROUP.add(gameFieldView().ballsView().get(i).sprite()); 
-            BARRIERS_BALLS_GROUP.add(gameFieldView().ballsView().get(i).sprite());
         }
         for(int i = 0; i < gameFieldView().boundariesView().size(); i++) {
             BARRIERS_BALLS_GROUP.add(gameFieldView().boundariesView().get(i).sprite());
+            BOUNDARYS_GROUP.add(gameFieldView().boundariesView().get(i).sprite());
         }
         BARRIERS_BALLS_GROUP.add(gameFieldView().racketView().sprite());
+        RACKET_GROUP.add(gameFieldView().racketView().sprite());
     }
     
     public SpriteGroup ballsGroup() {
@@ -64,5 +71,11 @@ public class GameView {
         return BARRIERS_BALLS_GROUP;
     }
     
+    public SpriteGroup racketGroup() {
+        return RACKET_GROUP;
+    }
     
+    public SpriteGroup boundaryGroup() {
+        return BOUNDARYS_GROUP;
+    }
 }

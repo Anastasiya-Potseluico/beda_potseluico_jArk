@@ -19,6 +19,7 @@ public class GameModel {
     private GameField _gameField;
     /** Уровень (1-3) */
     private int _level = 1;
+    private boolean _isBallStart = false;
     /** */
     private GameView _gameView;
     
@@ -43,6 +44,10 @@ public class GameModel {
     
     public int level() {
         return _level;
+    }
+    
+    public boolean isBallStart () {
+        return _isBallStart;
     }
     
     public GameField gameField () {

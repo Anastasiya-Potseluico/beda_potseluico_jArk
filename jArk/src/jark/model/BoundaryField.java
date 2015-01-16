@@ -26,7 +26,7 @@ public class BoundaryField extends ElementField {
 
     @Override
     public void reactOnCollision(ElementField element) {
-       
+
     }
     
     public TYPE type() {

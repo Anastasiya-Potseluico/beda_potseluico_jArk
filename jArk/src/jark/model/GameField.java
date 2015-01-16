@@ -109,9 +109,7 @@ public class GameField {
      */
     public void setField (int level) {
         this._balls.clear();
-        for (int i = 0; i < level; i++) {
-            this.addElementField(new Ball(295, 464));
-        }
+        this.addElementField(new Ball(295, 464));
     }
     
     public class removeBrick implements DestructionListener {

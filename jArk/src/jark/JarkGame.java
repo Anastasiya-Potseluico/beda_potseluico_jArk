@@ -7,12 +7,14 @@ package jark;
 
 import com.golden.gamedev.Game;
 import com.golden.gamedev.object.Background;
+import com.golden.gamedev.object.CollisionManager;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.background.ImageBackground;
 import jark.collisionManagers.CollisionMan;
 import jark.model.GameModel;
+import jark.specifications.Buffer;
 import jark.view.GameView;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -56,9 +58,8 @@ public class JarkGame extends Game{
         backgr = new ImageBackground(getImage("background.jpg"), 650, 550);
         _playField.setBackground(backgr);
         _collisionManager = new CollisionMan();
-        _collisionManager.setPerfectCollision(true);
-        _playField.addCollisionGroup(_gameView.ballsGroup(), 
-                _gameView.barriersballsGroup(), _collisionManager.collision());
+        _playField.addCollisionGroup(_gameView.racketGroup(), 
+                _gameView.boundaryGroup(), _collisionManager.collisionBallsBarrier());
         font = fontManager.getFont(getImages("font.png", 20, 3),
                                    " !            .,0123" +
                                    "456789:   -? ABCDEFG" +
@@ -68,20 +69,25 @@ public class JarkGame extends Game{
     @Override
     public void update(long l) {
         _playField.update(l);
+        double sp = Buffer.findSprite(_gameModel.gameField().racket()).getHorizontalSpeed();
         double speedX = 0;
         if (keyDown(KeyEvent.VK_LEFT)) {
             speedX = -0.5;
-        }
-        if (keyDown(KeyEvent.VK_RIGHT)) {
+        } else if (keyDown(KeyEvent.VK_RIGHT)) {
             speedX = 0.5;
         }
+
+
+        
         _gameModel.gameField().racket().setSpeed(speedX, 0);
-        _gameModel.gameField().balls().get(0).setSpeed(speedX, 0);
+        if(!_gameModel.isBallStart()) {
+            _gameModel.gameField().balls().get(0).setSpeed(speedX, 0);
+        }
     }
 
     @Override
     public void render(Graphics2D gd) {
-        _gameView.gameFieldView().render(gd);   
+        _gameView.gameFieldView().render(gd); 
         String lifes = "LIFES:" + String.valueOf(_gameModel.player().numberOfLives());
         font.drawString(gd, lifes, 10, 530);
         String level = "LEVEL:" + String.valueOf(_gameModel.level());
