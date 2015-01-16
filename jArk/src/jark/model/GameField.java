@@ -5,6 +5,7 @@
  */
 package jark.model;
 
+import jark.view.GameFieldView;
 import jark.events.DestructionEvent;
 import jark.events.DestructionListener;
 import jark.model.BoundaryField.TYPE;
@@ -21,11 +22,21 @@ public class GameField {
     private Racket _racket = new Racket();
     /** Границы поля */
     private ArrayList <BoundaryField> _bondarysField = new ArrayList();
-   
+    /** */
+    private GameFieldView _gameFieldView;
     /**
      * Конструктор
      */
     public GameField () {
+        _gameFieldView = new GameFieldView();
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public GameFieldView gameFieldView() {
+        return _gameFieldView;
     }
 
     /**
@@ -94,6 +105,7 @@ public class GameField {
     public void setField (int level) {
         this._bondarysField.clear();
         this._balls.clear();
+        _racket = null;
         for (int i = 0; i < level; i++) {
             this.addElementField(new Ball());
         }

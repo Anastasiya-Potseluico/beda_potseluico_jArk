@@ -8,7 +8,6 @@ package jark;
 
 import com.golden.gamedev.GameLoader;
 import java.awt.Dimension;
-import java.io.File;
 
 /**
  * Главный класс игры

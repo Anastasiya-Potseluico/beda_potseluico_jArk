@@ -16,16 +16,15 @@ enum MASS {FIN_MASS, INF_MASS, OTHER};
 public abstract class ElementField {
     /** Игровое поле */
     protected GameField _gamefield;
-    /** Вес элемента */
-          
-    protected MASS _weight;
+    /** Вес элемента */      
+    protected MASS _mass;
      
     /**
      * Конструктор элемента поля
-     * @param weight вес элемента (постоянен)
+     * @param mass
      */
-    public ElementField(MASS weight){
-        this._weight = weight;
+    public ElementField(MASS mass){
+        this._mass = mass;
     }
     
     /**
@@ -39,8 +38,8 @@ public abstract class ElementField {
      * Функция для получения веса элемента
      * @return вес элемента
      */
-    public MASS weight(){
-        return this._weight;
+    public MASS mass(){
+        return this._mass;
     }
     
     /**

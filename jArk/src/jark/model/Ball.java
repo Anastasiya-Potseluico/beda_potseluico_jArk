@@ -38,13 +38,7 @@ public class Ball extends ElementField implements Collide {
      */
     @Override
     public void collideWithMovableElement(ElementField _element) {
-        if(_element instanceof Racket) {
-            collideWithRacket((Racket) _element);
-        } else if (_element instanceof Ball) {
-            collideWithBall((Ball) _element);
-        } else if (_element instanceof Swarm) {
-            collideWithSwarm((Swarm) _element);
-        }
+        
     }
 
     /**
@@ -58,23 +52,11 @@ public class Ball extends ElementField implements Collide {
 
     @Override
     public void reactOnCollision(ElementField element) {
-        if(element.weight() == MASS.INF_MASS) {
+        if(element.mass() == MASS.INF_MASS) {
             collideWithUnmovableElement(element);
         } else {
             collideWithMovableElement(element);
         }
     }
-
-
-    private void collideWithRacket(Racket racket) {
-        //TODO
-    }
     
-    private void collideWithBall(Ball ball) {
-        //TODO
-    }
-    
-    private void collideWithSwarm(Swarm swarm) {
-        //TODO
-    }
 }
