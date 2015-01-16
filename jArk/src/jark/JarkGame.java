@@ -54,12 +54,16 @@ public class JarkGame extends Game{
         _gameModel.startGame(); 
         _gameView.createSpriteGroup();
         _playField.addGroup(_gameView.ballsGroup());
-        _playField.addGroup(_gameView.barriersballsGroup());
+        _playField.addGroup(_gameView.barriersGroup());
         backgr = new ImageBackground(getImage("background.jpg"), 650, 550);
         _playField.setBackground(backgr);
         _collisionManager = new CollisionMan();
         _playField.addCollisionGroup(_gameView.racketGroup(), 
-                _gameView.boundaryGroup(), _collisionManager.collisionBallsBarrier());
+                _gameView.boundaryGroup(), _collisionManager.collisionRacketBoundaries());
+        _playField.addCollisionGroup(_gameView.ballsGroup(), 
+                _gameView.barriersGroup(), _collisionManager.collisionBallsBarrier());
+        _playField.addCollisionGroup(_gameView.ballsGroup(), 
+                _gameView.ballsGroup(), _collisionManager.collisionBallsBarrier());
         font = fontManager.getFont(getImages("font.png", 20, 3),
                                    " !            .,0123" +
                                    "456789:   -? ABCDEFG" +
