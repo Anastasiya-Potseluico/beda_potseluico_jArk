@@ -7,16 +7,8 @@ package jark.collisionManagers;
 
 import com.golden.gamedev.object.CollisionManager;
 import com.golden.gamedev.object.Sprite;
-import com.golden.gamedev.object.SpriteGroup;
-import com.golden.gamedev.object.collision.AdvanceCollisionGroup;
-import jArk.physicalObjects.ElementFieldView;
 import jArk.physicalObjects.GameFieldView;
-import jark.model.Ball;
-import jark.model.DestructibleBrick;
 import jark.model.ElementField;
-import jark.model.IndestructibleBrick;
-import jark.model.Racket;
-import java.util.ArrayList;
 
 /**
  * Класс обработчика коллизий
@@ -47,17 +39,20 @@ public class CollisionMan{
     /**
      * Метод для обработки коллизии
      */
-    public void manageCollision(Sprite sprite, Sprite sprite1){
+    public void manageCollision(Sprite sprite1, Sprite sprite2){
         ElementField first, second;
-        first = findElement(sprite);
-        second = findElement(sprite1);
-        if(second instanceof Ball) {
-            
-        } else if (second instanceof DestructibleBrick) {
-            ((DestructibleBrick)second).reactOnCollision((Ball)first);
+        first = findElement(sprite1);
+        second = findElement(sprite2);
+        first.reactOnCollision(second);
+        second.reactOnCollision(first);
+        /*if(second instanceof Ball) {
+            ((Ball)second).collideWithMovableElement((Ball)first);
+        } else if (second instanceof BoundaryField) {
+            ((BoundaryField)second).reactOnCollision((Ball)first);
         } else if (second instanceof Racket) {
             ((Racket)second).collideWithMovableElement((Ball)first);//  ????
-        } 
+        }*/
+                
         
     }
     
@@ -81,30 +76,12 @@ public class CollisionMan{
                     }
                 }
                 break;
-            } case 3: { //Id для разрушаемых кирпичей
-                for(i = 0; i < this._fieldView.dBricksView().size(); i++) {
-                    if(this._fieldView.dBricksView().get(i).sprite() == sprite) {
-                        founded = this._fieldView.dBricksView().get(i).dBrick();
-                        return founded;
-                    }
-                }
-                break;
-            } case 4: { //Id для неразрушаемых кирпичей
-                for(i = 0; i < this._fieldView.iBricksView().size(); i++) {
-                    if(this._fieldView.iBricksView().get(i).sprite() == sprite) {
-                        founded = this._fieldView.iBricksView().get(i).iBrick();
-                        return founded;
-                    }
-                }
-                break;
-            } case 5: { //Id для ракетки
+            } case 3: { //Id для ракетки
                 founded = this._fieldView.racketView().racket();
                 return founded;
-            } case 6: { //Id для элементов роя
-                break;
             }
             
         }
-        return new Ball();
+        return null;
     }
 }

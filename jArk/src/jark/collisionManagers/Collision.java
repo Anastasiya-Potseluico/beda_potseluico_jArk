@@ -7,7 +7,6 @@ package jark.collisionManagers;
 
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.collision.AdvanceCollisionGroup;
-import jArk.physicalObjects.GameFieldView;
 
 /**
  *
@@ -23,9 +22,9 @@ public class Collision extends AdvanceCollisionGroup{
     }
 
     @Override
-    public void collided(Sprite sprite, Sprite sprite1) {
+    public void collided(Sprite sprite1, Sprite sprite2) {
         //передать в менеджер спрайты
-        _collisionMan.manageCollision(sprite, sprite1);
+        _collisionMan.manageCollision(sprite1, sprite2);
     }
     
 }
