@@ -30,19 +30,14 @@ public class GameFieldView extends PlayField{
     private RacketView _racketView;
     /** Логическое представление игрового поля */
     private GameField _gameField;
-    /** Игра */
-    private JarkGame _game;
     
     /**
      * Конструктор 
-     * @param game
-     * @param i номер уровня
+     * @param gameField
      */
-    public GameFieldView(JarkGame game, int i) {
-        _game= game;
-        _gameField = new GameField();
-        _gameField.setField(i);
-        setStartPosition(i);
+    public GameFieldView(GameField gameField) {
+        _gameField = gameField;
+        
     }
     
     public ArrayList<BallView> ballsView() {

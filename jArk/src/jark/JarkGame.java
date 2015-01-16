@@ -41,7 +41,7 @@ public class JarkGame extends Game{
     
     GameFont           font;
     
-    private enum gameState {GAME_OVER, NEXT_LEVEL, GAME_FINISHED, GAME_CONTINUED};
+    private enum gameState {GAME_OVER, GAME_FINISHED, GAME_CONTINUED};
     
     /** 
      * Конструктор
@@ -50,7 +50,11 @@ public class JarkGame extends Game{
         this.distribute = true;
         _player = new Player();
         _level = 1;
-        //_gameFieldView = new GameFieldView(this,_level);
+        _gameField = new GameField();
+        _gameFieldView = new GameFieldView(_gameField);
+        _gameField.setField(_level);
+        _gameFieldView.setStartPosition(_level);
+        
     }
     
     /**
@@ -66,7 +70,7 @@ public class JarkGame extends Game{
         int i;
         BALL_GROUP = new SpriteGroup("balls"); //Группа мячей
         BARRIER_BALLS_GROUP = new SpriteGroup("barrier_balls"); //Группа преград
-        _gameFieldView = new GameFieldView(this,_level);
+        //_gameFieldView = new GameFieldView(this,_level);
         for(i = 0; i < this._gameFieldView.ballsView().size(); i++) {
             BALL_GROUP.add(this._gameFieldView.ballsView().get(i).sprite()); 
             BARRIER_BALLS_GROUP.add(this._gameFieldView.ballsView().get(i).sprite());
@@ -121,9 +125,6 @@ public class JarkGame extends Game{
                 String over = "YOU LOOSE!";
                 font.drawString(gd, over, 350, 330);
                 break;
-            } case NEXT_LEVEL: {
-                //создать стартовую обстановку следующего уровня.
-                break;
             } case GAME_FINISHED: {
                 String finished = "YOU WIN!\nCONGRADULATIONS!!";
                 font.drawString(gd, finished, 350, 330);
@@ -137,6 +138,10 @@ public class JarkGame extends Game{
         return this._level;
     }
     
+    /**
+     *
+     * @return
+     */
     public gameState identifyGameOver() {
         if(_gameField.balls().isEmpty()) {
             return gameState.GAME_OVER;
