@@ -12,12 +12,12 @@ import com.golden.gamedev.object.collision.AdvanceCollisionGroup;
  *
  * @author Дарья
  */
-public class CollisionBallsBarriers extends AdvanceCollisionGroup{
+public class Collision extends AdvanceCollisionGroup{
     
     private CollisionMan _collisionMan;
     
     
-    public CollisionBallsBarriers(CollisionMan collisionMan) {
+    public Collision(CollisionMan collisionMan) {
         _collisionMan = collisionMan;
         pixelPerfectCollision = true;
     }

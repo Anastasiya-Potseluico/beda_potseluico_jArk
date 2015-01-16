@@ -16,21 +16,33 @@ import jark.specifications.Buffer;
  */
 public class CollisionMan{
     
-    private CollisionBallsBarriers _collisionBallsBarrier = new CollisionBallsBarriers(this);
+    private Collision _collisionRacketBoundaries = new Collision(this);   
+    private CollisionManager _collisionManagerRacketBoundaries = _collisionRacketBoundaries;
     
-    private CollisionManager _collisionManager = _collisionBallsBarrier;
-
+    private Collision _collisionBallsBarrier = new Collision(this);   
+    private CollisionManager _collisionManagerBallsBarrier = _collisionBallsBarrier;
+    
+    private Collision _collisionBallsBalls = new Collision(this);   
+    private CollisionManager _collisionManagerBallsBalls = _collisionBallsBalls;
+    
     public void checkCollision () {
-        _collisionManager.checkCollision();
+        _collisionManagerRacketBoundaries.checkCollision();
+        _collisionManagerBallsBarrier.checkCollision();
+        _collisionManagerBallsBalls.checkCollision();
     }
     
-    public CollisionBallsBarriers collisionBallsBarrier() {
-        return this._collisionBallsBarrier;
+    public Collision collisionRacketBoundaries() {
+        return _collisionRacketBoundaries;   
     }
     
-    public void setPerfectCollision(boolean isPerfCollision) {
-        _collisionBallsBarrier.pixelPerfectCollision = isPerfCollision;
+    public Collision collisionBallsBarrier() {
+        return _collisionBallsBarrier;
     }
+    
+    public Collision collisionBallsBalls() {
+        return _collisionBallsBalls;
+    }
+    
     /**
      * Метод для обработки коллизии
      */

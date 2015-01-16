@@ -34,6 +34,11 @@ public class Buffer {
      * @return 
      */
     public static ElementField findElement (Sprite sprite) {
+        for(ElementField key : _elements_sprite.keySet()) {
+            if(_elements_sprite.get(key).equals(sprite)) {
+                return key;
+            }
+        }
         return null;
     }
     

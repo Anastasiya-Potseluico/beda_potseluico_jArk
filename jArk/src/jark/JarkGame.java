@@ -54,12 +54,16 @@ public class JarkGame extends Game{
         _gameModel.startGame(); 
         _gameView.createSpriteGroup();
         _playField.addGroup(_gameView.ballsGroup());
-        _playField.addGroup(_gameView.barriersballsGroup());
+        _playField.addGroup(_gameView.barriersGroup());
         backgr = new ImageBackground(getImage("background.jpg"), 650, 550);
         _playField.setBackground(backgr);
         _collisionManager = new CollisionMan();
         _playField.addCollisionGroup(_gameView.racketGroup(), 
-                _gameView.boundaryGroup(), _collisionManager.collisionBallsBarrier());
+                _gameView.boundaryGroup(), _collisionManager.collisionRacketBoundaries());
+        _playField.addCollisionGroup(_gameView.ballsGroup(), 
+                _gameView.barriersGroup(), _collisionManager.collisionBallsBarrier());
+        _playField.addCollisionGroup(_gameView.ballsGroup(), 
+                _gameView.ballsGroup(), _collisionManager.collisionBallsBarrier());
         font = fontManager.getFont(getImages("font.png", 20, 3),
                                    " !            .,0123" +
                                    "456789:   -? ABCDEFG" +
@@ -69,7 +73,6 @@ public class JarkGame extends Game{
     @Override
     public void update(long l) {
         _playField.update(l);
-        double sp = Buffer.findSprite(_gameModel.gameField().racket()).getHorizontalSpeed();
         double speedX = 0;
         if (keyDown(KeyEvent.VK_LEFT)) {
             speedX = -0.5;
@@ -77,11 +80,10 @@ public class JarkGame extends Game{
             speedX = 0.5;
         }
 
-
-        
         _gameModel.gameField().racket().setSpeed(speedX, 0);
         if(!_gameModel.isBallStart()) {
-            _gameModel.gameField().balls().get(0).setSpeed(speedX, 0);
+            _gameModel.gameField().balls().get(0).setSpeed
+                (Buffer.findSprite(_gameModel.gameField().racket()).getHorizontalSpeed(), 0);
         }
     }
 
