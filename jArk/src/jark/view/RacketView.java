@@ -19,26 +19,17 @@ import javax.imageio.ImageIO;
  */
 public class RacketView extends ElementFieldView{
     
-    public RacketView(Racket racket, int x, int y) {
-        this._elementField = racket;
+    public RacketView(int x, int y) {
         BufferedImage img = null;
         try 
         {
             img = ImageIO.read(new File("src\\jark\\racket.png"));
             this._elementSprite = new Sprite(img, x, y);
-            this._elementSprite.setID(5);
+            _elementSprite.setSpeed(0, 0) ;
         } 
         catch (IOException e) 
         {
             e.printStackTrace();
         }
-    }
-    
-    /**
-     * Возвращает логическое представление ракетки
-     * @return логическое представление ракетки
-     */
-    public Racket racket() {
-        return (Racket)this._elementField;
     }
 }

@@ -9,6 +9,7 @@ import com.golden.gamedev.Game;
 import com.golden.gamedev.object.Background;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.PlayField;
+import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.background.ImageBackground;
 import jark.collisionManagers.CollisionMan;
 import jark.model.GameModel;
@@ -48,7 +49,8 @@ public class JarkGame extends Game{
         _gameModel = new GameModel();
         _gameView = _gameModel.gameView();
         _playField = _gameView.gameFieldView();
-        _gameModel.startGame();      
+        _gameModel.startGame(); 
+        _gameView.createSpriteGroup();
         _playField.addGroup(_gameView.ballsGroup());
         _playField.addGroup(_gameView.barriersballsGroup());
         backgr = new ImageBackground(getImage("background.jpg"), 650, 550);
@@ -65,6 +67,7 @@ public class JarkGame extends Game{
 
     @Override
     public void update(long l) {
+        _playField.update(l);
         double speedX = 0;
         if (keyDown(KeyEvent.VK_LEFT)) {
             speedX = -0.5;
@@ -72,7 +75,8 @@ public class JarkGame extends Game{
         if (keyDown(KeyEvent.VK_RIGHT)) {
             speedX = 0.5;
         }
-        _gameView.gameFieldView().racketView().sprite().setHorizontalSpeed(speedX);
+        _gameModel.gameField().racket().setSpeed(speedX, 0);
+        _gameModel.gameField().balls().get(0).setSpeed(speedX, 0);
     }
 
     @Override

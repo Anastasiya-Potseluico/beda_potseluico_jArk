@@ -19,7 +19,7 @@ public class GameField {
     /** Мячи */
     private ArrayList <Ball> _balls = new ArrayList();
     /** Ракетка */
-    private Racket _racket = new Racket();
+    private Racket _racket;
     /** Границы поля */
     private ArrayList <BoundaryField> _bondarysField = new ArrayList();
     /** */
@@ -29,6 +29,10 @@ public class GameField {
      */
     public GameField () {
         _gameFieldView = new GameFieldView();
+        addElementField(new BoundaryField(TYPE.HORISONTAL, 0, 0));
+        addElementField(new BoundaryField(TYPE.VERTICAL, 0, 0));
+        addElementField(new BoundaryField(TYPE.VERTICAL, 635, 0));
+        addElementField(new Racket(250, 500));
     }
     
     /**
@@ -45,7 +49,8 @@ public class GameField {
      * @return успех добавления
      */
     public boolean addElementField(ElementField element){
-        if (element instanceof Ball) {
+        gameFieldView().addElementFieldView(element);
+        if (element instanceof Ball) {   
             return _balls.add((Ball)element);
         } else if (element instanceof BoundaryField) {
             return _bondarysField.add((BoundaryField)element);
@@ -103,16 +108,10 @@ public class GameField {
      * @param level
      */
     public void setField (int level) {
-        this._bondarysField.clear();
         this._balls.clear();
-        _racket = null;
         for (int i = 0; i < level; i++) {
-            this.addElementField(new Ball());
+            this.addElementField(new Ball(295, 464));
         }
-        this.addElementField(new BoundaryField(TYPE.HORISONTAL));
-        this.addElementField(new BoundaryField(TYPE.VERTICAL));
-        this.addElementField(new BoundaryField(TYPE.VERTICAL));
-        this.addElementField(new Racket());
     }
     
     public class removeBrick implements DestructionListener {

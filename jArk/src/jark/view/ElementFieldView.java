@@ -14,20 +14,8 @@ import java.awt.Graphics2D;
  * Класс физического представления элемента поля
  * @author пользователь
  */
-public abstract class ElementFieldView{
-    
-    /** Логика элемента поля */
-    protected ElementField _elementField;
-    
+public abstract class ElementFieldView{   
     protected Sprite _elementSprite;
-    
-    /**
-     * Установить логич.представление элемента поля
-     * @param element логическое представление элемента поля
-     */
-    public void setElemenetField (ElementField element) {
-        _elementField = element;
-    }
     
    /**
     * Метод обновления спрайта
@@ -48,15 +36,6 @@ public abstract class ElementFieldView{
     
     public void setSpeed(double vX, double vY){
         _elementSprite.setSpeed(vX, vY);
-    }
-    
-    
-    /**
-     * Возвращает логическое представление элемента поля
-     * @return элемент поля
-     */
-    public  ElementField elementField() {
-        return _elementField;
     }
     
     public Sprite sprite() {

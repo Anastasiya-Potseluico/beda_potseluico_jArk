@@ -14,7 +14,8 @@ import java.util.HashMap;
  * @author Дарья
  */
 public class Buffer {
-    private HashMap <ElementField, Sprite> _elements_sprite;
+    private static HashMap <ElementField, Sprite> _elements_sprite = 
+            new HashMap <ElementField, Sprite> ();
     
     /**
      * 
@@ -22,7 +23,9 @@ public class Buffer {
      * @param sprite 
      */
     public static void addElement(ElementField element, Sprite sprite){
-        
+        if (element != null && sprite != null) {
+            _elements_sprite.put(element, sprite);
+        }
     }
     
     /**
@@ -40,6 +43,6 @@ public class Buffer {
      * @return
      */
     public static Sprite findSprite (ElementField element) {
-        return null;
+        return _elements_sprite.get(element);
     }
 }

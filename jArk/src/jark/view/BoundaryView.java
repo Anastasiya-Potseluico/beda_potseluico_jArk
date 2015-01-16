@@ -23,28 +23,19 @@ public class BoundaryView extends ElementFieldView {
     /**
      * Конструктор
      */
-    public BoundaryView (BoundaryField boundaryField, int x, int y) {
-        this._elementField = boundaryField;
+    public BoundaryView (BoundaryField.TYPE type,int x, int y) {
         BufferedImage img = null;
         try 
         {
-            if(((BoundaryField)this._elementField).type() == BoundaryField.TYPE.HORISONTAL)
-            img = ImageIO.read(new File("src\\jark\\h_board.png"));
-            else img = ImageIO.read(new File("src\\jark\\v_board.png"));
+            if(type == BoundaryField.TYPE.HORISONTAL)
+                img = ImageIO.read(new File("src\\jark\\h_board.png"));
+            else 
+                img = ImageIO.read(new File("src\\jark\\v_board.png"));
             this._elementSprite = new Sprite(img, x, y);
-            this._elementSprite.setID(2);
         } 
         catch (IOException e) 
         {
             e.printStackTrace();
         }
-    }
-    
-    /**
-     * Возвращает логическое рпедставление границы поля
-     * @return граница поля
-     */
-    public BoundaryField boundaryField () {
-        return (BoundaryField)this._elementField;
     }
 }

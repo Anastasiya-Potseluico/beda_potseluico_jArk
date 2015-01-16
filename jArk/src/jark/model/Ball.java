@@ -15,8 +15,8 @@ public class Ball extends ElementField implements Collide {
     /**
      * Конструктор
      */
-    public Ball() {
-        super(MASS.FIN_MASS);
+    public Ball(int x, int y) {
+        super(MASS.FIN_MASS, x, y);
     }
     
     //!!!!!!!!!!!!!!!!

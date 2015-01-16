@@ -8,7 +8,11 @@ package jark.view;
 
 import com.golden.gamedev.object.PlayField;
 import jark.events.DestructionListener;
+import jark.model.Ball;
+import jark.model.BoundaryField;
 import jark.model.ElementField;
+import jark.model.Racket;
+import jark.specifications.Buffer;
 import java.util.ArrayList;
 
 /**
@@ -45,13 +49,27 @@ public class GameFieldView extends PlayField{
 
     /**
      * Добавить элемент поля на поле
-     * @param element элемент поля
+     * @param el элемент поля
      * @return успех добавления
      */
-    public boolean addElementFieldView (ElementField element) {
-        //TODO
-        
-        return true;
+    public boolean addElementFieldView (ElementField el) {
+        ElementFieldView element = null;
+        if (el instanceof Ball) {
+            element = new BallView(el.x(), el.y());
+            _ballsView.add((BallView)element);
+        } else if (el instanceof BoundaryField) {
+            element = new BoundaryView(((BoundaryField)el).type(), el.x(), el.y());
+            _boundariesView.add((BoundaryView)element);
+        } else if (el instanceof Racket) {
+            _racketView = new RacketView(el.x(), el.y());
+            element = _racketView;
+        }
+        if(element != null && element.sprite() != null) {
+            Buffer.addElement(el, element.sprite());
+            return true;
+        }
+        else
+            return false;
     }
     
     /**

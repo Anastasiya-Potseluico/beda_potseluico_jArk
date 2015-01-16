@@ -23,8 +23,8 @@ public class DestructibleBrick extends Brick{
      * Конструктор
      * @param hardness прочность
      */
-    public DestructibleBrick(int hardness) {
-        super(MASS.INF_MASS);
+    public DestructibleBrick(int hardness, int x, int y) {
+        super(MASS.INF_MASS, x, y);
         _hardness = hardness;
     }
     

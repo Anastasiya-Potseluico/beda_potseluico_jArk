@@ -19,8 +19,7 @@ import javax.imageio.ImageIO;
  */
 public class IndestructibleBrickView extends ElementFieldView{
     
-    public IndestructibleBrickView (IndestructibleBrick brick, int x, int y) {
-        this._elementField = brick;
+    public IndestructibleBrickView (int x, int y) {
         BufferedImage img = null;
         try 
         {
@@ -33,12 +32,5 @@ public class IndestructibleBrickView extends ElementFieldView{
             e.printStackTrace();
         }
     }
-    
-    /**
-     * Возвращает логическое представление разрушаемого кирпича
-     * @return разрушаемый кирпич
-     */
-    public IndestructibleBrick iBrick () {
-        return (IndestructibleBrick)this._elementField;
-    }
+
 }

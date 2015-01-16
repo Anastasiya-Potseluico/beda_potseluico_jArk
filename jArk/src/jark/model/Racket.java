@@ -15,8 +15,8 @@ public class Racket extends ElementField implements Collide {
     /**
      * Конструктор ракетки
      */
-    public Racket() {
-        super(MASS.INF_MASS);
+    public Racket(int x, int y) {
+        super(MASS.INF_MASS, x, y);
         _hasBall = true;
     }
     

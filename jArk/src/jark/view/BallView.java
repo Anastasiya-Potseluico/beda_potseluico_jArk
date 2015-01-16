@@ -24,36 +24,20 @@ import javax.imageio.ImageIO;
 public class BallView extends ElementFieldView{
     /**
     * Конструктор
-     * @param ball
+     * @param x
+     * @param y
     */ 
-    public BallView(Ball ball, int x, int y) {
-        this._elementField = ball;
+    public BallView(int x, int y) {
         BufferedImage img = null;
         try 
         {
             img = ImageIO.read(new File("src\\jark\\ball.png"));
             this._elementSprite = new Sprite(img, x, y);
-            this._elementSprite.setID(1);
+            _elementSprite.setSpeed(0, 0);
         } 
         catch (IOException e) 
         {
             e.printStackTrace();
         }
-    }
-    
-    /**
-     * Возвращает логич.представление мяча
-     * @return мяч
-     */
-    public Ball ball(){
-        return (Ball)_elementField;
-    }
-    
-    /**
-     * Установить логич. представление мяча
-     * @param ball мяч
-     */
-    public void setBall(Ball ball) {
-        _elementField = ball;
     }
 }

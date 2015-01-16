@@ -20,12 +20,11 @@ import javax.imageio.ImageIO;
  */
 public class DestructibleBrickView extends ElementFieldView{
 
-    public DestructibleBrickView (DestructibleBrick brick, int x, int y) {
-        this._elementField = brick;
+    public DestructibleBrickView (int hadrness, int x, int y) {
         BufferedImage img = null;
         try 
         {
-            switch (((DestructibleBrick)this._elementField).hadrness()) {
+            switch (hadrness) {
                 case 1: {
                     double rand = (Math.random() * 1);
                     if(Math.round(rand) == 0)
@@ -48,12 +47,5 @@ public class DestructibleBrickView extends ElementFieldView{
             e.printStackTrace();
         }
     }
-    
-    /**
-     * Возвращает логическое представление разрушаемого кирпича
-     * @return разрушаемый кирпич
-     */
-    public DestructibleBrick dBrick () {
-        return (DestructibleBrick)this._elementField;
-    }
+
 }

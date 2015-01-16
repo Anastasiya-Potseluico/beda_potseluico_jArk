@@ -6,6 +6,8 @@
 package jark.model;
 
 import jArk.specifications.Size;
+import jark.specifications.Buffer;
+import jark.view.ElementFieldView;
 
 /**
  * Логическое представление элемента поля
@@ -14,17 +16,21 @@ import jArk.specifications.Size;
 enum MASS {FIN_MASS, INF_MASS, OTHER};
 
 public abstract class ElementField {
-    /** Игровое поле */
-    protected GameField _gamefield;
     /** Вес элемента */      
     protected MASS _mass;
+    protected int _x;
+    protected int _y;
      
     /**
      * Конструктор элемента поля
      * @param mass
+     * @param x
+     * @param y
      */
-    public ElementField(MASS mass){
+    public ElementField(MASS mass, int x, int y){
         this._mass = mass;
+        _x = x;
+        _y = y;
     }
     
     /**
@@ -42,21 +48,20 @@ public abstract class ElementField {
         return this._mass;
     }
     
+    public int x() {
+        return _x;
+    }
+    
+    public int y() {
+        return _y;
+    }
     /**
      * Изменить размер элемента
      * @param size размер
      * @return успех изменения размера
      */
-    public boolean setSize(Size size) {
-        //TODO
+    public boolean setSpeed(double x, double y) {
+        Buffer.findSprite(this).setSpeed(x, y);
         return true;
-    }
-    
-    /**
-     * Возвращает размер элемента поля
-     * @return размер элемента поля
-     */
-    public Size size() {
-        return new Size();
     }
 }

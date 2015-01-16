@@ -26,7 +26,7 @@ public class GameModel {
         _player = new Player();
         _gameField = new GameField();
         _gameView = new GameView(_gameField.gameFieldView());
-        _gameField.setField(_level);
+        
     }
     
     public GameView gameView() {
@@ -34,7 +34,7 @@ public class GameModel {
     }
     
     public void startGame() {
-        
+        _gameField.setField(_level);
     }
     
     public Player player() {

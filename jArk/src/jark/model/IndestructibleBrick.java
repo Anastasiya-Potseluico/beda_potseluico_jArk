@@ -14,8 +14,8 @@ public class IndestructibleBrick extends Brick {
     /**
      * Конструктор неразрушаемого кирпича
      */
-    public IndestructibleBrick() {
-        super(MASS.INF_MASS);
+    public IndestructibleBrick(int x, int y) {
+        super(MASS.INF_MASS, x, y);
     }
 
     @Override

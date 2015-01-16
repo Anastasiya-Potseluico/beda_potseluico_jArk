@@ -14,7 +14,7 @@ public abstract class Brick extends ElementField {
      * Конструктор кирпича
      * @param weight вес кирпича
      */
-    public Brick(MASS weight) {
-        super(weight);
+    public Brick(MASS mass, int x, int y) {
+        super(mass, x, y);
     }
 }

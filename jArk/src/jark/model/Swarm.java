@@ -23,8 +23,8 @@ public class Swarm extends ElementField {
      * @param elements элементы роя
      * @param capability
      */
-    public Swarm(ArrayList<ElementSwarm> elements, int capability) {
-        super(MASS.OTHER);
+    public Swarm(ArrayList<ElementSwarm> elements, int capability, int x, int y) {
+        super(MASS.OTHER, x, y);
         this._elements = elements;
         _capability = capability;
     }
@@ -37,7 +37,7 @@ public class Swarm extends ElementField {
     private void insertBall(Ball ball)
     {
         //удалить мяч
-        _elements.add(new ElementSwarm());
+        _elements.add(new ElementSwarm(0, 0));
         //Провекра наполненности роя; 
     }
     
