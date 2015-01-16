@@ -31,14 +31,20 @@ public class Racket extends ElementField{
         _hasBall = false;
     }
 
+    @Override
+    public boolean setSpeed(double x, double y) {
+        if(Buffer.findSprite(this).getX() <= 0)
+            return super.setSpeed(Math.abs(x), y);
+        else if (Buffer.findSprite(this).getX() >= 505)
+            return super.setSpeed(Math.abs(x)*-1, y);
+        else
+            return super.setSpeed(x, y);        
+    }
 
     @Override
     public void reactOnCollision(ElementField element) {
-        Sprite sp = Buffer.findSprite(this);
-        Sprite ss = Buffer.findSprite(element);
         if(element instanceof BoundaryField) {
-            double f = sp.getHorizontalSpeed();
-            setSpeed(sp.getHorizontalSpeed()*-1, 0); 
+            setSpeed(Buffer.findSprite(this).getHorizontalSpeed()*-1, 0); 
         }
     }
 }

@@ -69,7 +69,6 @@ public class JarkGame extends Game{
     @Override
     public void update(long l) {
         _playField.update(l);
-        double sp = Buffer.findSprite(_gameModel.gameField().racket()).getHorizontalSpeed();
         double speedX = 0;
         if (keyDown(KeyEvent.VK_LEFT)) {
             speedX = -0.5;
@@ -77,11 +76,10 @@ public class JarkGame extends Game{
             speedX = 0.5;
         }
 
-
-        
         _gameModel.gameField().racket().setSpeed(speedX, 0);
         if(!_gameModel.isBallStart()) {
-            _gameModel.gameField().balls().get(0).setSpeed(speedX, 0);
+            _gameModel.gameField().balls().get(0).setSpeed
+                (Buffer.findSprite(_gameModel.gameField().racket()).getHorizontalSpeed(), 0);
         }
     }
 
