@@ -13,5 +13,5 @@ import java.util.EventListener;
  * @author пользователь
  */
 public interface DestructionListener extends EventListener{
-    void brickHitted(DestructionEvent e, DestructibleBrick dBrick);
+    //void brickHitted(DestructionEvent e, DestructibleBrick dBrick);
 }

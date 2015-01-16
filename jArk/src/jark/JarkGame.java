@@ -7,21 +7,15 @@ package jark;
 
 import com.golden.gamedev.Game;
 import com.golden.gamedev.object.Background;
-import com.golden.gamedev.object.CollisionManager;
 import com.golden.gamedev.object.GameFont;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
 import com.golden.gamedev.object.background.ImageBackground;
-import jArk.physicalObjects.BallView;
 import jArk.physicalObjects.GameFieldView;
-import jark.collisionManagers.Collision;
 import jark.collisionManagers.CollisionMan;
-import jark.events.DestructionEvent;
-import jark.events.DestructionListener;
 import jark.model.GameField;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
-import static javafx.scene.text.Font.font;
 
 /**
  * Класс игры
@@ -34,7 +28,7 @@ public class JarkGame extends Game{
     private GameFieldView _gameFieldView;
     /**Игровое поля логика */
     private GameField _gameField;
-    /** Уровень (1-5) */
+    /** Уровень (1-3) */
     private int _level;
     /** Бэкграунд */
     Background backgr;
@@ -43,7 +37,7 @@ public class JarkGame extends Game{
     
     SpriteGroup      BALL_GROUP;
     
-    SpriteGroup      BRICK_GROUP;
+    SpriteGroup      BARRIER_BALLS_GROUP;
     
     GameFont           font;
     
@@ -55,8 +49,8 @@ public class JarkGame extends Game{
     public JarkGame() {
         this.distribute = true;
         _player = new Player();
-        _level = 5;
-        _gameFieldView = new GameFieldView(this,_level);
+        _level = 1;
+        //_gameFieldView = new GameFieldView(this,_level);
     }
     
     /**
@@ -71,31 +65,24 @@ public class JarkGame extends Game{
     public void initResources() {
         int i;
         BALL_GROUP = new SpriteGroup("balls"); //Группа мячей
-        BRICK_GROUP = new SpriteGroup("obstacles"); //Группа преград
+        BARRIER_BALLS_GROUP = new SpriteGroup("barrier_balls"); //Группа преград
         _gameFieldView = new GameFieldView(this,_level);
-        _gameFieldView.setStartPosition(_level);
         for(i = 0; i < this._gameFieldView.ballsView().size(); i++) {
             BALL_GROUP.add(this._gameFieldView.ballsView().get(i).sprite()); 
-            BRICK_GROUP.add(this._gameFieldView.ballsView().get(i).sprite());
+            BARRIER_BALLS_GROUP.add(this._gameFieldView.ballsView().get(i).sprite());
         }
         for(i = 0; i < this._gameFieldView.boundariesView().size(); i++) {
-            BRICK_GROUP.add(this._gameFieldView.boundariesView().get(i).sprite());
+            BARRIER_BALLS_GROUP.add(this._gameFieldView.boundariesView().get(i).sprite());
         }
-        for(i = 0; i < this._gameFieldView.dBricksView().size(); i++) {
-            BRICK_GROUP.add(this._gameFieldView.dBricksView().get(i).sprite());
-        }
-        for(i = 0; i < this._gameFieldView.iBricksView().size(); i++) {
-            BRICK_GROUP.add(this._gameFieldView.iBricksView().get(i).sprite());
-        }
-        BRICK_GROUP.add(this._gameFieldView.racketView().sprite());
+        BARRIER_BALLS_GROUP.add(this._gameFieldView.racketView().sprite());
         
         _gameFieldView.addGroup(BALL_GROUP);
-        _gameFieldView.addGroup(BRICK_GROUP);
+        _gameFieldView.addGroup(BARRIER_BALLS_GROUP);
         backgr = new ImageBackground(getImage("background.jpg"), 650, 550);
         _gameFieldView.setBackground(backgr);
         _collisionManager = new CollisionMan(_gameFieldView);
         _collisionManager.setPerfectCollision(true);
-        _gameFieldView.addCollisionGroup(BALL_GROUP, BRICK_GROUP, _collisionManager.collision());
+        _gameFieldView.addCollisionGroup(BALL_GROUP, BARRIER_BALLS_GROUP, _collisionManager.collision());
         font = fontManager.getFont(getImages("font.png", 20, 3),
                                    " !            .,0123" +
                                    "456789:   -? ABCDEFG" +
@@ -104,7 +91,6 @@ public class JarkGame extends Game{
 
     @Override
     public void update(long l) {
-        _gameFieldView.updateElements(l);
         double speedX = 0;
         if (keyDown(KeyEvent.VK_LEFT)) {
             speedX = -0.5;
@@ -114,7 +100,7 @@ public class JarkGame extends Game{
         }
         if(this._gameFieldView.racketView().racket().hasBall()&&speedX!=0) {
             this._gameFieldView.ballsView().get(0).sprite().setSpeed(0.1, -0.1);
-            this._gameFieldView.ballsView().get(1).sprite().setVerticalSpeed(0.1);
+            //this._gameFieldView.ballsView().get(1).sprite().setVerticalSpeed(0.1);
             this._gameFieldView.racketView().racket().resetBall();
         }
             this._gameFieldView.racketView().sprite().setHorizontalSpeed(speedX);
@@ -154,16 +140,13 @@ public class JarkGame extends Game{
     public gameState identifyGameOver() {
         if(_gameField.balls().isEmpty()) {
             return gameState.GAME_OVER;
-        } else if (_gameField.destructibleBricks().isEmpty() && _level < 5) {
-            return gameState.NEXT_LEVEL;
-        } else if (_gameField.destructibleBricks().isEmpty() && _level == 5){
-            return gameState.GAME_FINISHED;
+        } else {
+            return gameState.GAME_CONTINUED;
         }
-        return gameState.GAME_CONTINUED;
     }
     
     public void removeBrickSprite (Sprite sprite) {
-        BRICK_GROUP.remove(sprite);
+        BARRIER_BALLS_GROUP.remove(sprite);
     }
     
     public void addScores () {
