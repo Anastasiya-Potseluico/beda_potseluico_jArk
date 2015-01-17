@@ -55,7 +55,9 @@ public class Ball extends ElementField implements Collide {
             else
                 delta = sp.getHorizontalSpeed();
             setSpeed(delta, sp.getVerticalSpeed()*-1);
-        }
+        } else if (element instanceof DestructibleBrick || element instanceof IndestructibleBrick) {
+            setSpeed(sp.getHorizontalSpeed(), sp.getVerticalSpeed()*-1);
+        } 
     }
 
     @Override

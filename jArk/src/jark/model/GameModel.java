@@ -6,6 +6,9 @@
 package jark.model;
 
 import jark.Player;
+import jark.events.DestructionEvent;
+import jark.events.DestructionListener;
+import jark.specifications.Buffer;
 import jark.view.GameView;
 
 /**
@@ -18,7 +21,7 @@ public class GameModel {
     /**Игровое поля логика */
     private GameField _gameField;
     /** Уровень (1-3) */
-    private int _level = 1;
+    private int _level = 5;
     
     private boolean _isBallStart = true;
     /** */
@@ -38,6 +41,9 @@ public class GameModel {
     public void startGame() {
         _isBallStart = true;
         _gameField.setField(_level);
+        for (int i = 0; i < gameField().destructibleBricks().size(); i++) {
+            gameField().destructibleBricks().get(i).addBrickListener(new GameModel.removeBrick());
+        }
     }
     
     public Player player() {
@@ -60,4 +66,23 @@ public class GameModel {
         _isBallStart = false;
         _gameField.balls().get(0).setSpeed(0, -0.4);
     }
+    
+     public class removeBrick implements DestructionListener {
+        @Override
+        public void brickHitted(DestructionEvent e, DestructibleBrick dBrick) {
+            if(dBrick.hadrness() == 0) {
+                gameField().deleteElementField(dBrick);
+                boolean found = false;
+                for(int i = 0; i< gameView().gameFieldView().dBricksView().size() && !found; i++) {
+                    if(gameView().gameFieldView().dBricksView().get(i).sprite() == Buffer.findSprite(dBrick)) {
+                        found = true;
+                        gameView().gameFieldView().dBricksView().remove(i);
+                    }
+                }
+                gameView().deleteBrick(Buffer.findSprite(dBrick));
+                player().sumScore(20);
+            }
+        } 
+    }
+    
 }

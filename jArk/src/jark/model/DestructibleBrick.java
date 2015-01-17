@@ -6,6 +6,7 @@
 package jark.model;
 
 import jark.JarkGame;
+import jark.model.GameModel;
 import jark.events.DestructionListener;
 import java.util.ArrayList;
 import java.util.Iterator;

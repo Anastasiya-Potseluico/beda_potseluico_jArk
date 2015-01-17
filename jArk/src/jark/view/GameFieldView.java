@@ -88,6 +88,12 @@ public class GameFieldView extends PlayField{
         } else if (el instanceof Racket) {
            _racketView = new RacketView(el.x(), el.y());
             element = _racketView;
+        } else if  (el instanceof DestructibleBrick) {
+            element = new DestructibleBrickView(((DestructibleBrick)el).hadrness(),el.x(), el.y());
+           _dBricksView.add((DestructibleBrickView)element); 
+        } else if (el instanceof IndestructibleBrick) {
+           element = new IndestructibleBrickView(el.x(), el.y());
+           _iBricksView.add((IndestructibleBrickView)element); 
         }
         if(element != null && element.sprite() != null) {
             Buffer.addElement(el, element.sprite());
@@ -103,8 +109,19 @@ public class GameFieldView extends PlayField{
      * @return успех удаления
      */
     public boolean deleteElementFieldView (ElementFieldView element) {
-        //TODO
-        return true;
+        if (element instanceof BallView) {
+            return _ballsView.remove((BallView)element);
+        } else if (element instanceof BoundaryView) {
+            return _boundariesView.remove((BoundaryView)element);
+        } else if (element instanceof RacketView) {
+            _racketView = null;
+            return true;
+        } else if  (element instanceof DestructibleBrickView) {
+           return _dBricksView.remove((DestructibleBrickView)element);
+        } else if (element instanceof IndestructibleBrickView) {
+            return _iBricksView.remove((IndestructibleBrickView)element); 
+        }
+            return false;
     }
     
     /**

@@ -52,8 +52,7 @@ public class JarkGame extends Game{
         _gameModel.startGame(); 
         _gameView.createSpriteGroup();
         _playField.addGroup(_gameView.ballsGroup());
-        _playField.addGroup(_gameView.racketGroup());
-        _playField.addGroup(_gameView.boundaryGroup());
+        _playField.addGroup(_gameView.barriersGroup());
         backgr = new ImageBackground(getImage("background.jpg"), 650, 550);
         _playField.setBackground(backgr);
         _collisionManager = new CollisionMan();
