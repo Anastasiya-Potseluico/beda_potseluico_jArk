@@ -3,14 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/collisionManagers/CollisionMan.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/test/jark/model/RacketTest.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/test/jark/model/DestructibleBrickTest.java</file>
             <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/JArk.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/collisionManagers/CollisionManager.java</file>
             <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/Ball.java</file>
             <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/ElementField.java</file>
-            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/GameField.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/background.jpg</file>
             <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/Collide.java</file>
-            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/Racket.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/test/jark/model/ElementFieldTest.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/test/jark/model/BallTest.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/DestructibleBrick.java</file>
             <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/JarkGame.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/physicalObjects/ElementFieldView.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/ball.png</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/GameField.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/test/jark/model/SwarmTest.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/Racket.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/Swarm.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/Brick.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/ElementSwarm.java</file>
+            <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/IndestructibleBrick.java</file>
             <file>file:/C:/Users/Дарья/Documents/GitHub/beda_potseluico_jArk/jArk/src/jark/model/BoundaryField.java</file>
         </group>
     </open-files>
