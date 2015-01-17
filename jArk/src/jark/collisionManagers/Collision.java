@@ -7,6 +7,10 @@ package jark.collisionManagers;
 
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.collision.AdvanceCollisionGroup;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -25,7 +29,12 @@ public class Collision extends AdvanceCollisionGroup{
     @Override
     public void collided(Sprite sprite1, Sprite sprite2) {
         //передать в менеджер спрайты
-        _collisionMan.manageCollision(sprite1, sprite2);
+        int countFaced = 1;
+        for (Object ll : ((HashMap)this.getStorage()).values()) {
+            countFaced = ((Sprite[]) ll).length;
+        }
+        //int b = l.values().size();
+        _collisionMan.manageCollision(sprite1, sprite2, countFaced);
     }
     
 }

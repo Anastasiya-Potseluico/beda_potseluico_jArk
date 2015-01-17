@@ -54,7 +54,6 @@ public class Ball extends ElementField implements Collide {
                         delta = sp.getHorizontalSpeed() * -1;
             else
                 delta = sp.getHorizontalSpeed();
-            
             setSpeed(delta, sp.getVerticalSpeed()*-1);
         }
     }

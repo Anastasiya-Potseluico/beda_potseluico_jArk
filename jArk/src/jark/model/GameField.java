@@ -503,7 +503,7 @@ public class GameField {
             }    
         }
                 */
-        this.addElementField(new Ball(295, 464));
+        addElementField(new Ball(295, 464));
     }
     
     public class removeBrick implements DestructionListener {

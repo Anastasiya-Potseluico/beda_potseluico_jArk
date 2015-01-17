@@ -9,6 +9,9 @@ import com.golden.gamedev.object.CollisionManager;
 import com.golden.gamedev.object.Sprite;
 import jark.model.ElementField;
 import jark.specifications.Buffer;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Класс обработчика коллизий
@@ -42,16 +45,23 @@ public class CollisionMan{
     public Collision collisionBallsBalls() {
         return _collisionBallsBalls;
     }
-    
+    private int _countReact = 0;
     /**
      * Метод для обработки коллизии
+     * @param sprite1
+     * @param sprite2
+     * @param countFaced
      */
-    public void manageCollision(Sprite sprite1, Sprite sprite2){
+    public void manageCollision(Sprite sprite1, Sprite sprite2, int countFaced){
         ElementField first, second;
         first = Buffer.findElement(sprite1);
         second = Buffer.findElement(sprite2);
-        first.reactOnCollision(second);
+        if(_countReact == 0) 
+            first.reactOnCollision(second);
         second.reactOnCollision(first);
+        _countReact++;
+        if(_countReact == countFaced)
+            _countReact = 0;
     }
     
     
