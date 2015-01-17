@@ -672,7 +672,7 @@ public class GameField {
                 break;
             }
         }
-        addElementField(new Ball(295, 464));
+        addElementField(new Ball(71, 464));
         addElementField(new Racket(250, 500));
     }
 

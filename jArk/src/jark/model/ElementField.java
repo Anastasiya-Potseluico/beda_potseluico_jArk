@@ -6,6 +6,7 @@
 package jark.model;
 
 import jArk.specifications.Size;
+import jark.collisionManagers.CollisionMan;
 import jark.specifications.Buffer;
 
 /**
@@ -16,7 +17,7 @@ enum MASS {FIN_MASS, INF_MASS, OTHER};
 
 public abstract class ElementField {
         
-    protected ElementField _faced = null;
+    protected ElementField _faced;
     protected MASS _mass;
      
     int _x;
@@ -30,9 +31,10 @@ public abstract class ElementField {
         this._mass = mass;
         _x = x;
         _y = y;
+        _faced = null;
     }
    
-    public abstract void reactOnCollision(ElementField element);
+    public abstract void reactOnCollision(ElementField element, CollisionMan.TYPE type);
     /**
      * Функция для получения веса элемента
      * @return вес элемента

@@ -6,6 +6,7 @@
 package jark.model;
 
 import jark.JarkGame;
+import jark.collisionManagers.CollisionMan;
 import jark.model.GameModel;
 import jark.events.DestructionListener;
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class DestructibleBrick extends Brick{
 
 
     @Override
-    public void reactOnCollision(ElementField element) {
+    public void reactOnCollision(ElementField element, CollisionMan.TYPE type) {
         destruct();
     }
     

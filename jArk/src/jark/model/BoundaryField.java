@@ -5,6 +5,8 @@
  */
 package jark.model;
 
+import jark.collisionManagers.CollisionMan;
+
 /**
  * Класс границы поля
  * @author Дарья
@@ -25,7 +27,7 @@ public class BoundaryField extends ElementField {
     }
 
     @Override
-    public void reactOnCollision(ElementField element) {
+    public void reactOnCollision(ElementField element, CollisionMan.TYPE type) {
        
     }
     

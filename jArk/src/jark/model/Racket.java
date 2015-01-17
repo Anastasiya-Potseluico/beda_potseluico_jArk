@@ -6,6 +6,7 @@
 package jark.model;
 
 import com.golden.gamedev.object.Sprite;
+import jark.collisionManagers.CollisionMan;
 import jark.specifications.Buffer;
 
 /**
@@ -24,16 +25,16 @@ public class Racket extends ElementField{
 
     @Override
     public boolean setSpeed(double x, double y) {
-        if(Buffer.findSprite(this).getX() <= 0)
+        if(Buffer.findSprite(this).getX() <= 5)
             return super.setSpeed(Math.abs(x), y);
-        else if (Buffer.findSprite(this).getX() >= 505)
+        else if (Buffer.findSprite(this).getX() >= 497)
             return super.setSpeed(Math.abs(x)*-1, y);
         else
             return super.setSpeed(x, y);        
     }
 
     @Override
-    public void reactOnCollision(ElementField element) {
+    public void reactOnCollision(ElementField element, CollisionMan.TYPE type) {
         if(element instanceof BoundaryField) {
             setSpeed(Buffer.findSprite(this).getHorizontalSpeed()*-1, 0); 
         }

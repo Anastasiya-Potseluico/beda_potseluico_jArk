@@ -7,11 +7,9 @@ package jark.collisionManagers;
 
 import com.golden.gamedev.object.CollisionManager;
 import com.golden.gamedev.object.Sprite;
+import jark.model.Ball;
 import jark.model.ElementField;
 import jark.specifications.Buffer;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Класс обработчика коллизий
@@ -27,6 +25,8 @@ public class CollisionMan{
     
     private Collision _collisionBallsBalls = new Collision(this);   
     private CollisionManager _collisionManagerBallsBalls = _collisionBallsBalls;
+    
+    public enum TYPE {DEFAULT, PAIR, BALLS};
     
     public void checkCollision () {
         _collisionManagerRacketBoundaries.checkCollision();
@@ -56,9 +56,20 @@ public class CollisionMan{
         ElementField first, second;
         first = Buffer.findElement(sprite1);
         second = Buffer.findElement(sprite2);
+        TYPE type = TYPE.DEFAULT;
+        switch(countFaced) {
+            case 2: {
+                if(!(second instanceof Ball)) {
+                    type = TYPE.PAIR;
+                } else {
+                    type = TYPE.BALLS;
+                }
+                break;
+            }       
+        }
         if(_countReact == 0) 
-            first.reactOnCollision(second);
-        second.reactOnCollision(first);
+            first.reactOnCollision(second, type);
+        second.reactOnCollision(first, type);
         _countReact++;
         if(_countReact == countFaced)
             _countReact = 0;

@@ -5,6 +5,8 @@
  */
 package jark.model;
 
+import jark.collisionManagers.CollisionMan;
+
 /**
  * Класс элемента роя
  * @author Дарья
@@ -16,7 +18,7 @@ public class ElementSwarm extends ElementField {
     }
 
     @Override
-    public void reactOnCollision(ElementField element) {
+    public void reactOnCollision(ElementField element, CollisionMan.TYPE type) {
         
     }
     

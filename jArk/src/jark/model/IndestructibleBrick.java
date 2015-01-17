@@ -5,6 +5,8 @@
  */
 package jark.model;
 
+import jark.collisionManagers.CollisionMan;
+
 /**
  * Класс неразрушаемого кирпича
  * @author Дарья
@@ -19,7 +21,7 @@ public class IndestructibleBrick extends Brick {
     }
 
     @Override
-    public void reactOnCollision(ElementField element) {
+    public void reactOnCollision(ElementField element, CollisionMan.TYPE type) {
        
     }
     

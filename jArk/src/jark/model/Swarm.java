@@ -5,6 +5,7 @@
  */
 package jark.model;
 
+import jark.collisionManagers.CollisionMan;
 import java.util.ArrayList;
 
 /**
@@ -50,7 +51,7 @@ public class Swarm extends ElementField {
     }
 
     @Override
-    public void reactOnCollision(ElementField element) {
+    public void reactOnCollision(ElementField element, CollisionMan.TYPE type) {
         if(element instanceof Ball){
             insertBall((Ball)element);
         }

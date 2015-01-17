@@ -5,11 +5,13 @@
  */
 package jark.model;
 
+import jark.collisionManagers.CollisionMan;
+
 /**
  *
  * @author пользователь
  */
 public interface Collide {
-    public void collideWithMovableElement(ElementField _element);
-    public void collideWithUnmovableElement(ElementField _element);
+    public void collideWithMovableElement(ElementField _element, CollisionMan.TYPE type);
+    public void collideWithUnmovableElement(ElementField _element, CollisionMan.TYPE type);
 }
