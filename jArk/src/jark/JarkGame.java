@@ -43,9 +43,12 @@ public class JarkGame extends Game{
     
     private enum gameState {GAME_OVER, GAME_FINISHED, GAME_CONTINUED};
     
+    public JarkGame() {
+        this.distribute = true;
+    }
+    
     @Override
     public void initResources() {
-        this.distribute = true;
         _gameModel = new GameModel();
         _gameView = _gameModel.gameView();
         _playField = _gameView.gameFieldView();
