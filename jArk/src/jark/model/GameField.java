@@ -39,6 +39,7 @@ public class GameField {
         addElementField(new BoundaryField(TYPE.HORISONTAL, 0, 0));
         addElementField(new BoundaryField(TYPE.VERTICAL, 0, 0));
         addElementField(new BoundaryField(TYPE.VERTICAL, 635, 0));
+        addElementField(new BoundaryField(TYPE.BOTTOM, 0, 515));
         addElementField(new Racket(250, 500));
     }
 

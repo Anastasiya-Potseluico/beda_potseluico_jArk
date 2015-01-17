@@ -28,8 +28,11 @@ public class BoundaryView extends ElementFieldView {
         try 
         {
             if(type == BoundaryField.TYPE.HORISONTAL)
-            img = ImageIO.read(new File("src\\jark\\h_board.png"));
-            else img = ImageIO.read(new File("src\\jark\\v_board.png"));
+                img = ImageIO.read(new File("src\\jark\\h_board.png"));
+            else if (type == BoundaryField.TYPE.VERTICAL)
+                img = ImageIO.read(new File("src\\jark\\v_board.png"));
+            else
+                img = ImageIO.read(new File("src\\jark\\i_board.png"));
             this._elementSprite = new Sprite(img, x, y);
             this._elementSprite.setID(2);
         } 
