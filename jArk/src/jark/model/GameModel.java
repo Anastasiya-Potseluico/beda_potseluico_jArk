@@ -81,17 +81,16 @@ public class GameModel {
     
     public class gameOver implements GameOverListener {
         @Override
-        public void gameOver() {
-            _isGameOver = true;
-            player().reduceNumberOfLives();
-            if(player().numberOfLives() == 0) {
-                endGame();
-            }
+        public void gameOver(Ball ball) {
+            gameView().gameFieldView().ballsView().indexOf(Buffer.findSprite(ball));
+            gameView().deleteBall(Buffer.findSprite(ball));
+            Buffer.deleteElement(ball);
+            gameField().deleteElementField(ball);
         }
     }
     
     public boolean isGameOver() {
-        return _isGameOver;
+        return gameField().balls().isEmpty();
     }
     
     private void clearField() {

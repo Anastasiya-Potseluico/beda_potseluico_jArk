@@ -5,6 +5,7 @@
  */
 package jark.events;
 
+import jark.model.Ball;
 import java.util.EventListener;
 
 /**
@@ -12,5 +13,5 @@ import java.util.EventListener;
  * @author Дарья
  */
 public interface GameOverListener extends EventListener{
-    void gameOver();
+    void gameOver(Ball ball);
 }

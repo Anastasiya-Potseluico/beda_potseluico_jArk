@@ -115,9 +115,14 @@ public class JarkGame extends Game{
         gameState state = identifyGameOver();
         switch (state) {
             case GAME_OVER: {
-                deleteSpriteGroup();
-                _gameModel.newGame(); 
-                addSpriteGroup();
+                _gameModel.player().reduceNumberOfLives();
+                if(_gameModel.player().numberOfLives() == 0) {
+                    _gameModel.endGame();
+                } else {
+                    deleteSpriteGroup();
+                    _gameModel.newGame(); 
+                    addSpriteGroup();
+                }
                 break;
             } case GAME_FINISHED: {
                 deleteSpriteGroup();

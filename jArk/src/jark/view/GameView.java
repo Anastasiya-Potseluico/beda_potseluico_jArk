@@ -109,4 +109,8 @@ public class GameView {
     public void deleteBrick(Sprite sprite) {
         BARRIERS_GROUP.remove(sprite);
     }
+    
+    public void deleteBall(Sprite sprite) {
+        BALLS_GROUP.remove(sprite);
+    }
 }
