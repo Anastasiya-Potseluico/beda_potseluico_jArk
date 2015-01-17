@@ -27,7 +27,11 @@ public class Buffer {
             _elements_sprite.put(element, sprite);
         }
     }
-    
+    public static void deleteElement (ElementField element) {
+        if (element != null) {
+            _elements_sprite.remove(element);
+        }
+    }
     /**
      * 
      * @param sprite

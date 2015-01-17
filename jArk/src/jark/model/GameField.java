@@ -41,7 +41,6 @@ public class GameField {
         addElementField(new BoundaryField(TYPE.VERTICAL, 0, 0));
         addElementField(new BoundaryField(TYPE.VERTICAL, 635, 0));
         addElementField(new BoundaryField(TYPE.BOTTOM, 0, 515));
-        addElementField(new Racket(250, 500));
     }
 
      public GameFieldView gameFieldView() {
@@ -142,16 +141,28 @@ public class GameField {
     public ArrayList <BoundaryField> bondarysField () {
         return _bondarysField;
     }
-    
+    public void clear () {
+        for(int i = 0; i < _dBricks.size(); i++){
+            Buffer.deleteElement(_dBricks.get(i));
+        }
+        _dBricks.clear();
+        for(int i = 0; i < _iBricks.size(); i++){
+            Buffer.deleteElement(_iBricks.get(i));
+        }
+        _iBricks.clear();
+        for(int i = 0; i < _balls.size(); i++){
+            Buffer.deleteElement(_balls.get(i));
+        }
+        _balls.clear();
+        Buffer.deleteElement(_racket);
+        _racket = null;
+    }
     /**
      *
      * @param level
      */
     public void setField (int level) {
-        this._dBricks.clear();
-        this._iBricks.clear();
-        this._swarms.clear();
-        this._bondarysField.clear();
+        clear();
         int i;
         DestructibleBrick el;
         switch(level){
@@ -780,7 +791,8 @@ public class GameField {
                 break;
             }    
         }
-        this.addElementField(new Ball(295, 464));
+        addElementField(new Ball(295, 464));
+        addElementField(new Racket(250, 500));
     }
     
 }

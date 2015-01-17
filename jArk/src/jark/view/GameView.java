@@ -86,6 +86,23 @@ public class GameView {
     }
     
     public void clearField() {
+        for(int i = 0; i < gameFieldView().dBricksView().size(); i++) {
+            BARRIERS_GROUP.remove(gameFieldView().dBricksView().get(i).sprite());
+        }
+        gameFieldView().dBricksView().clear();
+        for(int i = 0; i < gameFieldView().iBricksView().size(); i++) {
+            BARRIERS_GROUP.remove(gameFieldView().iBricksView().get(i).sprite());
+        }
+        gameFieldView().iBricksView().clear();
+        for(int i = 0; i < gameFieldView().ballsView().size(); i++) {
+            BALLS_GROUP.remove(gameFieldView().ballsView().get(i).sprite());
+        }
+        gameFieldView().ballsView().clear();
+        if (gameFieldView().racketView() != null) {
+            BARRIERS_GROUP.remove(gameFieldView().racketView().sprite());
+            RACKET_GROUP.remove(gameFieldView().racketView().sprite());
+            gameFieldView().deleteElementFieldView(gameFieldView().racketView());
+        }
         
     }
     

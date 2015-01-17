@@ -40,23 +40,25 @@ public class GameModel {
         return _gameView;
     }
     
-    public void startGame() {
+    public void newGame() {
         _isBallStart = true;
         _isGameOver = false;
         int i;
         //очистить поля
         clearField();
-        gameView().clearField();
         //Очистить слушателей
         for(i = 0; i < gameField().balls().size(); i++) {
             gameField().balls().get(i).listeners().clear();
         }
-        
-        gameField().setField(_level);
-        for (i = 0; i < gameField().balls().size(); i++) {
-            gameField().balls().get(i).addBallListener((GameOverListener) this);
+        for (i = 0; i < gameField().destructibleBricks().size(); i++) {
+            gameField().destructibleBricks().get(i).listeners().clear();
         }
-
+        // создать новые условия игры
+        gameField().setField(_level);
+        gameView().createSpriteGroup();
+        for (i = 0; i < gameField().balls().size(); i++) {
+            gameField().balls().get(i).addBallListener(new GameModel.gameOver());
+        }
         for (i = 0; i < gameField().destructibleBricks().size(); i++) {
             gameField().destructibleBricks().get(i).addBrickListener(new GameModel.removeBrick());
         }
@@ -96,14 +98,14 @@ public class GameModel {
     }
     
     private void clearField() {
-        
+        gameField().clear();
+        gameView().clearField();   
     }
 
      public class removeBrick implements DestructionListener {
         @Override
         public void brickHitted(DestructionEvent e, DestructibleBrick dBrick) {
             if(dBrick.hadrness() == 0) {
-                gameField().deleteElementField(dBrick);
                 boolean found = false;
                 for(int i = 0; i< gameView().gameFieldView().dBricksView().size() && !found; i++) {
                     if(gameView().gameFieldView().dBricksView().get(i).sprite() == Buffer.findSprite(dBrick)) {
@@ -112,6 +114,8 @@ public class GameModel {
                     }
                 }
                 gameView().deleteBrick(Buffer.findSprite(dBrick));
+                Buffer.deleteElement(dBrick);
+                gameField().deleteElementField(dBrick);
                 player().sumScore(20);
             }
         } 

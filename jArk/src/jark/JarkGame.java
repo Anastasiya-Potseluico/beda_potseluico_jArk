@@ -49,27 +49,35 @@ public class JarkGame extends Game{
         _gameModel = new GameModel();
         _gameView = _gameModel.gameView();
         _playField = _gameView.gameFieldView();
-        _gameModel.startGame(); 
-        _gameView.createSpriteGroup();
-        _playField.addGroup(_gameView.ballsGroup());
-        _playField.addGroup(_gameView.barriersGroup());
+        _gameModel.newGame(); 
         backgr = new ImageBackground(getImage("background.jpg"), 650, 550);
         _playField.setBackground(backgr);
         _collisionManager = new CollisionMan();
-        _playField.addCollisionGroup(_gameView.racketGroup(), 
-                _gameView.boundaryGroup(), _collisionManager.collisionRacketBoundaries());
-        
-        _playField.addCollisionGroup(_gameView.ballsGroup(), 
-                _gameView.barriersGroup(), _collisionManager.collisionBallsBarrier());
-        
-        //_playField.addCollisionGroup(_gameView.ballsGroup(), 
-        //        _gameView.ballsGroup(), _collisionManager.collisionBallsBarrier());
+        addSpriteGroup();
         font = fontManager.getFont(getImages("font.png", 20, 3),
                                    " !            .,0123" +
                                    "456789:   -? ABCDEFG" +
                                    "HIJKLMNOPQRSTUVWXYZ ");
     }
-
+    private void addSpriteGroup () {
+        _playField.addGroup(_gameView.ballsGroup());
+        _playField.addGroup(_gameView.barriersGroup());
+        _playField.addCollisionGroup(_gameView.racketGroup(), 
+                _gameView.boundaryGroup(), _collisionManager.collisionRacketBoundaries());
+        
+        _playField.addCollisionGroup(_gameView.ballsGroup(), 
+                _gameView.barriersGroup(), _collisionManager.collisionBallsBarrier());
+        //_playField.addCollisionGroup(_gameView.ballsGroup(), 
+        //        _gameView.ballsGroup(), _collisionManager.collisionBallsBarrier());
+    } 
+    
+    private void deleteSpriteGroup() {
+        _playField.removeGroup(_gameView.ballsGroup());
+        _playField.removeGroup(_gameView.barriersGroup());
+        _playField.removeCollisionGroup(_collisionManager.collisionRacketBoundaries());
+        _playField.removeCollisionGroup(_collisionManager.collisionBallsBarrier());
+    }
+    
     @Override
     public void update(long l) {
         _playField.update(l);
@@ -105,7 +113,9 @@ public class JarkGame extends Game{
             case GAME_OVER: {
                 String over = "YOU LOOSE!";
                 font.drawString(gd, over, 350, 330);
-                _gameModel.startGame(); 
+                deleteSpriteGroup();
+                _gameModel.newGame(); 
+                addSpriteGroup();
                 break;
             } case GAME_FINISHED: {
                 String finished = "YOU WIN!\nCONGRADULATIONS!!";
@@ -126,10 +136,5 @@ public class JarkGame extends Game{
         } else {
             return gameState.GAME_CONTINUED;
         }
-    }
-    
-    
-    public void addScores () {
-        _gameModel.player().sumScore(20);
     }
 }
