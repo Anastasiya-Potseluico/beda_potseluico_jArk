@@ -29,6 +29,7 @@ public class GameModel {
     private GameView _gameView;
     
     private boolean _isGameOver;
+    public boolean  _isEndGame = false;
     
     public GameModel() {
         _player = new Player();
@@ -43,23 +44,15 @@ public class GameModel {
     public void newGame() {
         _isBallStart = true;
         _isGameOver = false;
-        int i;
         //очистить поля
         clearField();
-        //Очистить слушателей
-        for(i = 0; i < gameField().balls().size(); i++) {
-            gameField().balls().get(i).listeners().clear();
-        }
-        for (i = 0; i < gameField().destructibleBricks().size(); i++) {
-            gameField().destructibleBricks().get(i).listeners().clear();
-        }
         // создать новые условия игры
         gameField().setField(_level);
         gameView().createSpriteGroup();
-        for (i = 0; i < gameField().balls().size(); i++) {
+        for (int i = 0; i < gameField().balls().size(); i++) {
             gameField().balls().get(i).addBallListener(new GameModel.gameOver());
         }
-        for (i = 0; i < gameField().destructibleBricks().size(); i++) {
+        for (int i = 0; i < gameField().destructibleBricks().size(); i++) {
             gameField().destructibleBricks().get(i).addBrickListener(new GameModel.removeBrick());
         }
     }
@@ -90,6 +83,10 @@ public class GameModel {
         @Override
         public void gameOver() {
             _isGameOver = true;
+            player().reduceNumberOfLives();
+            if(player().numberOfLives() == 0) {
+                endGame();
+            }
         }
     }
     
@@ -99,7 +96,13 @@ public class GameModel {
     
     private void clearField() {
         gameField().clear();
-        gameView().clearField();   
+        gameView().clearField(); 
+        for(int i = 0; i < gameField().balls().size(); i++) {
+            gameField().balls().get(i).listeners().clear();
+        }
+        for (int i = 0; i < gameField().destructibleBricks().size(); i++) {
+            gameField().destructibleBricks().get(i).listeners().clear();
+        }
     }
 
      public class removeBrick implements DestructionListener {
@@ -120,5 +123,15 @@ public class GameModel {
             }
         } 
     }
+     
+     public void endGame() {
+         _isGameOver = false;
+         _isEndGame = true;
+         clearField();
+     }
+     
+     public boolean isEndGame () {
+         return _isEndGame;
+     }
     
 }

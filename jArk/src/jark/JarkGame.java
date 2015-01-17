@@ -41,7 +41,7 @@ public class JarkGame extends Game{
     
     GameFont           font;
     
-    private enum gameState {GAME_OVER, GAME_FINISHED, GAME_CONTINUED};
+    private enum gameState {GAME_OVER, GAME_FINISHED, GAME_CONTINUED, END_GAME};
     
     public JarkGame() {
         this.distribute = true;
@@ -90,16 +90,17 @@ public class JarkGame extends Game{
         } else if (keyDown(KeyEvent.VK_RIGHT)) {
             speedX = 0.5;
         }
-
-        _gameModel.gameField().racket().setSpeed(speedX, 0);
-        if(_gameModel.isBallStart()) {
-            _gameModel.gameField().balls().get(0).setSpeed
-                (Buffer.findSprite(_gameModel.gameField().racket()).getHorizontalSpeed(), 0);
-        }
-        
-        if (keyPressed(KeyEvent.VK_SPACE)) {
-            _gameModel.startBall();
-        }
+        if (_gameModel.gameField().racket() != null) {
+            _gameModel.gameField().racket().setSpeed(speedX, 0);
+            if(_gameModel.isBallStart()) {
+                _gameModel.gameField().balls().get(0).setSpeed
+                    (Buffer.findSprite(_gameModel.gameField().racket()).getHorizontalSpeed(), 0);
+            }
+            
+            if (keyPressed(KeyEvent.VK_SPACE) && _gameModel.isBallStart()) {
+                _gameModel.startBall();
+            }
+        } 
     }
 
     @Override
@@ -114,15 +115,19 @@ public class JarkGame extends Game{
         gameState state = identifyGameOver();
         switch (state) {
             case GAME_OVER: {
-                String over = "YOU LOOSE!";
-                font.drawString(gd, over, 350, 330);
                 deleteSpriteGroup();
                 _gameModel.newGame(); 
                 addSpriteGroup();
                 break;
             } case GAME_FINISHED: {
+                deleteSpriteGroup();
                 String finished = "YOU WIN!\nCONGRADULATIONS!!";
                 font.drawString(gd, finished, 350, 330);
+                break;
+            } case END_GAME: {
+                deleteSpriteGroup();
+                String finished = "THE NUMBER OF LIVES OVER!!!";
+                font.drawString(gd, finished, 100, 200);
                 break;
             }
             
@@ -136,6 +141,8 @@ public class JarkGame extends Game{
     public gameState identifyGameOver() {
         if (_gameModel.isGameOver()) {
             return gameState.GAME_OVER;
+        } else if (_gameModel.isEndGame()) {
+            return gameState.END_GAME;
         } else {
             return gameState.GAME_CONTINUED;
         }
