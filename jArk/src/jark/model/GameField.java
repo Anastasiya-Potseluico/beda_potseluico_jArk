@@ -191,6 +191,9 @@ public class GameField {
         int i;
         DestructibleBrick el;
         switch (level) {
+            case 0: {
+                break;
+            }
             case 1: {
                 addElementField(new DestructibleBrick(1, 5, 5));
                 addElementField(new DestructibleBrick(1, 95, 5));

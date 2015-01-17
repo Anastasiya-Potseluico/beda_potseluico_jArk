@@ -22,7 +22,7 @@ public class GameModel {
     /**Игровое поля логика */
     private GameField _gameField;
     /** Уровень (1-3) */
-    private int _level = 5;
+    private int _level = 3;
     
     private boolean _isBallStart = true;
     /** */
