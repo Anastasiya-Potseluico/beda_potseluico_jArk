@@ -74,4 +74,8 @@ public class GameView {
         return BOUNDARYS_GROUP;
     }
     
+    public void clearField() {
+        
+    }
+    
 }

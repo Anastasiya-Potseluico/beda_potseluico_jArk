@@ -106,6 +106,7 @@ public class JarkGame extends Game{
             case GAME_OVER: {
                 String over = "YOU LOOSE!";
                 font.drawString(gd, over, 350, 330);
+                _gameModel.startGame(); 
                 break;
             } case GAME_FINISHED: {
                 String finished = "YOU WIN!\nCONGRADULATIONS!!";
@@ -121,7 +122,7 @@ public class JarkGame extends Game{
      * @return
      */
     public gameState identifyGameOver() {
-        if(_gameModel.gameField().balls().isEmpty()) {
+        if (_gameModel.isGameOver()) {
             return gameState.GAME_OVER;
         } else {
             return gameState.GAME_CONTINUED;

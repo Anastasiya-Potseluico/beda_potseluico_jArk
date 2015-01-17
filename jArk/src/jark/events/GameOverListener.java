@@ -12,5 +12,5 @@ import java.util.EventListener;
  * @author Дарья
  */
 public interface GameOverListener extends EventListener{
-    
+    void gameOver();
 }

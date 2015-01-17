@@ -6,8 +6,10 @@
 package jark.model;
 
 import com.golden.gamedev.object.Sprite;
+import jark.events.GameOverListener;
 import jark.model.BoundaryField.TYPE;
 import jark.specifications.Buffer;
+import java.util.ArrayList;
 
 /**
  * Класс мяча
@@ -40,8 +42,14 @@ public class Ball extends ElementField implements Collide {
         if(element instanceof BoundaryField) {
             if(((BoundaryField)element).type() == TYPE.HORISONTAL) 
               setSpeed(sp.getHorizontalSpeed(), sp.getVerticalSpeed()*-1); 
-            else
+            else if(((BoundaryField)element).type() == TYPE.VERTICAL)
                 setSpeed(sp.getHorizontalSpeed()*-1, sp.getVerticalSpeed());
+            else {
+                for( int i = 0; i < _listeners.size(); i++ ) {
+                    _listeners.get(i).gameOver();
+                }
+            }
+                
         } else if(element instanceof Racket) {
             double delta = 0;
             if(sp.getHorizontalSpeed() == 0) {
@@ -70,5 +78,21 @@ public class Ball extends ElementField implements Collide {
         } else {
             _faced = null;
         }
+    }
+    private ArrayList <GameOverListener> _listeners = new ArrayList ();
+     /**
+     * Метод для добавления слушателя кирпича
+     * @param listener слушатель змейки
+     */
+    public void addBallListener(GameOverListener listener) {
+        _listeners.add(listener);
+    }
+    
+    /**
+     * Метод для получения слушателей кирпича
+     * @return список слушателей змейки
+     */
+    public ArrayList listeners(){
+        return this._listeners;
     }
 }

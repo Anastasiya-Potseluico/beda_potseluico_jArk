@@ -6,6 +6,7 @@
 package jark.model;
 
 import jark.Player;
+import jark.events.GameOverListener;
 import jark.view.GameView;
 
 /**
@@ -24,11 +25,12 @@ public class GameModel {
     /** */
     private GameView _gameView;
     
+    private boolean _isGameOver;
+    
     public GameModel() {
         _player = new Player();
         _gameField = new GameField();
         _gameView = new GameView(_gameField.gameFieldView());
-        
     }
     
     public GameView gameView() {
@@ -37,7 +39,19 @@ public class GameModel {
     
     public void startGame() {
         _isBallStart = true;
-        _gameField.setField(_level);
+        _isGameOver = false;
+        //очистить поля
+        clearField();
+        gameView().clearField();
+        //Очистить слушателей
+        for(int i = 0; i < gameField().balls().size(); i++) {
+            gameField().balls().get(i).listeners().clear();
+        }
+        
+        gameField().setField(_level);
+        for (int i = 0; i < gameField().balls().size(); i++) {
+            gameField().balls().get(i).addBallListener((GameOverListener) this);
+        }
     }
     
     public Player player() {
@@ -59,5 +73,20 @@ public class GameModel {
     public void startBall() {
         _isBallStart = false;
         _gameField.balls().get(0).setSpeed(0, -0.4);
+    }
+    
+    public class gameOver implements GameOverListener {
+        @Override
+        public void gameOver() {
+            _isGameOver = true;
+        }
+    }
+    
+    public boolean isGameOver() {
+        return _isGameOver;
+    }
+    
+    private void clearField() {
+        
     }
 }

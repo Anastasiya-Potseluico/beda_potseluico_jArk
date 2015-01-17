@@ -31,6 +31,10 @@ public class Player {
         return _number_of_lives;
     }
     
+    public void reduceNumberOfLives() {
+        _number_of_lives--;
+    }
+    
     public int scores() {
         return _scores;
     }
