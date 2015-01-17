@@ -58,6 +58,6 @@ public class GameModel {
     
     public void startBall() {
         _isBallStart = false;
-        _gameField.balls().get(0).setSpeed(0, -0.5);
+        _gameField.balls().get(0).setSpeed(0, -0.4);
     }
 }

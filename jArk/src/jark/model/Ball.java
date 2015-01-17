@@ -43,8 +43,19 @@ public class Ball extends ElementField implements Collide {
             else
                 setSpeed(sp.getHorizontalSpeed()*-1, sp.getVerticalSpeed());
         } else if(element instanceof Racket) {
-            setSpeed(sp.getHorizontalSpeed() + Buffer.findSprite(element).getHorizontalSpeed(),
-                    sp.getVerticalSpeed()*-1);
+            double delta = 0;
+            if(sp.getHorizontalSpeed() == 0) {
+                    if (Buffer.findSprite(element).getHorizontalSpeed() > 0 )
+                        delta = 0.3;
+                    else if (Buffer.findSprite(element).getHorizontalSpeed() < 0)
+                        delta = -0.3;
+            } else if ((Buffer.findSprite(element).getHorizontalSpeed() < 0 && sp.getHorizontalSpeed() > 0) ||
+                    (Buffer.findSprite(element).getHorizontalSpeed() > 0 && sp.getHorizontalSpeed() < 0))
+                        delta = sp.getHorizontalSpeed() * -1;
+            else
+                delta = sp.getHorizontalSpeed();
+            
+            setSpeed(delta, sp.getVerticalSpeed()*-1);
         }
     }
 
