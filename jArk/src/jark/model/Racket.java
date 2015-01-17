@@ -20,15 +20,6 @@ public class Racket extends ElementField{
      */
     public Racket(int x, int y) {
         super(MASS.INF_MASS,x,y);
-        _hasBall = true;
-    }
-    
-    public boolean hasBall() {
-        return _hasBall;
-    }
-    
-    public void resetBall() {
-        _hasBall = false;
     }
 
     @Override

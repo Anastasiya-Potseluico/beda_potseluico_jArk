@@ -20,7 +20,7 @@ public class GameModel {
     /** Уровень (1-3) */
     private int _level = 1;
     
-    private boolean _isBallStart = false;
+    private boolean _isBallStart = true;
     /** */
     private GameView _gameView;
     
@@ -36,6 +36,7 @@ public class GameModel {
     }
     
     public void startGame() {
+        _isBallStart = true;
         _gameField.setField(_level);
     }
     
@@ -53,5 +54,10 @@ public class GameModel {
     
     public GameField gameField () {
         return _gameField;
+    }
+    
+    public void startBall() {
+        _isBallStart = false;
+        _gameField.balls().get(0).setSpeed(0, -0.5);
     }
 }

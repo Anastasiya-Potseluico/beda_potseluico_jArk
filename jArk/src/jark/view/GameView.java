@@ -5,12 +5,7 @@
  */
 package jark.view;
 
-import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.SpriteGroup;
-import jark.collisionManagers.CollisionMan;
-import jark.model.ElementField;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  *
@@ -49,7 +44,7 @@ public class GameView {
      */
     public void createSpriteGroup() {
         BALLS_GROUP = new SpriteGroup("balls"); //Группа мячей
-        BARRIERS_GROUP = new SpriteGroup("barriers_balls"); //Группа преград
+        BARRIERS_GROUP = new SpriteGroup("barriers"); //Группа преград
         RACKET_GROUP = new SpriteGroup("racket");
         BOUNDARYS_GROUP = new SpriteGroup("boundarys");
         for(int i = 0; i < gameFieldView().ballsView().size(); i++) {

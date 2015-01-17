@@ -15,7 +15,8 @@ import jark.specifications.Buffer;
 enum MASS {FIN_MASS, INF_MASS, OTHER};
 
 public abstract class ElementField {
-          
+        
+    protected ElementField _faced = null;
     protected MASS _mass;
      
     int _x;
