@@ -7,6 +7,9 @@ package jark.model;
 
 import jark.Player;
 import jark.events.GameOverListener;
+import jark.events.DestructionEvent;
+import jark.events.DestructionListener;
+import jark.specifications.Buffer;
 import jark.view.GameView;
 
 /**
@@ -19,7 +22,7 @@ public class GameModel {
     /**Игровое поля логика */
     private GameField _gameField;
     /** Уровень (1-3) */
-    private int _level = 1;
+    private int _level = 5;
     
     private boolean _isBallStart = true;
     /** */
@@ -40,19 +43,25 @@ public class GameModel {
     public void startGame() {
         _isBallStart = true;
         _isGameOver = false;
+        int i;
         //очистить поля
         clearField();
         gameView().clearField();
         //Очистить слушателей
-        for(int i = 0; i < gameField().balls().size(); i++) {
+        for(i = 0; i < gameField().balls().size(); i++) {
             gameField().balls().get(i).listeners().clear();
         }
         
         gameField().setField(_level);
-        for (int i = 0; i < gameField().balls().size(); i++) {
+        for (i = 0; i < gameField().balls().size(); i++) {
             gameField().balls().get(i).addBallListener((GameOverListener) this);
         }
+
+        for (i = 0; i < gameField().destructibleBricks().size(); i++) {
+            gameField().destructibleBricks().get(i).addBrickListener(new GameModel.removeBrick());
+        }
     }
+        
     
     public Player player() {
         return _player;
@@ -89,4 +98,23 @@ public class GameModel {
     private void clearField() {
         
     }
+
+     public class removeBrick implements DestructionListener {
+        @Override
+        public void brickHitted(DestructionEvent e, DestructibleBrick dBrick) {
+            if(dBrick.hadrness() == 0) {
+                gameField().deleteElementField(dBrick);
+                boolean found = false;
+                for(int i = 0; i< gameView().gameFieldView().dBricksView().size() && !found; i++) {
+                    if(gameView().gameFieldView().dBricksView().get(i).sprite() == Buffer.findSprite(dBrick)) {
+                        found = true;
+                        gameView().gameFieldView().dBricksView().remove(i);
+                    }
+                }
+                gameView().deleteBrick(Buffer.findSprite(dBrick));
+                player().sumScore(20);
+            }
+        } 
+    }
+    
 }
