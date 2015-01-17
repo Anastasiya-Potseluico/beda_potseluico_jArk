@@ -33,7 +33,6 @@ public class Collision extends AdvanceCollisionGroup{
         for (Object ll : ((HashMap)this.getStorage()).values()) {
             countFaced = ((Sprite[]) ll).length;
         }
-        //int b = l.values().size();
         _collisionMan.manageCollision(sprite1, sprite2, countFaced);
     }
     
