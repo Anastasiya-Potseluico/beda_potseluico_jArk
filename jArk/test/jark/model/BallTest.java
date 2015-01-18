@@ -241,11 +241,11 @@ public class BallTest {
     public void testBallIntoBreak1() throws IOException {
         System.out.println("мяч летит под прямым углом, кирпич с прочностью 1");
         ElementField ball = new Ball(300, 420);
-        ElementField brick = new DestructibleBrick(1,300, 150);
+        ElementField brick = new DestructibleBrick(1,250, 150);
         BufferedImage img = ImageIO.read(new File("src\\jark\\ball.png"));
         Sprite ballSprite = new Sprite(img, 300, 420);
         img = ImageIO.read(new File("src\\jark\\brick1.png"));
-        Sprite brickSprite = new Sprite(img, 250, 500);
+        Sprite brickSprite = new Sprite(img, 250, 150);
         Buffer.addElement(ball, ballSprite);
         Buffer.addElement(brick, brickSprite);
         ball.setSpeed(0, 0.3);
@@ -261,11 +261,11 @@ public class BallTest {
     public void testBallIntoBreak2() throws IOException {
         System.out.println("мяч летит под прямым углом, кирпич с прочностью 2");
         ElementField ball = new Ball(300, 420);
-        ElementField brick = new DestructibleBrick(1,300, 150);
+        ElementField brick = new DestructibleBrick(1,250, 150);
         BufferedImage img = ImageIO.read(new File("src\\jark\\ball.png"));
         Sprite ballSprite = new Sprite(img, 300, 420);
         img = ImageIO.read(new File("src\\jark\\brick2.png"));
-        Sprite brickSprite = new Sprite(img, 250, 500);
+        Sprite brickSprite = new Sprite(img, 250, 150);
         Buffer.addElement(ball, ballSprite);
         Buffer.addElement(brick, brickSprite);
         ball.setSpeed(0, 0.3);
@@ -281,11 +281,11 @@ public class BallTest {
     public void testBallIntoBreak3() throws IOException {
         System.out.println("мяч летит под прямым углом, кирпич с прочностью 3");
         ElementField ball = new Ball(300, 420);
-        ElementField brick = new DestructibleBrick(1,300, 150);
+        ElementField brick = new DestructibleBrick(1,250, 150);
         BufferedImage img = ImageIO.read(new File("src\\jark\\ball.png"));
         Sprite ballSprite = new Sprite(img, 300, 420);
         img = ImageIO.read(new File("src\\jark\\brick3.png"));
-        Sprite brickSprite = new Sprite(img, 250, 500);
+        Sprite brickSprite = new Sprite(img, 250, 150);
         Buffer.addElement(ball, ballSprite);
         Buffer.addElement(brick, brickSprite);
         ball.setSpeed(0, 0.3);
@@ -306,9 +306,9 @@ public class BallTest {
         BufferedImage img = ImageIO.read(new File("src\\jark\\ball.png"));
         Sprite ballSprite = new Sprite(img, 300, 420);
         img = ImageIO.read(new File("src\\jark\\brick2.png"));
-        Sprite brick1Sprite = new Sprite(img, 300, 500);
+        Sprite brick1Sprite = new Sprite(img, 300, 150);
         img = ImageIO.read(new File("src\\jark\\brick1.png"));
-        Sprite brick2Sprite = new Sprite(img, 210, 500);
+        Sprite brick2Sprite = new Sprite(img, 210, 150);
         Buffer.addElement(ball, ballSprite);
         Buffer.addElement(brick1, brick1Sprite);
         Buffer.addElement(brick2, brick2Sprite);
@@ -318,6 +318,27 @@ public class BallTest {
         assertEquals(-0.3, Buffer.findSprite(ball).getVerticalSpeed(), 0.1);
         assertEquals(1, ((DestructibleBrick)brick1).hadrness(), 0.1);
         assertEquals(0, ((DestructibleBrick)brick2).hadrness(), 0.1);
+    }
+    
+    /**
+     * мяч летит под углом и врезается в вертикальную стенку кирпича
+     */
+    @Test
+    public void testBallIntoBreakBordedVertical() throws IOException {
+        System.out.println("мяч летит под прямым углом, кирпич с прочностью 3");
+        ElementField ball = new Ball(300, 420);
+        ElementField brick = new DestructibleBrick(1,250, 250);
+        BufferedImage img = ImageIO.read(new File("src\\jark\\ball.png"));
+        Sprite ballSprite = new Sprite(img, 150, 150);
+        img = ImageIO.read(new File("src\\jark\\brick3.png"));
+        Sprite brickSprite = new Sprite(img, 250, 250);
+        Buffer.addElement(ball, ballSprite);
+        Buffer.addElement(brick, brickSprite);
+        ball.setSpeed(0.3, 0.3);
+        ball.reactOnCollision(brick, CollisionMan.TYPE.DEFAULT);
+        assertEquals(-0.3, Buffer.findSprite(ball).getVerticalSpeed(), 0.1);
+        assertEquals(-0.3, Buffer.findSprite(ball).getHorizontalSpeed(), 0.1);
+        
     }
 
 }
