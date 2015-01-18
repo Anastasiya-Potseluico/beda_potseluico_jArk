@@ -19,68 +19,103 @@ import java.awt.event.KeyEvent;
 
 /**
  * Класс игры
+ *
  * @author Дарья
  */
-public class JarkGame extends Game{
-    
-    private PlayField _playField;
-    
-    private GameModel _gameModel;
-    
-    private GameView _gameView;
-    
-    
-    /** */
-    private CollisionMan _collisionManager;
-    
-    
-    /** Бэкграунд */
-    Background backgr;
-    
+public class JarkGame extends Game {
 
-    
-    GameFont           font;
-    
-    private enum gameState {GAME_OVER, GAME_FINISHED, GAME_CONTINUED, END_GAME};
-    
+    /**
+     * Игровое поле
+     */
+    private PlayField _playField;
+    /**
+     * Логическая модель игры
+     */
+    private GameModel _gameModel;
+    /**
+     * Физическая модель игры
+     */
+    private GameView _gameView;
+
+    /**
+     * Менеджер коллизий
+     */
+    private CollisionMan _collisionManager;
+
+    /**
+     * Бэкграунд
+     */
+    Background backgr;
+
+    /**
+     * Шрифт
+     */
+    GameFont font;
+
+    /**
+     * Состояние игры
+     */
+    private enum gameState {
+
+        GAME_OVER, GAME_FINISHED, GAME_CONTINUED, END_GAME
+    };
+
+    /**
+     * Конструктор
+     */
     public JarkGame() {
         this.distribute = true;
     }
-    
+
+    /**
+     * Инициализирующий метод
+     */
     @Override
     public void initResources() {
         _gameModel = new GameModel();
         _gameView = _gameModel.gameView();
         _playField = _gameView.gameFieldView();
-        _gameModel.newGame(); 
+        _gameModel.newGame();
         backgr = new ImageBackground(getImage("background.jpg"), 650, 550);
         _playField.setBackground(backgr);
         _collisionManager = new CollisionMan();
         addSpriteGroup();
         font = fontManager.getFont(getImages("font.png", 20, 3),
-                                   " !            .,0123" +
-                                   "456789:   -? ABCDEFG" +
-                                   "HIJKLMNOPQRSTUVWXYZ ");
+                " !            .,0123"
+                + "456789:   -? ABCDEFG"
+                + "HIJKLMNOPQRSTUVWXYZ ");
     }
-    private void addSpriteGroup () {
+
+    /**
+     * Добавить группы спрайты на игровое поле
+     */
+    private void addSpriteGroup() {
         _playField.addGroup(_gameView.ballsGroup());
         _playField.addGroup(_gameView.barriersGroup());
-        _playField.addCollisionGroup(_gameView.racketGroup(), 
+        _playField.addCollisionGroup(_gameView.racketGroup(),
                 _gameView.boundaryGroup(), _collisionManager.collisionRacketBoundaries());
-        
-        _playField.addCollisionGroup(_gameView.ballsGroup(), 
+
+        _playField.addCollisionGroup(_gameView.ballsGroup(),
                 _gameView.barriersGroup(), _collisionManager.collisionBallsBarrier());
         //_playField.addCollisionGroup(_gameView.ballsGroup(), 
         //        _gameView.ballsGroup(), _collisionManager.collisionBallsBarrier());
-    } 
-    
+    }
+
+    /**
+     * Удалить группы спрайтов с игрового поля
+     */
     private void deleteSpriteGroup() {
         _playField.removeGroup(_gameView.ballsGroup());
         _playField.removeGroup(_gameView.barriersGroup());
         _playField.removeCollisionGroup(_collisionManager.collisionRacketBoundaries());
         _playField.removeCollisionGroup(_collisionManager.collisionBallsBarrier());
     }
-    
+
+    /**
+     * Обновление
+     *
+     * @param l период обновления
+     */
     @Override
     public void update(long l) {
         _playField.update(l);
@@ -92,58 +127,65 @@ public class JarkGame extends Game{
         }
         if (_gameModel.gameField().racket() != null) {
             _gameModel.gameField().racket().setSpeed(speedX, 0);
-            if(_gameModel.isBallStart()) {
-                _gameModel.gameField().balls().get(0).setSpeed
-                    (Buffer.findSprite(_gameModel.gameField().racket()).getHorizontalSpeed(), 0);
+            if (_gameModel.isBallStart()) {
+                _gameModel.gameField().balls().get(0).setSpeed(Buffer.findSprite(_gameModel.gameField().racket()).getHorizontalSpeed(), 0);
             }
-            
+
             if (keyPressed(KeyEvent.VK_SPACE) && _gameModel.isBallStart()) {
                 _gameModel.startBall();
             }
-        } 
+        }
     }
 
+    /**
+     * Обрисовка
+     *
+     * @param gd графика
+     */
     @Override
     public void render(Graphics2D gd) {
-        _gameView.gameFieldView().render(gd); 
+        _gameView.gameFieldView().render(gd);
         String lifes = "LIFES:" + String.valueOf(_gameModel.player().numberOfLives());
         font.drawString(gd, lifes, 10, 530);
         String level = "LEVEL:" + String.valueOf(_gameModel.level());
         font.drawString(gd, level, 180, 530);
         String scores = "SCORE:" + String.valueOf(_gameModel.player().scores());
-        font.drawString(gd, scores, 350, 530); 
-        gameState state = identifyGameOver();
+        font.drawString(gd, scores, 350, 530);
+        gameState state = state();
         switch (state) {
             case GAME_OVER: {
                 _gameModel.player().reduceNumberOfLives();
-                if(_gameModel.player().numberOfLives() == 0) {
+                if (_gameModel.player().numberOfLives() == 0) {
                     _gameModel.endGame();
                 } else {
                     deleteSpriteGroup();
-                    _gameModel.newGame(); 
+                    _gameModel.newGame();
                     addSpriteGroup();
                 }
                 break;
-            } case GAME_FINISHED: {
+            }
+            case GAME_FINISHED: {
                 deleteSpriteGroup();
                 String finished = "YOU WIN!\nCONGRADULATIONS!!";
                 font.drawString(gd, finished, 350, 330);
                 break;
-            } case END_GAME: {
+            }
+            case END_GAME: {
                 deleteSpriteGroup();
                 String finished = "THE NUMBER OF LIVES OVER!!!";
                 font.drawString(gd, finished, 100, 200);
                 break;
             }
-            
+
         }
     }
-    
+
     /**
+     * Вовзращает состояние игры
      *
-     * @return
+     * @return состояне игры
      */
-    public gameState identifyGameOver() {
+    public gameState state() {
         if (_gameModel.isGameOver()) {
             return gameState.GAME_OVER;
         } else if (_gameModel.isEndGame()) {
