@@ -5,8 +5,10 @@
  */
 package jark.model;
 
+import com.golden.gamedev.object.Sprite;
 import jark.collisionManagers.CollisionMan;
 import jark.events.DestructionListener;
+import jark.specifications.Buffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -76,5 +78,15 @@ public class DestructibleBrick extends Brick{
      */
     public ArrayList listeners(){
         return this._listeners;
+    }
+
+    @Override
+    public ElementField copy() {
+        DestructibleBrick brick = new DestructibleBrick(_hardness, _x, _y);
+        Sprite sp = new Sprite(_x, _y);
+        sp.setSpeed(Buffer.findSprite(this).getHorizontalSpeed(),
+                Buffer.findSprite(this).getVerticalSpeed());
+        Buffer.addElement(brick, sp);
+        return brick;
     }
 }

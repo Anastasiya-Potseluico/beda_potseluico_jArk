@@ -101,4 +101,6 @@ public abstract class ElementField {
             return false;
         }
     }
+    
+    public abstract ElementField copy();
 }

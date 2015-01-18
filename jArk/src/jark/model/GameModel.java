@@ -29,7 +29,7 @@ public class GameModel {
     /**
      * Уровень (1-5)
      */
-    private int _level = 3;
+    private int _level = 0;
     /**
      * Флаг начала попытки
      */
@@ -125,7 +125,9 @@ public class GameModel {
      */
     public void startBall() {
         _isBallStart = false;
-        _gameField.balls().get(0).setSpeed(0, -0.3);
+        for (int i = 0; i < _gameField.balls().size(); i++) {
+            _gameField.balls().get(i).setSpeed(0, -0.3);
+        }
     }
 
     /**

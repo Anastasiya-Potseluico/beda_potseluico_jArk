@@ -37,7 +37,15 @@ public class Ball extends ElementField implements Collide {
      */
     @Override
     public void collideWithMovableElement(ElementField element, CollisionMan.TYPE type) {
-
+        //Спрайт мяча
+        Sprite sp = Buffer.findSprite(this);
+        //Спрайт элемент, с которым произошло столкновение
+        Sprite el = Buffer.findSprite(element);
+        if (type == CollisionMan.TYPE.PAIR) {
+            setSpeed(sp.getHorizontalSpeed() * -1, sp.getVerticalSpeed() * -1);
+        } else {
+            setSpeed(el.getHorizontalSpeed(), el.getVerticalSpeed());
+        }
     }
 
     /**
@@ -86,7 +94,7 @@ public class Ball extends ElementField implements Collide {
                     if ((sp.getX() + sp.getWidth() / 2) > el.getX()
                             && (sp.getX() + sp.getWidth() / 2) < el.getX() + el.getWidth()) {
                         if ((el.getHorizontalSpeed() < 0 && sp.getHorizontalSpeed() > 0)
-                                || (el.getHorizontalSpeed() > 0 && sp.getHorizontalSpeed() < 0))  {
+                                || (el.getHorizontalSpeed() > 0 && sp.getHorizontalSpeed() < 0)) {
                             setSpeed(sp.getHorizontalSpeed() * -1, sp.getVerticalSpeed() * -1);
                         } else {
                             setSpeed(sp.getHorizontalSpeed(), sp.getVerticalSpeed() * -1);
@@ -139,5 +147,15 @@ public class Ball extends ElementField implements Collide {
      */
     public ArrayList listeners() {
         return this._listeners;
+    }
+
+    @Override
+    public ElementField copy() {
+        Ball ball = new Ball(_x, _y);
+        Sprite sp = new Sprite(_x, _y);
+        sp.setSpeed(Buffer.findSprite(this).getHorizontalSpeed(),
+                Buffer.findSprite(this).getVerticalSpeed());
+        Buffer.addElement(ball, sp);
+        return ball;
     }
 }

@@ -16,19 +16,34 @@ import java.util.ArrayList;
  * @author Дарья
  */
 public class GameField {
-    /** Физическое представление игрового поля */
+
+    /**
+     * Физическое представление игрового поля
+     */
     private GameFieldView _gameFieldView;
-    /** Мячи */
+    /**
+     * Мячи
+     */
     private ArrayList<Ball> _balls = new ArrayList();
-    /** Ракетка */
+    /**
+     * Ракетка
+     */
     private Racket _racket;
-    /** Рои */
+    /**
+     * Рои
+     */
     private ArrayList<Swarm> _swarms = new ArrayList();
-    /** Разрушаемые кирпичи */
+    /**
+     * Разрушаемые кирпичи
+     */
     private ArrayList<DestructibleBrick> _dBricks = new ArrayList();
-    /** Неразрушаемые кирпичи */
+    /**
+     * Неразрушаемые кирпичи
+     */
     private ArrayList<IndestructibleBrick> _iBricks = new ArrayList();
-    /** Границы поля  */
+    /**
+     * Границы поля
+     */
     private ArrayList<BoundaryField> _bondarysField = new ArrayList();
 
     /**
@@ -44,6 +59,7 @@ public class GameField {
 
     /**
      * Возвращает физическое представление игрового поля
+     *
      * @return физическое представление игрового поля
      */
     public GameFieldView gameFieldView() {
@@ -179,12 +195,14 @@ public class GameField {
 
     /**
      * Установить элементы на поле согласно уровню
+     *
      * @param level Уровень
      */
     public void setField(int level) {
         clear();
         switch (level) {
             case 0: {
+                addElementField(new Ball(295, 200));
                 break;
             }
             case 1: {
@@ -236,7 +254,7 @@ public class GameField {
                 addElementField(new DestructibleBrick(1, 275, 227));
                 addElementField(new DestructibleBrick(1, 365, 227));
                 addElementField(new DestructibleBrick(1, 455, 227));
-                addElementField(new DestructibleBrick(1, 545, 227));  
+                addElementField(new DestructibleBrick(1, 545, 227));
                 break;
             }
             case 2: {

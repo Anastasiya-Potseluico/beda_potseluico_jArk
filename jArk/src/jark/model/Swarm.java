@@ -10,17 +10,24 @@ import java.util.ArrayList;
 
 /**
  * Класс роя
+ *
  * @author Дарья
  */
 public class Swarm extends ElementField {
-    /** Элементы роя */
-    private  ArrayList <ElementSwarm> _elements;
-    
-    /** Вместимость роя */
+
+    /**
+     * Элементы роя
+     */
+    private ArrayList<ElementSwarm> _elements;
+
+    /**
+     * Вместимость роя
+     */
     private int _capability;
 
     /**
      * Конструктор роя
+     *
      * @param elements элементы роя
      * @param capability
      */
@@ -29,33 +36,39 @@ public class Swarm extends ElementField {
         this._elements = elements;
         _capability = capability;
     }
-    
+
     /**
      * Функция для присоединенния мяча к рою
+     *
      * @param ball мяч
      * @return успешность присоединения
      */
-    private void insertBall(Ball ball)
-    {
-        
+    private void insertBall(Ball ball) {
+
         _elements.add(new ElementSwarm(ball.x(), ball.y()));
-        if(_capability == _elements.size()) {
-            
-        } 
+        if (_capability == _elements.size()) {
+
+        }
     }
-    
+
     /**
      * Возвращает элементы роя
+     *
      * @return элементы роя
      */
-    public ArrayList <ElementSwarm> elements () {
+    public ArrayList<ElementSwarm> elements() {
         return _elements;
     }
 
     @Override
     public void reactOnCollision(ElementField element, CollisionMan.TYPE type) {
-        if(element instanceof Ball){
-            insertBall((Ball)element);
+        if (element instanceof Ball) {
+            insertBall((Ball) element);
         }
+    }
+
+    @Override
+    public ElementField copy() {
+        return null;
     }
 }

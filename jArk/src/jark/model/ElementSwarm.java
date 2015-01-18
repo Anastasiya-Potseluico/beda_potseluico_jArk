@@ -9,6 +9,7 @@ import jark.collisionManagers.CollisionMan;
 
 /**
  * Класс элемента роя
+ *
  * @author Дарья
  */
 public class ElementSwarm extends ElementField {
@@ -19,7 +20,12 @@ public class ElementSwarm extends ElementField {
 
     @Override
     public void reactOnCollision(ElementField element, CollisionMan.TYPE type) {
-        
+
     }
-    
+
+    @Override
+    public ElementField copy() {
+        return null;
+    }
+
 }

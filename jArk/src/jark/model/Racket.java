@@ -5,6 +5,7 @@
  */
 package jark.model;
 
+import com.golden.gamedev.object.Sprite;
 import jark.collisionManagers.CollisionMan;
 import jark.specifications.Buffer;
 
@@ -54,5 +55,15 @@ public class Racket extends ElementField {
         if (element instanceof BoundaryField) {
             setSpeed(Buffer.findSprite(this).getHorizontalSpeed() * -1, 0);
         }
+    }
+
+    @Override
+    public ElementField copy() {
+        Racket racket = new Racket(_x, _y);
+        Sprite sp = new Sprite(_x, _y);
+        sp.setSpeed(Buffer.findSprite(this).getHorizontalSpeed(),
+                Buffer.findSprite(this).getVerticalSpeed());
+        Buffer.addElement(racket, sp);
+        return racket;
     }
 }

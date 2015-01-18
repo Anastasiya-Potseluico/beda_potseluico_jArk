@@ -94,11 +94,10 @@ public class JarkGame extends Game {
         _playField.addGroup(_gameView.barriersGroup());
         _playField.addCollisionGroup(_gameView.racketGroup(),
                 _gameView.boundaryGroup(), _collisionManager.collisionRacketBoundaries());
-
         _playField.addCollisionGroup(_gameView.ballsGroup(),
                 _gameView.barriersGroup(), _collisionManager.collisionBallsBarrier());
-        //_playField.addCollisionGroup(_gameView.ballsGroup(), 
-        //        _gameView.ballsGroup(), _collisionManager.collisionBallsBarrier());
+        _playField.addCollisionGroup(_gameView.ballsGroup(), 
+                _gameView.ballsGroup(), _collisionManager.collisionBallsBalls());
     }
 
     /**
@@ -109,6 +108,7 @@ public class JarkGame extends Game {
         _playField.removeGroup(_gameView.barriersGroup());
         _playField.removeCollisionGroup(_collisionManager.collisionRacketBoundaries());
         _playField.removeCollisionGroup(_collisionManager.collisionBallsBarrier());
+        _playField.removeCollisionGroup(_collisionManager.collisionBallsBalls());
     }
 
     /**

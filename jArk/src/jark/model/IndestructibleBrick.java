@@ -5,7 +5,9 @@
  */
 package jark.model;
 
+import com.golden.gamedev.object.Sprite;
 import jark.collisionManagers.CollisionMan;
+import jark.specifications.Buffer;
 
 /**
  * Класс неразрушаемого кирпича
@@ -30,6 +32,16 @@ public class IndestructibleBrick extends Brick {
     @Override
     public void reactOnCollision(ElementField element, CollisionMan.TYPE type) {
         
+    }
+    
+    @Override
+    public ElementField copy() {
+        IndestructibleBrick brick = new IndestructibleBrick(_x, _y);
+        Sprite sp = new Sprite(_x, _y);
+        sp.setSpeed(Buffer.findSprite(this).getHorizontalSpeed(),
+                Buffer.findSprite(this).getVerticalSpeed());
+        Buffer.addElement(brick, sp);
+        return brick;
     }
     
 }

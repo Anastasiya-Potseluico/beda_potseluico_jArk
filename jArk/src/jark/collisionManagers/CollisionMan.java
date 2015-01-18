@@ -48,7 +48,7 @@ public class CollisionMan {
      */
     public enum TYPE {
 
-        DEFAULT, PAIR, BALLS
+        DEFAULT, PAIR
     };
 
     /**
@@ -91,6 +91,9 @@ public class CollisionMan {
      */
     private int _countReact = 0;
 
+    private Sprite oldSprite1;
+    private Sprite oldSprite2;
+
     /**
      * Метод для обработки коллизии
      *
@@ -99,28 +102,29 @@ public class CollisionMan {
      * @param countFaced Количество элементов, скоторым столкнулся sprite1
      */
     public void manageCollision(Sprite sprite1, Sprite sprite2, int countFaced) {
-        ElementField first, second;
-        first = Buffer.findElement(sprite1);
-        second = Buffer.findElement(sprite2);
-        TYPE type = TYPE.DEFAULT;
-        switch (countFaced) {
-            case 2: {
-                if (!(second instanceof Ball)) {
-                    type = TYPE.PAIR;
-                } else {
-                    type = TYPE.BALLS;
-                }
-                break;
+        if (oldSprite1 == null || (oldSprite1 != sprite2 || oldSprite2 != sprite1)) {
+            ElementField first, second;
+            first = Buffer.findElement(sprite1);
+            second = Buffer.findElement(sprite2);
+            TYPE type;
+            if (countFaced > 1) {
+                type = TYPE.PAIR;
+            } else {
+                type = TYPE.DEFAULT;
+            }
+            ElementField firstcopy = first.copy();
+            if (_countReact == 0) {
+                first.reactOnCollision(second, type);
+            }
+            second.reactOnCollision(firstcopy, type);
+            Buffer.deleteElement(firstcopy);
+            _countReact++;
+            if (_countReact == countFaced) {
+                _countReact = 0;
             }
         }
-        if (_countReact == 0) {
-            first.reactOnCollision(second, type);
-        }
-        second.reactOnCollision(first, type);
-        _countReact++;
-        if (_countReact == countFaced) {
-            _countReact = 0;
-        }
+        oldSprite1 = sprite1;
+        oldSprite2 = sprite2;
     }
 
 }
