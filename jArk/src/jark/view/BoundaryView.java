@@ -6,7 +6,6 @@
 
 package jark.view;
 
-import jark.model.*;
 import com.golden.gamedev.object.Sprite;
 import jark.model.BoundaryField;
 import java.awt.image.BufferedImage;
@@ -21,7 +20,10 @@ import javax.imageio.ImageIO;
  */
 public class BoundaryView extends ElementFieldView {
     /**
-     * Конструктор
+     * Конструктор физического представления границы поля 
+     * @param type тип границы
+     * @param x координата х границы на поле
+     * @param y координата у границы на поле
      */
     public BoundaryView (BoundaryField.TYPE type,int x, int y) {
         BufferedImage img = null;
@@ -34,7 +36,6 @@ public class BoundaryView extends ElementFieldView {
             else
                 img = ImageIO.read(new File("src\\jark\\i_board.png"));
             this._elementSprite = new Sprite(img, x, y);
-            this._elementSprite.setID(2);
         } 
         catch (IOException e) 
         {
