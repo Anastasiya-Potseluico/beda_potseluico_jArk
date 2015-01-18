@@ -10,48 +10,63 @@ import jark.model.ElementField;
 import java.util.HashMap;
 
 /**
+ * Класс-буфер, связывающий логику и физику
  *
  * @author Дарья
  */
 public class Buffer {
-    private static HashMap <ElementField, Sprite> _elements_sprite = 
-            new HashMap <ElementField, Sprite> ();
-    
+
     /**
-     * 
-     * @param element
-     * @param sprite 
+     * Карта элементов и соответствующих спрайтов
      */
-    public static void addElement(ElementField element, Sprite sprite){
+    private static HashMap<ElementField, Sprite> _elements_sprite
+            = new HashMap<ElementField, Sprite>();
+
+    /**
+     * Добавить элемент в карту
+     *
+     * @param element элемент
+     * @param sprite спрайт
+     */
+    public static void addElement(ElementField element, Sprite sprite) {
         if (element != null && sprite != null) {
             _elements_sprite.put(element, sprite);
         }
     }
-    public static void deleteElement (ElementField element) {
+
+    /**
+     * Удалить элемент из карты
+     *
+     * @param element элемент
+     */
+    public static void deleteElement(ElementField element) {
         if (element != null) {
             _elements_sprite.remove(element);
         }
     }
+
     /**
-     * 
-     * @param sprite
-     * @return 
+     * Найти элемент по спрайту
+     *
+     * @param sprite спрайт
+     * @return элемент
      */
-    public static ElementField findElement (Sprite sprite) {
-        for(ElementField key : _elements_sprite.keySet()) {
-            if(_elements_sprite.get(key).equals(sprite)) {
+    public static ElementField findElement(Sprite sprite) {
+        for (ElementField key : _elements_sprite.keySet()) {
+            if (_elements_sprite.get(key).equals(sprite)) {
                 return key;
             }
         }
         return null;
     }
-    
+
     /**
+     * Найти спрайт по элементу
      *
-     * @param element
-     * @return
+     * @param element элемент
+     * @return спрайт
      */
-    public static Sprite findSprite (ElementField element) {
+    public static Sprite findSprite(ElementField element) {
         return _elements_sprite.get(element);
     }
 }
