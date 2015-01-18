@@ -37,9 +37,11 @@ public class Swarm extends ElementField {
      */
     private void insertBall(Ball ball)
     {
-        //удалить мяч
-        _elements.add(new ElementSwarm(0,0));
-        //Провекра наполненности роя; 
+        
+        _elements.add(new ElementSwarm(ball.x(), ball.y()));
+        if(_capability == _elements.size()) {
+            
+        } 
     }
     
     /**

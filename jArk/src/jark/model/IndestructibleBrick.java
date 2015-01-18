@@ -15,14 +15,21 @@ public class IndestructibleBrick extends Brick {
 
     /**
      * Конструктор неразрушаемого кирпича
+     * @param x координата х кирпича на поле
+     * @param y координата у кирпича на поле
      */
     public IndestructibleBrick(int x, int y) {
         super(MASS.INF_MASS, x, y);
     }
-
+    
+    /**
+     * Метод реакции кирпича на коллизию (в дальнейшем возможно добавление реакции)
+     * @param element элемент, с которым столкнулся кирпич
+     * @param type тип коллизии
+     */
     @Override
     public void reactOnCollision(ElementField element, CollisionMan.TYPE type) {
-       
+        
     }
     
 }

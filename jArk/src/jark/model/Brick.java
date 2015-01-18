@@ -6,13 +6,15 @@
 package jark.model;
 
 /**
- * Класс кирпича
+ * Класс кирпича (абстрактный кирпич)
  * @author Дарья
  */
 public abstract class Brick extends ElementField {
     /**
      * Конструктор кирпича
-     * @param weight вес кирпича
+     * @param mass масса кирпича
+     * @param x координата х кирпича на поле
+     * @param y координата у кирпича на поле
      */
     public Brick(MASS mass, int x, int y) {
         super(mass, x, y);
