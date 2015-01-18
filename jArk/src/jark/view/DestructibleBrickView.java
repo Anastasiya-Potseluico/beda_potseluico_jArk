@@ -7,24 +7,28 @@
 package jark.view;
 
 import com.golden.gamedev.object.Sprite;
-import jark.model.BoundaryField;
-import jark.model.DestructibleBrick;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- * Класс физического представления разбиваемого кирпича
+ * Класс физического представления разрушаемого кирпича
  * @author пользователь
  */
 public class DestructibleBrickView extends ElementFieldView{
 
+    /**
+     * Конструктор физического представления разрушаемого кирпича
+     * @param hardness прочность кирпича
+     * @param x координата х кирпича на поле
+     * @param y координата у кирпича на поле
+     */
     public DestructibleBrickView (int hardness, int x, int y) {
         BufferedImage img = null;
         try 
         {
-            switch (hardness) {
+            switch (hardness) { // Кирпичи с разной прочностью имеют разные спрайты
                 case 1: {
                     double rand = (Math.random() * 1);
                     if(Math.round(rand) == 0)
@@ -40,12 +44,10 @@ public class DestructibleBrickView extends ElementFieldView{
                 }
             }
             this._elementSprite = new Sprite(img,x,y);
-            this._elementSprite.setID(3);
         } 
         catch (IOException e) 
         {
             e.printStackTrace();
         }
     }
-
 }
