@@ -21,6 +21,7 @@ public class Ball extends ElementField implements Collide {
 
     /**
      * Конструктор
+     *
      * @param x координата по оси Х
      * @param y координата по оси У
      */
@@ -75,20 +76,17 @@ public class Ball extends ElementField implements Collide {
                         setSpeed(0.2, sp.getVerticalSpeed() * -1);
                     } else if (el.getHorizontalSpeed() < 0) {
                         setSpeed(-0.2, sp.getVerticalSpeed() * -1);
-                    } 
-                    //Элемент не движется
+                    } //Элемент не движется
                     else {
                         setSpeed(0, sp.getVerticalSpeed() * -1);
                     }
-                } 
-                // Мяч летит под углом
+                } // Мяч летит под углом
                 else {
                     //Мяч летит на верхнюю или нижнюю поверхность элемента
-                    if((sp.getX()+sp.getWidth()/2) > el.getX() &&
-                            (sp.getX()+sp.getWidth()/2) < el.getX() + el.getWidth()) {
+                    if ((sp.getX() + sp.getWidth() / 2) > el.getX()
+                            && (sp.getX() + sp.getWidth() / 2) < el.getX() + el.getWidth()) {
                         setSpeed(sp.getHorizontalSpeed(), sp.getVerticalSpeed() * -1);
-                    } 
-                    //Мяч летит на боковые поверхности элемента
+                    } //Мяч летит на боковые поверхности элемента
                     else {
                         setSpeed(sp.getHorizontalSpeed() * -1, sp.getVerticalSpeed());
                     }
@@ -99,6 +97,7 @@ public class Ball extends ElementField implements Collide {
 
     /**
      * Функция реагирования на столкновение
+     *
      * @param element Элемент,с которым произошло столкновение
      * @param type Тип столкновения
      */
@@ -113,8 +112,10 @@ public class Ball extends ElementField implements Collide {
             _faced = element;
         }
     }
-    
-    /** Слушатели мяча */
+
+    /**
+     * Слушатели мяча
+     */
     private ArrayList<GameOverListener> _listeners = new ArrayList();
 
     /**

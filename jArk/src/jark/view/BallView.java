@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package jark.view;
 
 import com.golden.gamedev.object.Sprite;
@@ -14,25 +13,25 @@ import javax.imageio.ImageIO;
 
 /**
  * Класс физического представления мяча
+ *
  * @author пользователь
  */
-public class BallView extends ElementFieldView{
+public class BallView extends ElementFieldView {
+
     /**
-    * Конструктор
+     * Конструктор
+     *
      * @param x координата по оси Х
      * @param y координата по оси У
-    */ 
+     */
     public BallView(int x, int y) {
         BufferedImage img = null;
-        try 
-        {
+        try {
             img = ImageIO.read(new File("src\\jark\\ball.png"));
             this._elementSprite = new Sprite(img, x, y);
-        } 
-        catch (IOException e) 
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
 }
