@@ -13,88 +13,124 @@ import com.golden.gamedev.object.SpriteGroup;
  * @author Дарья
  */
 public class GameView {
-    /**Игровое поле представление*/
-    private GameFieldView _gameFieldView;
-    /** */
-    private SpriteGroup      BALLS_GROUP;
-    /** */
-    private SpriteGroup      BARRIERS_GROUP;
-    
-    private SpriteGroup RACKET_GROUP;
-    
-    private SpriteGroup BOUNDARYS_GROUP;
-    
+
     /**
-     * 
-     * @param gameFieldView 
+     * Физическое представление игрового поля
+     */
+    private GameFieldView _gameFieldView;
+    /**
+     * Группа спрайтов мячей
+     */
+    private SpriteGroup BALLS_GROUP;
+    /**
+     * Группа спрайтов преград: границы поля, ракетка, кирпичи
+     */
+    private SpriteGroup BARRIERS_GROUP;
+    /**
+     * Группа спрайта ракетки
+     */
+    private SpriteGroup RACKET_GROUP;
+    /**
+     * Группа спрайтов границ поля
+     */
+    private SpriteGroup BOUNDARYS_GROUP;
+
+    /**
+     * Конструктор
+     *
+     * @param gameFieldView
      */
     public GameView(GameFieldView gameFieldView) {
-       _gameFieldView = gameFieldView; 
+        _gameFieldView = gameFieldView;
     }
-    
+
     /**
-     * 
-     * @return 
+     * Возвращает физическое представление игрового поля
+     *
+     * @return физическое представление игрового поля
      */
-    public GameFieldView gameFieldView () {
+    public GameFieldView gameFieldView() {
         return _gameFieldView;
     }
-    
+
     /**
-     * 
+     * Создать группы спрайтов
      */
     public void createSpriteGroup() {
-        BALLS_GROUP = new SpriteGroup("balls"); //Группа мячей
-        BARRIERS_GROUP = new SpriteGroup("barriers"); //Группа преград
+        BALLS_GROUP = new SpriteGroup("balls");
+        BARRIERS_GROUP = new SpriteGroup("barriers");
         RACKET_GROUP = new SpriteGroup("racket");
         BOUNDARYS_GROUP = new SpriteGroup("boundarys");
         BALLS_GROUP.clear();
         BARRIERS_GROUP.clear();
         RACKET_GROUP.clear();
         BOUNDARYS_GROUP.clear();
-        for(int i = 0; i < gameFieldView().ballsView().size(); i++) {
-            BALLS_GROUP.add(gameFieldView().ballsView().get(i).sprite()); 
+        for (int i = 0; i < gameFieldView().ballsView().size(); i++) {
+            BALLS_GROUP.add(gameFieldView().ballsView().get(i).sprite());
         }
-        for(int i = 0; i < gameFieldView().boundariesView().size(); i++) {
+        for (int i = 0; i < gameFieldView().boundariesView().size(); i++) {
             BARRIERS_GROUP.add(gameFieldView().boundariesView().get(i).sprite());
             BOUNDARYS_GROUP.add(gameFieldView().boundariesView().get(i).sprite());
         }
-        for(int i = 0; i < gameFieldView().dBricksView().size(); i++) {
+        for (int i = 0; i < gameFieldView().dBricksView().size(); i++) {
             BARRIERS_GROUP.add(gameFieldView().dBricksView().get(i).sprite());
         }
-        for(int i = 0; i < gameFieldView().iBricksView().size(); i++) {
+        for (int i = 0; i < gameFieldView().iBricksView().size(); i++) {
             BARRIERS_GROUP.add(gameFieldView().iBricksView().get(i).sprite());
         }
         BARRIERS_GROUP.add(gameFieldView().racketView().sprite());
         RACKET_GROUP.add(gameFieldView().racketView().sprite());
     }
-    
+
+    /**
+     * Возвращает группу спрайтов мячей
+     *
+     * @return группа спрайтов мячей
+     */
     public SpriteGroup ballsGroup() {
         return BALLS_GROUP;
     }
-    
+
+    /**
+     * Возвращает группу спрайтов преград
+     *
+     * @return группа спрайтов преград
+     */
     public SpriteGroup barriersGroup() {
         return BARRIERS_GROUP;
     }
-    
+
+    /**
+     * Возвращает группу спрайта ракетки
+     *
+     * @return группа спрайта ракетки
+     */
     public SpriteGroup racketGroup() {
         return RACKET_GROUP;
     }
-    
+
+    /**
+     * Возвращает группу спрайтов границ поля
+     *
+     * @return группа спрайтов границ поля
+     */
     public SpriteGroup boundaryGroup() {
         return BOUNDARYS_GROUP;
     }
-    
+
+    /**
+     * Очистить поле от спрайтов
+     */
     public void clearField() {
-        for(int i = 0; i < gameFieldView().dBricksView().size(); i++) {
+        for (int i = 0; i < gameFieldView().dBricksView().size(); i++) {
             BARRIERS_GROUP.remove(gameFieldView().dBricksView().get(i).sprite());
         }
         gameFieldView().dBricksView().clear();
-        for(int i = 0; i < gameFieldView().iBricksView().size(); i++) {
+        for (int i = 0; i < gameFieldView().iBricksView().size(); i++) {
             BARRIERS_GROUP.remove(gameFieldView().iBricksView().get(i).sprite());
         }
         gameFieldView().iBricksView().clear();
-        for(int i = 0; i < gameFieldView().ballsView().size(); i++) {
+        for (int i = 0; i < gameFieldView().ballsView().size(); i++) {
             BALLS_GROUP.remove(gameFieldView().ballsView().get(i).sprite());
         }
         gameFieldView().ballsView().clear();
@@ -103,14 +139,24 @@ public class GameView {
             RACKET_GROUP.remove(gameFieldView().racketView().sprite());
             gameFieldView().deleteElementFieldView(gameFieldView().racketView());
         }
-        
+
     }
-    
-    public void deleteBrick(Sprite sprite) {
+
+    /**
+     * Удалить кирпич из группы спрайтов
+     *
+     * @param sprite спрайт кирпича
+     */
+    public void deleteBrickFromGroups(Sprite sprite) {
         BARRIERS_GROUP.remove(sprite);
     }
-    
-    public void deleteBall(Sprite sprite) {
+
+    /**
+     * Удалить мяч из группы спрайтов
+     *
+     * @param sprite спрайт мяча
+     */
+    public void deleteBallFromGroups(Sprite sprite) {
         BALLS_GROUP.remove(sprite);
     }
 }

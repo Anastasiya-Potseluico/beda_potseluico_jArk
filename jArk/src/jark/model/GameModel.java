@@ -83,7 +83,7 @@ public class GameModel {
         @Override
         public void gameOver(Ball ball) {
             gameView().gameFieldView().ballsView().indexOf(Buffer.findSprite(ball));
-            gameView().deleteBall(Buffer.findSprite(ball));
+            gameView().deleteBallFromGroups(Buffer.findSprite(ball));
             Buffer.deleteElement(ball);
             gameField().deleteElementField(ball);
         }
@@ -115,7 +115,7 @@ public class GameModel {
                         gameView().gameFieldView().dBricksView().remove(i);
                     }
                 }
-                gameView().deleteBrick(Buffer.findSprite(dBrick));
+                gameView().deleteBrickFromGroups(Buffer.findSprite(dBrick));
                 Buffer.deleteElement(dBrick);
                 gameField().deleteElementField(dBrick);
                 player().sumScore(20);
