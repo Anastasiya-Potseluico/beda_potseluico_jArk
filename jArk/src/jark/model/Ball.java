@@ -85,7 +85,12 @@ public class Ball extends ElementField implements Collide {
                     //Мяч летит на верхнюю или нижнюю поверхность элемента
                     if ((sp.getX() + sp.getWidth() / 2) > el.getX()
                             && (sp.getX() + sp.getWidth() / 2) < el.getX() + el.getWidth()) {
-                        setSpeed(sp.getHorizontalSpeed(), sp.getVerticalSpeed() * -1);
+                        if ((el.getHorizontalSpeed() < 0 && sp.getHorizontalSpeed() > 0)
+                                || (el.getHorizontalSpeed() > 0 && sp.getHorizontalSpeed() < 0))  {
+                            setSpeed(sp.getHorizontalSpeed() * -1, sp.getVerticalSpeed() * -1);
+                        } else {
+                            setSpeed(sp.getHorizontalSpeed(), sp.getVerticalSpeed() * -1);
+                        }
                     } //Мяч летит на боковые поверхности элемента
                     else {
                         setSpeed(sp.getHorizontalSpeed() * -1, sp.getVerticalSpeed());
