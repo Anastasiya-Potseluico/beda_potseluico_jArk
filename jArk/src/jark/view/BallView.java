@@ -7,14 +7,9 @@
 package jark.view;
 
 import com.golden.gamedev.object.Sprite;
-import jark.model.Ball;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
@@ -24,7 +19,8 @@ import javax.imageio.ImageIO;
 public class BallView extends ElementFieldView{
     /**
     * Конструктор
-     * @param ball
+     * @param x координата по оси Х
+     * @param y координата по оси У
     */ 
     public BallView(int x, int y) {
         BufferedImage img = null;
@@ -32,7 +28,6 @@ public class BallView extends ElementFieldView{
         {
             img = ImageIO.read(new File("src\\jark\\ball.png"));
             this._elementSprite = new Sprite(img, x, y);
-            this._elementSprite.setID(1);
         } 
         catch (IOException e) 
         {
