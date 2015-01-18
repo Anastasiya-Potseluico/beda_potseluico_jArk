@@ -7,20 +7,22 @@ package jark.collisionManagers;
 
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.collision.AdvanceCollisionGroup;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
  * @author Дарья
  */
 public class Collision extends AdvanceCollisionGroup{
-    
+    /**
+     * Обработчик коллизий
+     */
     private CollisionMan _collisionMan;
     
-    
+    /**
+     * Конструктор
+     * @param collisionMan обработчик коллизий
+     */
     public Collision(CollisionMan collisionMan) {
         _collisionMan = collisionMan;
         pixelPerfectCollision = true;
