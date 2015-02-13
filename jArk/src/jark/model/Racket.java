@@ -35,10 +35,10 @@ public class Racket extends ElementField {
      */
     @Override
     public boolean setSpeed(double vX, double vY) {
-        if (Buffer.findSprite(this).getX() <= 5) {
-            return super.setSpeed(Math.abs(vX), vY);
-        } else if (Buffer.findSprite(this).getX() >= 497) {
-            return super.setSpeed(Math.abs(vX) * -1, vY);
+        if (Buffer.findSprite(this).getX() <= 10) {
+            return super.setSpeed(Math.abs(vX)* 0.1, vY);
+        } else if (Buffer.findSprite(this).getX() >= 492) {
+            return super.setSpeed(Math.abs(vX) * -0.1, vY);
         } else {
             return super.setSpeed(vX, vY);
         }

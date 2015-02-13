@@ -57,51 +57,51 @@ public class Ball extends ElementField implements Collide {
     @Override
     public void collideWithUnmovableElement(ElementField element, CollisionMan.TYPE type) {
         //Спрайт мяча
-        Sprite sp = Buffer.findSprite(this);
+        Sprite spriteBall = Buffer.findSprite(this);
         //Спрайт элемент, с которым произошло столкновение
-        Sprite el = Buffer.findSprite(element);
+        Sprite spriteElementField = Buffer.findSprite(element);
         //Мяч столкнулся с парой элементов: угол границ, угол границы и ракетки,
         //стык кирпичей
         if (type == CollisionMan.TYPE.PAIR) {
-            setSpeed(sp.getHorizontalSpeed() * -1, sp.getVerticalSpeed() * -1);
+            setSpeed(spriteBall.getHorizontalSpeed() * -1, spriteBall.getVerticalSpeed() * -1);
         } else { // Мяч столкнулся с одним элементом
             //Мяч столкнулся с границей поля
             if (element instanceof BoundaryField) {
                 if (((BoundaryField) element).type() == TYPE.HORISONTAL) {
-                    setSpeed(sp.getHorizontalSpeed(), sp.getVerticalSpeed() * -1);
+                    setSpeed(spriteBall.getHorizontalSpeed(), spriteBall.getVerticalSpeed() * -1);
                 } else if (((BoundaryField) element).type() == TYPE.VERTICAL) {
-                    setSpeed(sp.getHorizontalSpeed() * -1, sp.getVerticalSpeed());
+                    setSpeed(spriteBall.getHorizontalSpeed() * -1, spriteBall.getVerticalSpeed());
                 } else { //Мяч вылетел за нижнюю границу поля
                     for (GameOverListener _listener : _listeners) {
-                        _listener.gameOver(this);
+                        _listener.delBall(this);
                     }
                 }
             } else {
                 //Мяч летит под прямым углом
-                if (sp.getHorizontalSpeed() == 0) {
+                if (spriteBall.getHorizontalSpeed() == 0) {
                     //Элемент в движении, значит угол полета мяча изменится
-                    if (el.getHorizontalSpeed() > 0) {
-                        setSpeed(0.2, sp.getVerticalSpeed() * -1);
-                    } else if (el.getHorizontalSpeed() < 0) {
-                        setSpeed(-0.2, sp.getVerticalSpeed() * -1);
+                    if (spriteElementField.getHorizontalSpeed() > 0) {
+                        setSpeed(0.2, spriteBall.getVerticalSpeed() * -1);
+                    } else if (spriteElementField.getHorizontalSpeed() < 0) {
+                        setSpeed(-0.2, spriteBall.getVerticalSpeed() * -1);
                     } //Элемент не движется
                     else {
-                        setSpeed(0, sp.getVerticalSpeed() * -1);
+                        setSpeed(0, spriteBall.getVerticalSpeed() * -1);
                     }
                 } // Мяч летит под углом
                 else {
                     //Мяч летит на верхнюю или нижнюю поверхность элемента
-                    if ((sp.getX() + sp.getWidth() / 2) > el.getX()
-                            && (sp.getX() + sp.getWidth() / 2) < el.getX() + el.getWidth()) {
-                        if ((el.getHorizontalSpeed() < 0 && sp.getHorizontalSpeed() > 0)
-                                || (el.getHorizontalSpeed() > 0 && sp.getHorizontalSpeed() < 0)) {
-                            setSpeed(sp.getHorizontalSpeed() * -1, sp.getVerticalSpeed() * -1);
+                    if ((spriteBall.getX() + spriteBall.getWidth() / 2) > spriteElementField.getX()
+                            && (spriteBall.getX() + spriteBall.getWidth() / 2) < spriteElementField.getX() + spriteElementField.getWidth()) {
+                        if ((spriteElementField.getHorizontalSpeed() < 0 && spriteBall.getHorizontalSpeed() > 0)
+                                || (spriteElementField.getHorizontalSpeed() > 0 && spriteBall.getHorizontalSpeed() < 0)) {
+                            setSpeed(spriteBall.getHorizontalSpeed() * -1, spriteBall.getVerticalSpeed() * -1);
                         } else {
-                            setSpeed(sp.getHorizontalSpeed(), sp.getVerticalSpeed() * -1);
+                            setSpeed(spriteBall.getHorizontalSpeed(), spriteBall.getVerticalSpeed() * -1);
                         }
                     } //Мяч летит на боковые поверхности элемента
                     else {
-                        setSpeed(sp.getHorizontalSpeed() * -1, sp.getVerticalSpeed());
+                        setSpeed(spriteBall.getHorizontalSpeed() * -1, spriteBall.getVerticalSpeed());
                     }
                 }
             }

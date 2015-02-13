@@ -200,6 +200,8 @@ public class GameField {
      */
     public void setField(int level) {
         clear();
+        addElementField(new Ball(295, 464));
+        addElementField(new Racket(250, 500));
         switch (level) {
             case 0: {
                 addElementField(new Ball(295, 200));
@@ -386,8 +388,7 @@ public class GameField {
                 break;
             }
         }
-        addElementField(new Ball(295, 464));
-        addElementField(new Racket(250, 500));
+        
     }
 
 }

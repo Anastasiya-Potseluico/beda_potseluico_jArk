@@ -13,5 +13,5 @@ import java.util.EventListener;
  * @author Дарья
  */
 public interface GameOverListener extends EventListener{
-    void gameOver(Ball ball);
+    void delBall(Ball ball);
 }

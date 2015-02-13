@@ -142,7 +142,7 @@ public class GameModel {
          * @param ball мяч
          */
         @Override
-        public void gameOver(Ball ball) {
+        public void delBall(Ball ball) {
             gameView().gameFieldView().ballsView().indexOf(Buffer.findSprite(ball));
             gameView().deleteBallFromGroups(Buffer.findSprite(ball));
             Buffer.deleteElement(ball);
